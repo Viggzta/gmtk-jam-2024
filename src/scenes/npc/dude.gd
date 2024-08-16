@@ -12,7 +12,7 @@ var movement_speed: float = 5.0
 var current_movement_speed: float = 0.0
 var movement_target_position: Vector2 = Vector2(60.0, 180.0)
 
-func _ready():
+func _ready() -> void:
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout.
 	navigation_agent.path_desired_distance = 4.0
@@ -25,17 +25,17 @@ func _ready():
 	animation_step_move = randf()
 	sprite_2d.modulate = Color(randf(), randf(), randf())
 
-func actor_setup():
+func actor_setup() -> void:
 	# Wait for the first physics frame so the NavigationServer can sync.
 	await get_tree().physics_frame
 
 	# Now that the navigation map is no longer empty, set the movement target.
 	set_movement_target(movement_target_position)
 
-func set_movement_target(movement_target: Vector2):
+func set_movement_target(movement_target: Vector2) -> void:
 	navigation_agent.target_position = movement_target
 
-func _physics_process(delta):
+func _physics_process(_delta: float) -> void:
 	if navigation_agent.is_navigation_finished():
 		return
 
@@ -51,7 +51,7 @@ func _process(delta: float) -> void:
 	_update_animation_step(delta)
 	image_root.scale.y = 0.75 + (0.25 * Interpolation.smooth_step(animation_step_move))
 	image_root.rotation_degrees = -30.0 + (60.0 * animation_step_move)
-	sprite_2d.z_index = position.y
+	sprite_2d.z_index = int(position.y)
 
 func _update_animation_step(delta: float) -> void:
 	animation_step += delta * animation_direction

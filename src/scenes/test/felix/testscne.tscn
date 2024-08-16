@@ -35,7 +35,7 @@ func _ready() -> void:
 	bake_navigation_polygon()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	
 func _spawn_building(x: float, y : float) -> void:
