@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c23kie8wtbynp"]
+[gd_scene load_steps=11 format=3 uid="uid://c23kie8wtbynp"]
 
 [ext_resource type="Texture2D" uid="uid://dav3o5ahega2w" path="res://art/dude1.png" id="1_1yfun"]
 [ext_resource type="Texture2D" uid="uid://2437f00ojsuf" path="res://art/dude2.png" id="2_bkxgu"]
@@ -8,11 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://770cyr7u0xkr" path="res://art/buildings/donken.png" id="6_iu3ln"]
 [ext_resource type="Texture2D" uid="uid://cx3404sc47tvc" path="res://art/buildings/hospital.png" id="7_kh0kc"]
 [ext_resource type="Texture2D" uid="uid://cyip2dyonhwbp" path="res://art/buildings/house.png" id="8_tqdag"]
+[ext_resource type="Texture2D" uid="uid://dy2sn8vwdg0w6" path="res://art/turkey/turkey.png" id="9_8q6ni"]
+[ext_resource type="Texture2D" uid="uid://b7gja5oqqwv0r" path="res://art/buildings/cinema.png" id="10_kxdlg"]
 
 [node name="asset_gym" type="Node2D"]
 
 [node name="Dude1" type="Sprite2D" parent="."]
-position = Vector2(101, 83)
+position = Vector2(101, 86)
 texture = ExtResource("1_1yfun")
 
 [node name="Dude2" type="Sprite2D" parent="."]
@@ -42,3 +44,11 @@ texture = ExtResource("7_kh0kc")
 [node name="House" type="Sprite2D" parent="."]
 position = Vector2(330, 311)
 texture = ExtResource("8_tqdag")
+
+[node name="Turkey" type="Sprite2D" parent="."]
+position = Vector2(774, 109)
+texture = ExtResource("9_8q6ni")
+
+[node name="Cinema" type="Sprite2D" parent="."]
+position = Vector2(830, 253)
+texture = ExtResource("10_kxdlg")
