@@ -17,7 +17,7 @@ func test() -> void:
 	print("baking...")
 	var new_navigation_map: RID = NavigationServer2D.map_create()
 	NavigationServer2D.map_set_active(new_navigation_map, true)
-	NavigationServer2D.bake_from_source_geometry_data($NavigationRegion2D.navigation_polygon, NavigationMeshSourceGeometryData2D.new());
+	NavigationServer2D.bake_from_source_geometry_data($Navmesh.navigation_polygon, NavigationMeshSourceGeometryData2D.new());
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

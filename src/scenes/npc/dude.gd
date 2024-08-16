@@ -1,3 +1,4 @@
+class_name Dude
 extends RigidBody2D
 
 @onready var sprite_2d: Sprite2D = $ImageRoot/Sprite2D
@@ -14,6 +15,10 @@ var movement_target_position: Vector2 = Vector2(60.0, 180.0)
 var lastpos: Vector2
 var id: int
 
+var need: Need = Need.new()
+var current_need: Need.NeedType
+var need_position: Vector2
+
 func _ready() -> void:
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout.
@@ -27,6 +32,11 @@ func _ready() -> void:
 	animation_step = randf()
 	animation_step_move = randf()
 	sprite_2d.modulate = Color(randf(), randf(), randf())
+	
+	need.choose_need()
+	need_position = need.get_need_location(self, current_need, get_parent())
+	movement_target_position = need_position
+	
 
 func actor_setup() -> void:
 	# Wait for the first physics frame so the NavigationServer can sync.
@@ -40,6 +50,9 @@ func set_movement_target(movement_target: Vector2) -> void:
 
 func _physics_process(_delta: float) -> void:
 	rotation_degrees = 0
+	
+	set_movement_target(movement_target_position)
+	
 
 	#if navigation_agent.is_navigation_finished():
 	#	return
