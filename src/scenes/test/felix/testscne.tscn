@@ -13,6 +13,14 @@ script/source = "@tool
 extends NavigationRegion2D
 
 const BYGGE = preload(\"res://scenes/test/felix/bygge.tscn\")
+const POOP = preload(\"res://scenes/buildings/shithouse.tscn\")
+const HOUSE = preload(\"res://scenes/buildings/house.tscn\")
+var poop_chance : float = 0.1
+
+var my_buildings = [BYGGE, POOP, HOUSE]
+var weights = PackedFloat32Array([2, 0.1, 0.8])
+var rng = RandomNumberGenerator.new()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,19 +29,23 @@ func _ready() -> void:
 	
 	for x in range(0, 10):
 		for y in range(0, 10):
-			var n = BYGGE.instantiate()
-			n.position.x = x * 100
-			n.position.y = y * 100
-			add_child(n)
+			_spawn_building(x,y)
+			
 
 	bake_navigation_polygon()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func _spawn_building(x: float, y : float) -> void:
+	var building = my_buildings[rng.rand_weighted(weights)].instantiate()
+	building.position.x = x * 100
+	building.position.y = y * 100
+	add_child(building)
 "
 
-[node name="Testscne" type="Node2D"]
+[node name="Testscne2" type="Node2D"]
 script = ExtResource("1_66df6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
