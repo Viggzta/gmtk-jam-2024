@@ -1,3 +1,44 @@
-[gd_scene format=3 uid="uid://c23kie8wtbynp"]
+[gd_scene load_steps=9 format=3 uid="uid://c23kie8wtbynp"]
+
+[ext_resource type="Texture2D" uid="uid://dav3o5ahega2w" path="res://art/dude1.png" id="1_1yfun"]
+[ext_resource type="Texture2D" uid="uid://2437f00ojsuf" path="res://art/dude2.png" id="2_bkxgu"]
+[ext_resource type="Texture2D" uid="uid://cyyufxnridytt" path="res://art/dude3.png" id="3_codwa"]
+[ext_resource type="Texture2D" uid="uid://cbuftms1c2xf8" path="res://art/dude4.png" id="4_56w0b"]
+[ext_resource type="Texture2D" uid="uid://d4i7prgkick60" path="res://art/buildings/baja-maja.png" id="5_ndqiu"]
+[ext_resource type="Texture2D" uid="uid://770cyr7u0xkr" path="res://art/buildings/donken.png" id="6_iu3ln"]
+[ext_resource type="Texture2D" uid="uid://cx3404sc47tvc" path="res://art/buildings/hospital.png" id="7_kh0kc"]
+[ext_resource type="Texture2D" uid="uid://cyip2dyonhwbp" path="res://art/buildings/house.png" id="8_tqdag"]
 
 [node name="asset_gym" type="Node2D"]
+
+[node name="Dude1" type="Sprite2D" parent="."]
+position = Vector2(101, 83)
+texture = ExtResource("1_1yfun")
+
+[node name="Dude2" type="Sprite2D" parent="."]
+position = Vector2(237, 86)
+texture = ExtResource("2_bkxgu")
+
+[node name="Dude3" type="Sprite2D" parent="."]
+position = Vector2(405, 96)
+texture = ExtResource("3_codwa")
+
+[node name="Dude4" type="Sprite2D" parent="."]
+position = Vector2(586, 112)
+texture = ExtResource("4_56w0b")
+
+[node name="Baja-maja" type="Sprite2D" parent="."]
+position = Vector2(716, 337)
+texture = ExtResource("5_ndqiu")
+
+[node name="Donken" type="Sprite2D" parent="."]
+position = Vector2(484, 306)
+texture = ExtResource("6_iu3ln")
+
+[node name="Hospital" type="Sprite2D" parent="."]
+position = Vector2(169, 277)
+texture = ExtResource("7_kh0kc")
+
+[node name="House" type="Sprite2D" parent="."]
+position = Vector2(330, 311)
+texture = ExtResource("8_tqdag")
