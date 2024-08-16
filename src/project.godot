@@ -21,6 +21,7 @@ Interpolation="*res://scripts/Interpolation.gd"
 
 [debug]
 
+gdscript/warnings/untyped_declaration=2
 gdscript/warnings/static_called_on_instance=0
 
 [file_customization]

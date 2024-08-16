@@ -21,7 +21,7 @@ func _ready() -> void:
 	
 	for x in range(0, 10):
 		for y in range(0, 10):
-			var n = BYGGE.instantiate()
+			var n: Node = BYGGE.instantiate()
 			n.position.x = x * 100
 			n.position.y = y * 100
 			add_child(n)
@@ -29,7 +29,7 @@ func _ready() -> void:
 	bake_navigation_polygon()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 "
 
