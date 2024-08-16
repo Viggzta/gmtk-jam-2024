@@ -1,12 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://djlmuqxobsbjc"]
+[gd_scene load_steps=5 format=3 uid="uid://djlmuqxobsbjc"]
 
 [ext_resource type="Script" path="res://scenes/npc/npc_rigid_body.gd" id="1_fgkhm"]
+
+[sub_resource type="GDScript" id="GDScript_d4u31"]
+script/source = "extends Node2D
+@onready var rigid_body_2d: RigidBody2D = $RigidBody2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func set_movement_target(movement_target: Vector2):
+	rigid_body_2d.set_movement_target(movement_target)
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h70pd"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_2nda7"]
 
 [node name="Dude" type="Node2D"]
+script = SubResource("GDScript_d4u31")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 script = ExtResource("1_fgkhm")
