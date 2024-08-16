@@ -39,7 +39,7 @@ func _process(_delta: float) -> void:
 	pass
 	
 func _spawn_building(x: float, y : float) -> void:
-	var building = my_buildings[rng.rand_weighted(weights)].instantiate()
+	var building : Node = my_buildings[rng.rand_weighted(weights)].instantiate()
 	building.position.x = x * 100
 	building.position.y = y * 100
 	add_child(building)
