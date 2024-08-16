@@ -11,13 +11,24 @@ config_version=5
 [application]
 
 config/name="GmtkJam2024"
-run/main_scene="res://main_menu.tscn"
+run/main_scene="res://scenes/test/felix/testscne.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [debug]
 
 gdscript/warnings/static_called_on_instance=0
+
+[file_customization]
+
+folder_colors={
+"res://scenes/": "green"
+}
+
+[physics]
+
+3d/default_gravity=0.0
+2d/default_gravity=0.0
 
 [rendering]
 
