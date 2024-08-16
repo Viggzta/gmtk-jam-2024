@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://ibjjv2483um"]
+
+[ext_resource type="PackedScene" uid="uid://cusjwotijmrxw" path="res://scenes/test/felix/bygge.tscn" id="1_3gnmy"]
+[ext_resource type="Script" path="res://scenes/test/felix/testscne.gd" id="1_66df6"]
+[ext_resource type="PackedScene" uid="uid://djlmuqxobsbjc" path="res://scenes/npc/dude.tscn" id="2_p1cwl"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_4kd2u"]
+vertices = PackedVector2Array(-65, 124, -12, 106, 36, 106, -186, 298.273, 100, 42, 100, -6, 292.633, -100.102, 311.328, 301.891, -186, -103.719, 52, -6, -32, -30, -32, 18, 35, 6, 35, 46, 5, 46, 52, 6, -80, -30, -80, -18, -97, -18, -49, 30, -49, 18, 5, 58, -12, 58, -12, 48, -60, 48, -97, 30, -113, 76, -60, 96, -12, 96, -65, 76, 36, 94, 53, 94, 53, 54, 83, 54, 83, 42, -113, 124)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 6, 5, 9, 10), PackedInt32Array(11, 10, 12, 13, 14), PackedInt32Array(9, 15, 12, 10), PackedInt32Array(16, 17, 18, 8), PackedInt32Array(19, 20, 11), PackedInt32Array(14, 21, 22, 23), PackedInt32Array(11, 14, 23, 24, 19), PackedInt32Array(25, 19, 24, 26), PackedInt32Array(27, 28, 1, 0), PackedInt32Array(27, 0, 29, 24), PackedInt32Array(2, 30, 31), PackedInt32Array(31, 32, 33, 7), PackedInt32Array(33, 34, 4, 7), PackedInt32Array(31, 7, 3, 2), PackedInt32Array(35, 0, 3), PackedInt32Array(35, 3, 8, 26), PackedInt32Array(24, 29, 26), PackedInt32Array(25, 26, 8, 18), PackedInt32Array(8, 10, 16)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-222, -118, -224, 312, 326, 316, 306, -114)])
+agent_radius = 14.0
+baking_rect = Rect2(-200, -200, 799.83, 800)
+
+[node name="Testscne" type="Node2D"]
+script = ExtResource("1_66df6")
+
+[node name="Dude" parent="." instance=ExtResource("2_p1cwl")]
+position = Vector2(119, 137)
+
+[node name="Dude2" parent="." instance=ExtResource("2_p1cwl")]
+position = Vector2(119, 107)
+
+[node name="Dude3" parent="." instance=ExtResource("2_p1cwl")]
+position = Vector2(95, 137)
+
+[node name="Dude4" parent="." instance=ExtResource("2_p1cwl")]
+position = Vector2(119, 163)
+
+[node name="Dude5" parent="." instance=ExtResource("2_p1cwl")]
+position = Vector2(144, 129)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-4, -42)
+navigation_polygon = SubResource("NavigationPolygon_4kd2u")
+
+[node name="Bygge" parent="NavigationRegion2D" instance=ExtResource("1_3gnmy")]
+position = Vector2(12, 82)
+
+[node name="Bygge2" parent="NavigationRegion2D" instance=ExtResource("1_3gnmy")]
+position = Vector2(29, 70)
+
+[node name="Bygge3" parent="NavigationRegion2D" instance=ExtResource("1_3gnmy")]
+position = Vector2(59, 30)
+
+[node name="Bygge4" parent="NavigationRegion2D" instance=ExtResource("1_3gnmy")]
+position = Vector2(76, 18)
+
+[node name="Bygge5" parent="NavigationRegion2D" instance=ExtResource("1_3gnmy")]
+position = Vector2(-73, 6)
+
+[node name="Bygge6" parent="NavigationRegion2D" instance=ExtResource("1_3gnmy")]
+position = Vector2(-56, -6)
+
+[node name="Bygge7" parent="NavigationRegion2D" instance=ExtResource("1_3gnmy")]
+position = Vector2(-89, 100)
+
+[node name="Bygge8" parent="NavigationRegion2D" instance=ExtResource("1_3gnmy")]
+position = Vector2(-36, 72)
