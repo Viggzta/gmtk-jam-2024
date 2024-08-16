@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4i7prgkick60"
-path="res://.godot/imported/baja-maja.png-1ba997f735f8d5a332e0a853e7c37b2e.ctex"
+uid="uid://770cyr7u0xkr"
+path="res://.godot/imported/donken.png-3540438b071a07f68f6f06cf5ac4860e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/baja-maja.png"
-dest_files=["res://.godot/imported/baja-maja.png-1ba997f735f8d5a332e0a853e7c37b2e.ctex"]
+source_file="res://art/buildings/donken.png"
+dest_files=["res://.godot/imported/donken.png-3540438b071a07f68f6f06cf5ac4860e.ctex"]
 
 [params]
 

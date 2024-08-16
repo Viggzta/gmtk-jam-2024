@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://770cyr7u0xkr"
-path="res://.godot/imported/donken.png-a3b9085e38ffb383ddbb6e2fad2ddd23.ctex"
+uid="uid://dav3o5ahega2w"
+path="res://.godot/imported/dude1.png-c087dcbd332f4429998d8015f43c77a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/donken.png"
-dest_files=["res://.godot/imported/donken.png-a3b9085e38ffb383ddbb6e2fad2ddd23.ctex"]
+source_file="res://art/dude1.png"
+dest_files=["res://.godot/imported/dude1.png-c087dcbd332f4429998d8015f43c77a6.ctex"]
 
 [params]
 

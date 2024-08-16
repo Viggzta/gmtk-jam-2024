@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyip2dyonhwbp"
-path="res://.godot/imported/house.png-b73f8a14a783d8a09fecd450111f7418.ctex"
+uid="uid://cx3404sc47tvc"
+path="res://.godot/imported/hospital.png-9fe08634bbd9c17e5546ad1155ac1b88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/house.png"
-dest_files=["res://.godot/imported/house.png-b73f8a14a783d8a09fecd450111f7418.ctex"]
+source_file="res://art/buildings/hospital.png"
+dest_files=["res://.godot/imported/hospital.png-9fe08634bbd9c17e5546ad1155ac1b88.ctex"]
 
 [params]
 
