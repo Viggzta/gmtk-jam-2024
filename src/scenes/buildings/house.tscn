@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bg83n6e2doi7w"]
+[gd_scene load_steps=4 format=3 uid="uid://bg83n6e2doi7w"]
 
+[ext_resource type="Script" path="res://scripts/house.gd" id="1_2qnk0"]
 [ext_resource type="Texture2D" uid="uid://cyip2dyonhwbp" path="res://art/buildings/house.png" id="1_n1lm5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yeq1w"]
 size = Vector2(96, 98)
 
 [node name="house" type="Node2D"]
+script = ExtResource("1_2qnk0")
 
 [node name="House" type="Sprite2D" parent="."]
 texture = ExtResource("1_n1lm5")
