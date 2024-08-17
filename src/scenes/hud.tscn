@@ -49,6 +49,7 @@ bus = &"FX"
 
 [node name="Hover" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_nq1vw")
+volume_db = 15.0
 bus = &"FX"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
