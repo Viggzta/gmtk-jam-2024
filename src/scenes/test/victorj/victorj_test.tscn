@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://t2nugvvlv7mc"]
+
+[ext_resource type="PackedScene" uid="uid://dlt5hvje4cgux" path="res://scenes/ui/action_bar.tscn" id="1_j5erf"]
+
+[node name="VictorjTest" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ActionBar" parent="CanvasLayer" instance=ExtResource("1_j5erf")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+grow_vertical = 0
