@@ -10,7 +10,6 @@ signal pressed(building: Building)
 func initialize(position: Vector2) -> void:
 	self.position = position
 	
-	
 func _ready() -> void:
 	sprite.z_index = position.y
 	body.input_pickable = true
