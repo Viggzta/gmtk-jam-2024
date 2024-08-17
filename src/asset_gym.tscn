@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c23kie8wtbynp"]
+[gd_scene load_steps=12 format=3 uid="uid://c23kie8wtbynp"]
 
 [ext_resource type="Texture2D" uid="uid://dav3o5ahega2w" path="res://art/dude1.png" id="1_1yfun"]
 [ext_resource type="Texture2D" uid="uid://2437f00ojsuf" path="res://art/dude2.png" id="2_bkxgu"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cyip2dyonhwbp" path="res://art/buildings/house.png" id="8_tqdag"]
 [ext_resource type="Texture2D" uid="uid://dy2sn8vwdg0w6" path="res://art/turkey/turkey.png" id="9_8q6ni"]
 [ext_resource type="Texture2D" uid="uid://b7gja5oqqwv0r" path="res://art/buildings/cinema.png" id="10_kxdlg"]
+[ext_resource type="Texture2D" uid="uid://c4n0yaaowuoje" path="res://art/buildings/house3.png" id="11_vq6my"]
 
 [node name="asset_gym" type="Node2D"]
 
@@ -52,3 +53,7 @@ texture = ExtResource("9_8q6ni")
 [node name="Cinema" type="Sprite2D" parent="."]
 position = Vector2(830, 253)
 texture = ExtResource("10_kxdlg")
+
+[node name="House3" type="Sprite2D" parent="."]
+position = Vector2(296, 467)
+texture = ExtResource("11_vq6my")
