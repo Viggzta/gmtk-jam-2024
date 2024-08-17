@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ljot30vxdebg"]
+[gd_scene load_steps=4 format=3 uid="uid://0exjsbumkrrb"]
 
 [ext_resource type="Script" path="res://scripts/hospital.gd" id="1_6owj2"]
 [ext_resource type="Texture2D" uid="uid://cx3404sc47tvc" path="res://art/buildings/hospital.png" id="1_6q0s7"]

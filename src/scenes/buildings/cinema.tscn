@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://xqsofhu1mwuc"]
+[gd_scene load_steps=4 format=3 uid="uid://jebxqjkijh4f"]
 
 [ext_resource type="Texture2D" uid="uid://b7gja5oqqwv0r" path="res://art/buildings/cinema.png" id="1_5f3ah"]
 [ext_resource type="Script" path="res://scripts/cinema.gd" id="1_ewhli"]

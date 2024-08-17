@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3guiqx7ist3r"]
+[gd_scene load_steps=4 format=3 uid="uid://divg0uikrloj1"]
 
 [ext_resource type="Texture2D" uid="uid://770cyr7u0xkr" path="res://art/buildings/donken.png" id="1_onj5d"]
 [ext_resource type="Script" path="res://scripts/donken.gd" id="1_tyvw2"]
