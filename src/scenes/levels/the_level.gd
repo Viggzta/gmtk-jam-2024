@@ -1,7 +1,6 @@
 extends Node2D
 
-enum GameState { Setup, Rush }
-var _current_state: GameState = GameState.Setup
+const globals = preload("res://scripts/Globals.gd")
 
 const SHITHOUSE = preload("res://scenes/buildings/shithouse.tscn")
 const HOUSE = preload("res://scenes/buildings/house.tscn")
@@ -60,6 +59,7 @@ func _input(event: InputEvent) -> void:
 			_spawn_wave(10)
 	
 func _spawn_wave(amount: int) -> void:
+	$"/root/Globals".dude_count = amount
 	print(current_max_radius)
 	for i in range(0, amount):
 		var spawn_location_radians: float = randf() * TAU
@@ -72,9 +72,24 @@ func _spawn_wave(amount: int) -> void:
 
 func _on_hud_pressed() -> void:
 	_spawn_wave(250)
+	_transition_game_state(globals.GameState.Rush)
 
-func _transition_game_state(state: GameState) -> void:
-	_current_state = state
+func _transition_game_state(state: globals.GameState) -> void:
+	$"/root/Globals".current_state = state
 	
-	if state == GameState.Setup:
+	if state == globals.GameState.Setup:
 		$CanvasLayer/Control/Hud.set_interact(true)
+		$CanvasLayer/SatisfactionUi.visible = false
+		$"/root/Globals".dude_count = 0
+		$CanvasLayer/SatisfactionUi/ProgressBar.value = 100
+	elif state == globals.GameState.Rush:
+		$CanvasLayer/SatisfactionUi.visible = true
+	elif state== globals.GameState.Failure:
+		pass
+	elif state == globals.GameState.Success:
+		pass
+		
+
+
+func _on_satisfaction_ui_lose() -> void:
+	_transition_game_state(globals.GameState.Failure)

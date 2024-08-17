@@ -2,6 +2,8 @@ extends Control
 
 const modifier: float = 0.05
 
+signal lose
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$".".visible = false
@@ -13,4 +15,4 @@ func _process(delta: float) -> void:
 		var dudes : int = $"/root/Globals".dude_count
 		$ProgressBar.value -= dudes * modifier * delta
 		if($ProgressBar.value == 0):
-			$"/root/Globals".current_state = $"/root/Globals".GameState.Failure
+			lose.emit

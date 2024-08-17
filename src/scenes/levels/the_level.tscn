@@ -94,6 +94,7 @@ stream = ExtResource("6_mrrr6")
 bus = &"Music"
 script = ExtResource("7_ouja1")
 
+[connection signal="lose" from="CanvasLayer/SatisfactionUi" to="." method="_on_satisfaction_ui_lose"]
 [connection signal="pressed" from="CanvasLayer/Control/Hud" to="." method="_on_hud_pressed"]
 [connection signal="zoom_changed" from="Camera" to="BackgroundControl" method="_on_camera_zoom_changed"]
 [connection signal="finished" from="MusicPlayer" to="MusicPlayer" method="_on_finished"]
