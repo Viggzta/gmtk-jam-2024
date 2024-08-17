@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://7q2324t0mnuw"]
+[gd_scene load_steps=13 format=3 uid="uid://7q2324t0mnuw"]
 
 [ext_resource type="Script" path="res://scenes/levels/the_level.gd" id="1_vl667"]
 [ext_resource type="PackedScene" uid="uid://d3r14xo6jdyqj" path="res://scenes/camera.tscn" id="2_1diri"]
 [ext_resource type="Script" path="res://scenes/levels/background_control.gd" id="2_s734i"]
-[ext_resource type="PackedScene" path="res://scenes/buildings/shithouse.tscn" id="3_q6e3f"]
 [ext_resource type="PackedScene" uid="uid://clr8o4motkuy8" path="res://scenes/ui/hud.tscn" id="4_2f8vd"]
 [ext_resource type="PackedScene" path="res://scenes/ui/satisfaction_ui.tscn" id="4_26rng"]
 [ext_resource type="PackedScene" uid="uid://ci78tpn52jqrb" path="res://scenes/ui/settings_control.tscn" id="4_v4ej8"]
@@ -97,9 +96,6 @@ grow_vertical = 1
 navigation_polygon = SubResource("NavigationPolygon_rxodp")
 
 [node name="BuildingRoot" type="Node2D" parent="Navmesh"]
-
-[node name="shithouse" parent="Navmesh/BuildingRoot" instance=ExtResource("3_q6e3f")]
-position = Vector2(3, -137)
 
 [node name="DudeRoot" type="Node2D" parent="."]
 
