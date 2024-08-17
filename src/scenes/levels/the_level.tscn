@@ -7,13 +7,14 @@
 [ext_resource type="Material" uid="uid://2nan6h7ds1xj" path="res://scripts/level_base/background_material.tres" id="5_dbp6e"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rxodp"]
-vertices = PackedVector2Array(67.6484, 75.6484, 32607.1, 18052.5, -27066.6, 18220.2, -71.6484, 75.6484, -30173, -20072.8, -71.6484, -76.6484, 33367.5, -22200.9, 67.6484, -76.6484)
+vertices = PackedVector2Array(47, -16, 32628.4, 18074.1, -27086.6, 18241.9, -49, -16, -30196.4, -20093.7, -49, -125, 33389.6, -22223.3, 47, -125)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(7, 6, 1, 0)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-30218, -20113, -27105, 18262, 32648, 18094, 33410, -22244)])
 agent_radius = 20.0
 
 [node name="TheLevel" type="Node2D"]
 script = ExtResource("1_vl667")
+buildable_radius = 4.0
 
 [node name="BackgroundControl" type="Control" parent="."]
 z_index = -4096
@@ -46,7 +47,7 @@ navigation_polygon = SubResource("NavigationPolygon_rxodp")
 [node name="BuildingRoot" type="Node2D" parent="Navmesh"]
 
 [node name="shithouse" parent="Navmesh/BuildingRoot" instance=ExtResource("3_q6e3f")]
-position = Vector2(1, -70)
+position = Vector2(3, -137)
 
 [node name="DudeRoot" type="Node2D" parent="."]
 

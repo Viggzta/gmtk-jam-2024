@@ -9,7 +9,7 @@ void vertex() {
 void fragment() {
     vec2 viewport_size = 1.0 / SCREEN_PIXEL_SIZE;
     float aspect_ratio = viewport_size.x / viewport_size.y;
-	vec2 backgroundUV = VERTEX;
+	vec2 backgroundUV = VERTEX/1000.0;
 	vec4 bg = texture(inTexture, backgroundUV);
 
     vec2 position = (UV  - 0.5) * aspect_ratio;

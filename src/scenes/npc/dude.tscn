@@ -10,6 +10,7 @@
 radius = 38.4
 
 [node name="Dude" type="RigidBody2D"]
+mass = 26.515
 script = ExtResource("1_t7m2o")
 
 [node name="ImageRoot" type="Node2D" parent="."]
@@ -24,6 +25,7 @@ shape = SubResource("CircleShape2D_3j1se")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_max_distance = 1845.0
 radius = 56.3
+debug_path_custom_color = Color(1, 0.372549, 1, 0.411765)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
@@ -40,3 +42,9 @@ z_index = -4000
 position = Vector2(-2.98023e-07, 1.25)
 scale = Vector2(0.34375, 0.132813)
 texture = ExtResource("3_3k5n3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -20.0
+offset_top = -114.0
+offset_right = 20.0
+offset_bottom = -74.0

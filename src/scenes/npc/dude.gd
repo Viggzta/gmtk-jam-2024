@@ -69,16 +69,23 @@ func _physics_process(_delta: float) -> void:
 	
 	# print(navigation_agent.is_navigation_finished(), "   current: ", current_agent_position, " next: ", next_path_position)
 	var movement: Vector2 = position - lastpos
-	lastpos = position
 	
-	if movement.length() < 0.02 and not navigation_agent.is_navigation_finished():
-		# linear_velocity += Vector2(randf(), randf()) * 150.0
+	var target_velocity: Vector2 = current_agent_position.direction_to(next_path_position) * movement_speed;
+
+	if movement.length() < 0.05 and not navigation_agent.is_navigation_finished():
+		var bodies: Array[Node2D] = $Area2D.get_overlapping_bodies()
+		for b in bodies:
+			if b is RigidBody2D:
+				var dir: Vector2 = position.direction_to(b.position)
+				#b.apply_impulse(dir * 10)
+		# position += target_velocity*0.1 #.move_toward(position+target_velocity, _delta*60)# target_velocity*0.1#apply_impulse(target_velocity * 150.0)
+		#linear_velocity = target_velocity * 3.0
 		set_movement_target(movement_target_position)
 
-	var target_velocity: Vector2 = current_agent_position.direction_to(next_path_position) * movement_speed;
-	linear_velocity = target_velocity#lerp(linear_velocity, target_velocity, _delta*2)
+	linear_velocity = linear_velocity.move_toward(target_velocity, _delta*400)#lerp(linear_velocity, target_velocity, _delta*5)
 	current_movement_speed = movement.length()
 	# move_and_collide(velocity)
+	lastpos = position
 
 func _process(delta: float) -> void:
 	image_root.scale.y = 1+sin(id+Time.get_ticks_msec()/1000.0*10.0)*0.1
@@ -105,6 +112,7 @@ func _go_splat() -> void:
 	self.queue_free()
 
 func get_need_location() -> Building:
+	$RichTextLabel.text = str(needs[0])
 	var nodes: Array
 	var closestNode: Building
 	for child in building_root.get_children():
@@ -115,3 +123,12 @@ func get_need_location() -> Building:
 				if child.global_position.distance_to(global_position) < closestNode.global_position.distance_to(global_position):
 					closestNode = child
 	return closestNode
+	
+func get_random_need_location() -> Building:
+	var nodes: Array
+	var closestNode: Building
+	for child in building_root.get_children():
+		if child is Building:
+			if child.need_type == needs[0]:
+				nodes.append(child)
+	return nodes.pick_random()
