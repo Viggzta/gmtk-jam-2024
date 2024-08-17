@@ -10,7 +10,9 @@ size = Vector2(72, 81)
 script = ExtResource("1_7kn2w")
 
 [node name="Baja-maja" type="Sprite2D" parent="."]
+position = Vector2(0, 32)
 texture = ExtResource("1_prq62")
+offset = Vector2(0, -45)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 3

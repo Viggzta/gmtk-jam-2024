@@ -101,7 +101,6 @@ navigation_polygon = SubResource("NavigationPolygon_rxodp")
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_mrrr6")
-bus = &"Music"
 script = ExtResource("7_ouja1")
 
 [connection signal="new_day" from="." to="CanvasLayer/DayUi" method="_on_the_level_new_day"]

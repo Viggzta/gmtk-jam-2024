@@ -41,6 +41,6 @@ func _process(delta: float) -> void:
 	if Globals.current_state == Globals.GameState.Setup && is_replaceable:
 		animation_step += delta * 4
 		var temp_scale: float = 1 + (sin(animation_step) * 0.1)
-		scale.y = temp_scale
+		sprite.scale.y = temp_scale
 		return
 	scale = Vector2.ONE
