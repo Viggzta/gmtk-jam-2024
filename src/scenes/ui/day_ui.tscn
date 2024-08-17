@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc2yesmdvvnvq"]
+
+[ext_resource type="FontFile" uid="uid://blp4h173uu01v" path="res://gomarice_no_continue.ttf" id="1_mhs5h"]
+[ext_resource type="Script" path="res://scenes/ui/day_ui.gd" id="1_r6sw1"]
+
+[node name="DayUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r6sw1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 42.0
+offset_bottom = 40.0
+
+[node name="Fixed" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_mhs5h")
+theme_override_font_sizes/font_size = 28
+text = "DAY"
+
+[node name="Day" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_mhs5h")
+theme_override_font_sizes/font_size = 28
+text = "1"

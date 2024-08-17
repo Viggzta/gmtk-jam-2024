@@ -18,6 +18,9 @@ const DUDE = preload("res://scenes/npc/dude.tscn")
 @export var dude_increase_multiply : float = 1.2
 @export var build_radius_increase_addition : float = 0.5
 
+var current_day: int = 1
+signal new_day(day: int)
+
 var building_spots: Dictionary = {}
 var current_max_radius: float;
 var building_map: Dictionary = {
@@ -86,12 +89,15 @@ func _transition_game_state(state: globals.GameState) -> void:
 	$"/root/Globals".current_state = state
 	
 	if state == globals.GameState.Setup:
+		current_day += 1
+		new_day.emit(current_day)
 		$CanvasLayer/SatisfactionUi.visible = false
 		$"/root/Globals".dude_count = 0
 		$CanvasLayer/SatisfactionUi/ProgressBar.value = 100
 	elif state == globals.GameState.Rush:
 		$CanvasLayer/SatisfactionUi.visible = true
 	elif state== globals.GameState.Failure:
+		current_day = 1
 		get_tree().change_scene_to_file("res://scenes/levels/the_level.tscn")
 	elif state == globals.GameState.Success:
 		buildable_radius += build_radius_increase_addition
