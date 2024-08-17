@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://7q2324t0mnuw"]
+[gd_scene load_steps=14 format=3 uid="uid://7q2324t0mnuw"]
 
 [ext_resource type="Script" path="res://scenes/levels/the_level.gd" id="1_vl667"]
 [ext_resource type="PackedScene" uid="uid://d3r14xo6jdyqj" path="res://scenes/camera.tscn" id="2_1diri"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://deogsrqi7jxd" path="res://audio/music/song1.wav" id="6_mrrr6"]
 [ext_resource type="PackedScene" uid="uid://dlt5hvje4cgux" path="res://scenes/ui/action_bar.tscn" id="7_56pmc"]
 [ext_resource type="Script" path="res://scenes/levels/music_player.gd" id="7_ouja1"]
+[ext_resource type="PackedScene" path="res://scenes/ui/day_ui.tscn" id="8_yypo5"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rxodp"]
 vertices = PackedVector2Array(47, -16, 32628.4, 18074.1, -27086.6, 18241.9, -49, -16, -30196.4, -20093.7, -49, -125, 33389.6, -22223.3, 47, -125)
@@ -79,6 +80,17 @@ scale = Vector2(0.26, 0.26)
 
 [node name="SettingsControl" parent="CanvasLayer" instance=ExtResource("4_v4ej8")]
 
+[node name="DayUi" parent="CanvasLayer" instance=ExtResource("8_yypo5")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 15.0
+offset_top = 40.0
+offset_right = 15.0
+offset_bottom = 40.0
+grow_horizontal = 1
+grow_vertical = 1
+
 [node name="Camera" parent="." instance=ExtResource("2_1diri")]
 
 [node name="Navmesh" type="NavigationRegion2D" parent="."]
@@ -96,6 +108,7 @@ stream = ExtResource("6_mrrr6")
 bus = &"Music"
 script = ExtResource("7_ouja1")
 
+[connection signal="new_day" from="." to="CanvasLayer/DayUi" method="_on_the_level_new_day"]
 [connection signal="lose" from="CanvasLayer/SatisfactionUi" to="." method="_on_satisfaction_ui_lose"]
 [connection signal="win" from="CanvasLayer/SatisfactionUi" to="." method="_on_satisfaction_ui_win"]
 [connection signal="pressed" from="CanvasLayer/Control/Hud" to="." method="_on_hud_pressed"]
