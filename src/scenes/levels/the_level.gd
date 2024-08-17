@@ -21,7 +21,7 @@ func _create_build_spots(radius: float) -> void:
 			if length < radius:
 				var new_pos: Vector2 = Vector2(x * building_offset, y * building_offset)
 				if !building_spots.has(new_pos):
-					var house: Node2D = HOUSE.instantiate()
+					var house: Building = HOUSE.instantiate()
 					house.position = new_pos
 					building_spots[new_pos] = house
 					building_root.add_child(house)
@@ -42,7 +42,7 @@ func _spawn_wave(amount: int) -> void:
 	print(current_max_radius)
 	for i in range(0, amount):
 		var spawn_location_radians: float = randf() * TAU
-		var spawn_location: Vector2 = Vector2(
+		var spawn_location: Vector2 = Vector2( 
 			cos(spawn_location_radians) * current_max_radius * building_offset + cos(spawn_location_radians) * dude_spawn_offset,
 			sin(spawn_location_radians) * current_max_radius * building_offset + sin(spawn_location_radians) * dude_spawn_offset)
 		var dude: Node2D = DUDE.instantiate()

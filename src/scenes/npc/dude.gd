@@ -3,9 +3,12 @@ extends RigidBody2D
 
 enum NeedType {Poop, Eat}
 
+const SPLAT = preload("res://scenes/npc/splat.tscn")
+
 @onready var sprite_2d: Sprite2D = $ImageRoot/Sprite2D
 @onready var image_root: Node2D = $ImageRoot
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var area_2d: Area2D = $Area2D
 
 var movement_speed: float = 200.0
 var current_movement_speed: float = 0.0
@@ -13,7 +16,7 @@ var movement_target_position: Vector2 = Vector2(60.0, 180.0)
 var lastpos: Vector2
 var id: int
 
-var need_position: Vector2
+var target_need_building: Building
 var building_root: Node2D
 
 var needs: Array = [NeedType.Poop]
@@ -32,14 +35,15 @@ func _ready() -> void:
 	# Make sure to not await during _ready.
 	call_deferred("actor_setup")
 	
+	area_2d.connect("body_entered", _hit_building)
+	
 	id = randi()
 	sprite_2d.modulate = Color(randf(), randf(), randf())
 	
 	var need: NeedType = needs[0]
 	
-	var need_node: Building = get_need_location()
-	movement_target_position = need_node.position
-	
+	target_need_building = get_need_location()
+	movement_target_position = target_need_building.position
 
 func actor_setup() -> void:
 	# Wait for the first physics frame so the NavigationServer can sync.
@@ -79,6 +83,23 @@ func _process(delta: float) -> void:
 	image_root.scale.y = 1+sin(id+Time.get_ticks_msec()/1000.0*10.0)*0.1
 	image_root.rotation_degrees = sin(id+Time.get_ticks_msec()/1000.0*16.0)*5*current_movement_speed
 	sprite_2d.z_index = int(position.y)
+
+func _hit_building(area: Node2D)->void:#area is the Area2D of the building
+	if area.get_parent() is Building:
+		var building: Building = area.get_parent()
+		if building == target_need_building:
+			needs.remove_at(0)
+			if len(needs) == 0:
+				_go_splat()
+	print("player hit building  ", area.get_parent() as Building)
+
+func _go_splat() -> void:
+	var splat: Node2D = SPLAT.instantiate()
+	splat.global_position = global_position
+	var sprite: Sprite2D = splat.get_node("Sprite2D")
+	sprite.modulate = sprite_2d.modulate
+	get_parent().add_child(splat)
+	self.queue_free()
 
 func get_need_location() -> Building:
 	var nodes: Array

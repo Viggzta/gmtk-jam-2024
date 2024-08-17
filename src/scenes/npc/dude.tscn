@@ -1,9 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://djlmuqxobsbjc"]
+[gd_scene load_steps=5 format=3 uid="uid://djlmuqxobsbjc"]
 
 [ext_resource type="Script" path="res://scenes/npc/dude.gd" id="1_t7m2o"]
 [ext_resource type="Texture2D" uid="uid://dav3o5ahega2w" path="res://art/dude1.png" id="3_w8clx"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3j1se"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_h70pd"]
+radius = 20.0
 
 [node name="Dude" type="RigidBody2D"]
 script = ExtResource("1_t7m2o")
@@ -11,13 +14,21 @@ script = ExtResource("1_t7m2o")
 [node name="ImageRoot" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="ImageRoot"]
-position = Vector2(-2, -50)
+position = Vector2(-2, -56)
 texture = ExtResource("3_w8clx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_h70pd")
+shape = SubResource("CircleShape2D_3j1se")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_max_distance = 1845.0
 radius = 56.3
 debug_enabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_h70pd")
+debug_color = Color(0.634322, 0.447805, 0.734484, 0.42)
