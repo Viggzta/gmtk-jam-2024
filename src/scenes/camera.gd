@@ -1,5 +1,7 @@
 extends Camera2D
 
+signal zoom_changed(new_zoom_factor: Vector2)
+
 var target_zoom: Vector2
 
 func _ready() -> void:
@@ -7,7 +9,10 @@ func _ready() -> void:
 	target_zoom = zoom
 
 func _process(delta: float) -> void:
+	var oldZoom: Vector2 = zoom
 	zoom = zoom.move_toward(target_zoom, delta*5)
+	if oldZoom != zoom:
+		zoom_changed.emit(zoom)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

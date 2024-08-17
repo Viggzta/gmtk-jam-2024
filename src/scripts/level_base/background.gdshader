@@ -1,15 +1,12 @@
 shader_type canvas_item;
 
 uniform sampler2D inTexture;
-uniform float scale;
-
-void vertex() {
-}
+uniform vec2 scale = vec2(1., 1.);
 
 void fragment() {
     vec2 viewport_size = 1.0 / SCREEN_PIXEL_SIZE;
     float aspect_ratio = viewport_size.x / viewport_size.y;
-	vec2 backgroundUV = VERTEX/1000.0;
+	vec2 backgroundUV = VERTEX / 1000.0 / scale;
 	vec4 bg = texture(inTexture, backgroundUV);
 
     vec2 position = (UV  - 0.5) * aspect_ratio;

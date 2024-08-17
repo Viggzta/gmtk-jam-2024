@@ -1,0 +1,9 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://cyaf16755cxhm"]
+
+[ext_resource type="AudioStream" uid="uid://deogsrqi7jxd" path="res://audio/music/song1.wav" id="1_jwumt"]
+[ext_resource type="AudioStream" uid="uid://3i2c8wwb5hw5" path="res://audio/music/song2.mp3" id="2_e2vae"]
+
+[resource]
+streams_count = 2
+stream_0/stream = ExtResource("1_jwumt")
+stream_1/stream = ExtResource("2_e2vae")

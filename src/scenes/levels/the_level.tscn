@@ -1,11 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://7q2324t0mnuw"]
+[gd_scene load_steps=12 format=3 uid="uid://7q2324t0mnuw"]
 
 [ext_resource type="Script" path="res://scenes/levels/the_level.gd" id="1_vl667"]
 [ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="2_1diri"]
+[ext_resource type="Script" path="res://scenes/levels/background_control.gd" id="2_s734i"]
 [ext_resource type="PackedScene" uid="uid://bgwmdxqpopxo" path="res://scenes/buildings/shithouse.tscn" id="3_q6e3f"]
-[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="4_2f8vd"]
+[ext_resource type="PackedScene" uid="uid://k2865pts53gq" path="res://scenes/ui/hud.tscn" id="4_2f8vd"]
+[ext_resource type="PackedScene" uid="uid://1aye1f1hfbhr" path="res://scenes/ui/satisfaction_ui.tscn" id="4_26rng"]
 [ext_resource type="PackedScene" uid="uid://ci78tpn52jqrb" path="res://scenes/ui/settings_control.tscn" id="4_v4ej8"]
 [ext_resource type="Material" uid="uid://2nan6h7ds1xj" path="res://scripts/level_base/background_material.tres" id="5_dbp6e"]
+[ext_resource type="AudioStream" uid="uid://deogsrqi7jxd" path="res://audio/music/song1.wav" id="6_mrrr6"]
+[ext_resource type="Script" path="res://scenes/levels/music_player.gd" id="7_ouja1"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rxodp"]
 vertices = PackedVector2Array(47, -16, 32628.4, 18074.1, -27086.6, 18241.9, -49, -16, -30196.4, -20093.7, -49, -125, 33389.6, -22223.3, 47, -125)
@@ -18,15 +22,14 @@ script = ExtResource("1_vl667")
 buildable_radius = 4.0
 
 [node name="BackgroundControl" type="Control" parent="."]
-visible = false
 z_index = -4096
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("2_s734i")
 
 [node name="ColorRect" type="ColorRect" parent="BackgroundControl"]
-visible = false
 material = ExtResource("5_dbp6e")
 layout_mode = 1
 anchors_preset = 8
@@ -43,6 +46,14 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SatisfactionUi" parent="CanvasLayer" instance=ExtResource("4_26rng")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -78,4 +89,11 @@ position = Vector2(3, -137)
 
 [node name="DudeRoot" type="Node2D" parent="."]
 
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_mrrr6")
+bus = &"Music"
+script = ExtResource("7_ouja1")
+
 [connection signal="pressed" from="CanvasLayer/Control/Hud" to="." method="_on_hud_pressed"]
+[connection signal="zoom_changed" from="Camera" to="BackgroundControl" method="_on_camera_zoom_changed"]
+[connection signal="finished" from="MusicPlayer" to="MusicPlayer" method="_on_finished"]

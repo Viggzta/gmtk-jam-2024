@@ -6,9 +6,9 @@
 [ext_resource type="Shader" path="res://scripts/ui/rainbow.gdshader" id="2_qvix1"]
 [ext_resource type="Texture2D" uid="uid://bbnehs7lltb76" path="res://art/ui/Play.png" id="3_j3s7x"]
 [ext_resource type="Texture2D" uid="uid://depno8oo2u4c8" path="res://art/ui/Quit.png" id="4_68jj3"]
-[ext_resource type="AudioStream" uid="uid://badyw2qsyp1n1" path="res://audio/ui/click.wav" id="5_k1wij"]
-[ext_resource type="AudioStream" uid="uid://qqdxxht1mgqj" path="res://audio/ui/hover.wav" id="6_u82nw"]
-[ext_resource type="AudioStream" uid="uid://cm3ftv6xi5eth" path="res://audio/ui/no.wav" id="9_tdhnb"]
+[ext_resource type="AudioStream" uid="uid://mvyqxuooa00" path="res://audio/ui/click_boost.wav" id="5_rt68g"]
+[ext_resource type="AudioStream" uid="uid://b08i55gwv00da" path="res://audio/ui/hover_boost.wav" id="6_duo4h"]
+[ext_resource type="AudioStream" uid="uid://ctvsixut716ij" path="res://audio/ui/no_boost.wav" id="9_nvwd2"]
 
 [sub_resource type="Gradient" id="Gradient_6ejqk"]
 colors = PackedColorArray(0.904579, 0.803487, 0.435676, 1, 0.420689, 0.437864, 0.875207, 1)
@@ -106,10 +106,14 @@ texture_normal = ExtResource("3_j3s7x")
 script = ExtResource("1_hncmw")
 
 [node name="Click" type="AudioStreamPlayer2D" parent="Play"]
-stream = ExtResource("5_k1wij")
+stream = ExtResource("5_rt68g")
+volume_db = 22.0
+bus = &"FX"
 
 [node name="Hover" type="AudioStreamPlayer2D" parent="Play"]
-stream = ExtResource("6_u82nw")
+stream = ExtResource("6_duo4h")
+volume_db = 15.0
+bus = &"FX"
 
 [node name="Quit" type="TextureButton" parent="."]
 material = SubResource("ShaderMaterial_3lycb")
@@ -123,10 +127,13 @@ texture_normal = ExtResource("4_68jj3")
 script = ExtResource("2_e7pyd")
 
 [node name="Click" type="AudioStreamPlayer2D" parent="Quit"]
-stream = ExtResource("5_k1wij")
+stream = ExtResource("5_rt68g")
+bus = &"FX"
 
 [node name="Hover" type="AudioStreamPlayer2D" parent="Quit"]
-stream = ExtResource("9_tdhnb")
+stream = ExtResource("9_nvwd2")
+volume_db = 15.0
+bus = &"FX"
 
 [connection signal="mouse_entered" from="Play" to="Play" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Play" to="Play" method="_on_mouse_exited"]

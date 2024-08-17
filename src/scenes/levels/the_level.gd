@@ -51,6 +51,8 @@ func _create_build_spots(radius: float) -> void:
 
 func _ready() -> void:
 	_create_build_spots(buildable_radius)
+	var background_control: Control = $BackgroundControl
+	background_control.process_mode = Node.PROCESS_MODE_DISABLED
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
