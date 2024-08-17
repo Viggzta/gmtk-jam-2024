@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_3j1se"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h70pd"]
-radius = 20.0
+radius = 38.4
 
 [node name="Dude" type="RigidBody2D"]
 script = ExtResource("1_t7m2o")
@@ -23,6 +23,7 @@ shape = SubResource("CircleShape2D_3j1se")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_max_distance = 1845.0
 radius = 56.3
+debug_enabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

@@ -54,7 +54,7 @@ func _spawn_wave(amount: int) -> void:
 			cos(spawn_location_radians) * current_max_radius * building_offset + cos(spawn_location_radians) * dude_spawn_offset,
 			sin(spawn_location_radians) * current_max_radius * building_offset + sin(spawn_location_radians) * dude_spawn_offset)
 		var dude: Node2D = DUDE.instantiate()
-		dude.initialize(spawn_location, [Dude.NeedType.Poop], building_root)
+		dude.initialize(spawn_location, [Dude.NeedType.Eat, Dude.NeedType.Poop], building_root)
 		dude_root.add_child(dude)
 
 func _on_hud_pressed() -> void:

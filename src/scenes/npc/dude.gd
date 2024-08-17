@@ -19,7 +19,7 @@ var id: int
 var target_need_building: Building
 var building_root: Node2D
 
-var needs: Array = [NeedType.Poop]
+var needs: Array = []
 
 func initialize(position:Vector2, needs: Array, building_root: Node2D) -> void:
 	self.position = position
@@ -39,11 +39,10 @@ func _ready() -> void:
 	
 	id = randi()
 	sprite_2d.modulate = Color(randf(), randf(), randf())
-	
-	var need: NeedType = needs[0]
-	
+		
 	target_need_building = get_need_location()
-	movement_target_position = target_need_building.position
+	
+	movement_target_position = target_need_building.position+ Vector2(randf()*2-1, randf()*2-1)*35.0
 
 func actor_setup() -> void:
 	# Wait for the first physics frame so the NavigationServer can sync.
@@ -72,10 +71,12 @@ func _physics_process(_delta: float) -> void:
 	var movement: Vector2 = position - lastpos
 	lastpos = position
 	
-	if movement.length() < 0.1 and not navigation_agent.is_navigation_finished():
+	if movement.length() < 0.02 and not navigation_agent.is_navigation_finished():
+		# linear_velocity += Vector2(randf(), randf()) * 150.0
 		set_movement_target(movement_target_position)
 
-	linear_velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+	var target_velocity: Vector2 = current_agent_position.direction_to(next_path_position) * movement_speed;
+	linear_velocity = target_velocity#lerp(linear_velocity, target_velocity, _delta*2)
 	current_movement_speed = movement.length()
 	# move_and_collide(velocity)
 
@@ -91,7 +92,9 @@ func _hit_building(area: Node2D)->void:#area is the Area2D of the building
 			needs.remove_at(0)
 			if len(needs) == 0:
 				_go_splat()
-	print("player hit building  ", area.get_parent() as Building)
+			else:
+				target_need_building = get_need_location()
+				set_movement_target(target_need_building.position + (Vector2(randf()*2-1, randf()*2-1))*15)
 
 func _go_splat() -> void:
 	var splat: Node2D = SPLAT.instantiate()
