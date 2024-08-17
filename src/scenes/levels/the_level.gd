@@ -17,6 +17,9 @@ const DUDE = preload("res://scenes/npc/dude.tscn")
 @export var dude_spawn_offset: float = 50.0
 @export var platform_extra_offset: float = 80.0
 
+@export var dude_increase_multiply : float = 1.2
+@export var build_radius_increase_addition : float = 0.5
+
 var building_spots: Dictionary = {}
 var current_max_radius: float;
 var dude_amount : int = 100
@@ -87,8 +90,8 @@ func _transition_game_state(state: globals.GameState) -> void:
 	elif state== globals.GameState.Failure:
 		get_tree().change_scene_to_file("res://scenes/levels/the_level.tscn")
 	elif state == globals.GameState.Success:
-		buildable_radius += 0.5
-		dude_amount *= 1.5
+		buildable_radius += build_radius_increase_addition
+		dude_amount *= dude_increase_multiply
 		_create_build_spots(buildable_radius)
 		_transition_game_state(globals.GameState.Setup)
 
