@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bg83n6e2doi7w"]
 
 [ext_resource type="Script" path="res://scripts/house.gd" id="1_2qnk0"]
-[ext_resource type="Texture2D" uid="uid://cyip2dyonhwbp" path="res://art/buildings/house.png" id="1_n1lm5"]
+[ext_resource type="Texture2D" uid="uid://c4n0yaaowuoje" path="res://art/buildings/house3.png" id="2_6y67t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yeq1w"]
 size = Vector2(96, 98)
@@ -10,7 +10,7 @@ size = Vector2(96, 98)
 script = ExtResource("1_2qnk0")
 
 [node name="House" type="Sprite2D" parent="."]
-texture = ExtResource("1_n1lm5")
+texture = ExtResource("2_6y67t")
 
 [node name="Collider" type="StaticBody2D" parent="."]
 collision_layer = 3
