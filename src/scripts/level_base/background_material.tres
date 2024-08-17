@@ -5,5 +5,5 @@
 
 [resource]
 shader = ExtResource("1_x1ys4")
-shader_parameter/scale = 0.1
+shader_parameter/scale = 1.0
 shader_parameter/inTexture = ExtResource("2_guq40")
