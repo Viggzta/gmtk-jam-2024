@@ -1,7 +1,7 @@
 class_name Dude
 extends RigidBody2D
 
-enum NeedType {Poop, Eat}
+enum NeedType {Poop, Eat, Entertainment, MedicalCare}
 
 const SPLAT = preload("res://scenes/npc/splat.tscn")
 
@@ -9,6 +9,8 @@ const SPLAT = preload("res://scenes/npc/splat.tscn")
 @onready var image_root: Node2D = $ImageRoot
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var area_2d: Area2D = $Area2D
+
+var possible_dude_sprites : Array[Texture2D] = [preload("res://art/dude1.png"), preload("res://art/dude2.png"), preload("res://art/dude3.png"), preload("res://art/dude4.png")]
 
 var movement_speed: float = 200.0
 var current_movement_speed: float = 0.0
@@ -25,12 +27,15 @@ func initialize(position:Vector2, needs: Array, building_root: Node2D) -> void:
 	self.position = position
 	self.needs = needs
 	self.building_root = building_root
+	
 
 func _ready() -> void:
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout.
 	navigation_agent.path_desired_distance = 4.0
 	navigation_agent.target_desired_distance = 4.0
+	
+	_randomize_dude_sprite()
 
 	# Make sure to not await during _ready.
 	call_deferred("actor_setup")
@@ -133,3 +138,7 @@ func get_random_need_location() -> Building:
 			if child.need_type == needs[0]:
 				nodes.append(child)
 	return nodes.pick_random()
+	
+func _randomize_dude_sprite() -> void:
+	sprite_2d.texture = possible_dude_sprites.pick_random()
+	
