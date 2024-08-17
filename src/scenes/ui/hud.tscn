@@ -16,10 +16,12 @@ shader_parameter/active = false
 script/source = "extends TextureButton
 
 func _on_texture_button_pressed() -> void:
-	pressed.emit()
+	if Globals.current_state == Globals.GameState.Setup:
+		pressed.emit()
 
 func _on_pressed() -> void:
-	$Click.play()
+	if Globals.current_state == Globals.GameState.Setup:
+		$Click.play()
 
 
 func _on_mouse_entered() -> void:

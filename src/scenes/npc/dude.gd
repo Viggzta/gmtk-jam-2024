@@ -58,9 +58,13 @@ func _ready() -> void:
 	sprite_2d.modulate = Color(randf(), randf(), randf())
 		
 	target_need_building = get_need_location()
-	show_talk_bubble(_get_tex_for_need(needs[0]), 2.5)
 	
-	movement_target_position = target_need_building.position+ Vector2(randf()*2-1, randf()*2-1)*3
+	if target_need_building == null:
+		_get_pissed()
+		show_talk_bubble(ANGREY, 2.5)
+	else:
+		movement_target_position = target_need_building.position+ Vector2(randf()*2-1, randf()*2-1)*3
+		show_talk_bubble(_get_tex_for_need(needs[0]), 2.5)
 
 func actor_setup() -> void:
 	# Wait for the first physics frame so the NavigationServer can sync.
@@ -121,9 +125,11 @@ func _hit_building(area: Node2D)->void:#area is the Area2D of the building
 				_go_splat()
 			else:
 				target_need_building = get_need_location()
-				
-				show_talk_bubble(_get_tex_for_need(needs[0]), 2.5)
-				set_movement_target(target_need_building.position + (Vector2(randf()*2-1, randf()*2-1))*3)
+				if target_need_building == null:
+					_get_pissed()
+				else:
+					show_talk_bubble(_get_tex_for_need(needs[0]), 2.5)
+					set_movement_target(target_need_building.position + (Vector2(randf()*2-1, randf()*2-1))*3)
 
 func _get_tex_for_need(nt: NeedType) -> Texture2D:
 	match nt:
@@ -184,3 +190,6 @@ func talk_bubble_timeout() -> void:
 		tween.kill()
 	tween = get_tree().create_tween()
 	tween.tween_property(talk_bubble, "scale", Vector2(), 0.5).set_trans(Tween.TRANS_LINEAR)
+	
+func _get_pissed() -> void:
+	movement_target_position = Vector2(randf() * 2 - 1, randf() * 2 - 1) * 512

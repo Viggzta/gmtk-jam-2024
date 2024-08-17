@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgwmdxqpopxo"]
+[gd_scene load_steps=4 format=3 uid="uid://bphy8h0wgx8cc"]
 
 [ext_resource type="Script" path="res://scripts/shithouse.gd" id="1_7kn2w"]
 [ext_resource type="Texture2D" uid="uid://d4i7prgkick60" path="res://art/buildings/baja-maja.png" id="1_prq62"]
