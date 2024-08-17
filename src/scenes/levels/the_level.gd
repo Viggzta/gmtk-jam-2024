@@ -68,11 +68,6 @@ func _ready() -> void:
 	var background_control: Control = $BackgroundControl
 	background_control.process_mode = Node.PROCESS_MODE_DISABLED
 	
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		if event.keycode == KEY_B:
-			_spawn_wave(10)
-	
 func _spawn_wave(amount: int) -> void:
 	$"/root/Globals".dude_count = amount
 	print(current_max_radius)
@@ -86,9 +81,10 @@ func _spawn_wave(amount: int) -> void:
 		dude_root.add_child(dude)
 
 func _on_hud_pressed() -> void:
-	_lock_in_all_buildings()
-	_spawn_wave(dude_amount)
-	_transition_game_state(globals.GameState.Rush)
+	if Globals.current_state == Globals.GameState.Setup:
+		_lock_in_all_buildings()
+		_spawn_wave(dude_amount)
+		_transition_game_state(globals.GameState.Rush)
 
 func _lock_in_all_buildings() -> void:
 	for building: Building in building_spots.values():
