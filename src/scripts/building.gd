@@ -5,6 +5,7 @@ var need_type: Dude.NeedType
 var capacity: int
 var sprite: Sprite2D
 var body : StaticBody2D
+var shape: RectangleShape2D
 var is_replaceable: bool = true
 signal pressed(building: Building)
 var animation_step: float = 0.0
@@ -40,6 +41,6 @@ func _process(delta: float) -> void:
 	if Globals.current_state == Globals.GameState.Setup && is_replaceable:
 		animation_step += delta * 4
 		var temp_scale: float = 1 + (sin(animation_step) * 0.1)
-		scale.y = temp_scale
+		sprite.scale.y = temp_scale
 		return
 	scale = Vector2.ONE

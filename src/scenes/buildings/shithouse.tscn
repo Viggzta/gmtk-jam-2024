@@ -4,18 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://d4i7prgkick60" path="res://art/buildings/baja-maja.png" id="1_prq62"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hmb6"]
-size = Vector2(56, 69)
+size = Vector2(72, 81)
 
 [node name="shithouse" type="Node2D"]
 script = ExtResource("1_7kn2w")
 
 [node name="Baja-maja" type="Sprite2D" parent="."]
+position = Vector2(0, 32)
 texture = ExtResource("1_prq62")
+offset = Vector2(0, -45)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-2, -0.5)
+position = Vector2(-2, -2.5)
 shape = SubResource("RectangleShape2D_2hmb6")
