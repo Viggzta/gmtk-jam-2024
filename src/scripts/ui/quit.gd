@@ -12,9 +12,12 @@ func _process(delta: float) -> void:
 
 
 func _on_pressed() -> void:
+	$Click.play()
+	await $Click.finished
 	get_tree().quit()
 
 func _on_mouse_entered() -> void:
+	$Hover.play()
 	self.material.set_shader_parameter("active", true)
 
 func _on_mouse_exited() -> void:
