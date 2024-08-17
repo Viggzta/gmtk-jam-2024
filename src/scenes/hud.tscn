@@ -1,18 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://caaachf6g47w3"]
+[gd_scene load_steps=5 format=3 uid="uid://k2865pts53gq"]
 
 [ext_resource type="Shader" path="res://scripts/ui/rainbow.gdshader" id="1_acxn0"]
 [ext_resource type="Texture2D" uid="uid://c5b625vpmh5pv" path="res://art/ui/Start.png" id="1_e3jbb"]
-[ext_resource type="Script" path="res://scenes/go_button.gd" id="2_hdju0"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4xbdi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oamxn"]
 shader = ExtResource("1_acxn0")
 shader_parameter/strength = 0.5
 shader_parameter/speed = 0.5
 shader_parameter/angle = 0.0
 shader_parameter/active = false
 
-[node name="Hud" type="Control"]
-layout_mode = 3
+[sub_resource type="GDScript" id="GDScript_a58ak"]
+script/source = "extends TextureButton
+
+func _on_texture_button_pressed() -> void:
+	pressed.emit()
+
+func _on_pressed() -> void:
+	self_modulate.darkened(0.2)
+
+
+func _on_mouse_entered() -> void:
+	self.material.set_shader_parameter(\"active\", true)
+
+func _on_mouse_exited() -> void:
+	self.material.set_shader_parameter(\"active\", false)
+"
+
+[node name="Hud" type="TextureButton"]
+material = SubResource("ShaderMaterial_oamxn")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,25 +36,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-
-[node name="TextureButton" type="TextureButton" parent="."]
-material = SubResource("ShaderMaterial_4xbdi")
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -112.0
-offset_top = -74.0
-offset_right = 714.0
-offset_bottom = 418.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.1, 0.1)
 texture_normal = ExtResource("1_e3jbb")
-script = ExtResource("2_hdju0")
+script = SubResource("GDScript_a58ak")
 
-[connection signal="mouse_entered" from="TextureButton" to="TextureButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="TextureButton" to="TextureButton" method="_on_mouse_exited"]
-[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

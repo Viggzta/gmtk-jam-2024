@@ -1,5 +1,8 @@
 extends Node2D
 
+enum GameState { Setup, Rush }
+var _current_state: GameState = GameState.Setup
+
 const HOUSE = preload("res://scenes/buildings/house.tscn")
 const DUDE = preload("res://scenes/npc/dude.tscn")
 
@@ -22,7 +25,7 @@ func _create_build_spots(radius: float) -> void:
 				var new_pos: Vector2 = Vector2(x * building_offset, y * building_offset)
 				if !building_spots.has(new_pos):
 					var house: Building = HOUSE.instantiate()
-					house.position = new_pos
+					house.initialize(new_pos)
 					building_spots[new_pos] = house
 					building_root.add_child(house)
 	if current_max_radius < radius:
@@ -48,4 +51,12 @@ func _spawn_wave(amount: int) -> void:
 		var dude: Node2D = DUDE.instantiate()
 		dude.initialize(spawn_location, [Dude.NeedType.Poop], building_root)
 		dude_root.add_child(dude)
+
+func _on_hud_pressed() -> void:
+	_spawn_wave(250)
+
+func _transition_game_state(state: GameState) -> void:
+	_current_state = state
 	
+	if state == GameState.Setup:
+		$CanvasLayer/Control/Hud.set_interact(true)

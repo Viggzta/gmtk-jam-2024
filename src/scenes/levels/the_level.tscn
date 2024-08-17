@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://7q2324t0mnuw"]
+[gd_scene load_steps=6 format=3 uid="uid://7q2324t0mnuw"]
 
 [ext_resource type="Script" path="res://scenes/levels/the_level.gd" id="1_vl667"]
 [ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="2_1diri"]
 [ext_resource type="PackedScene" uid="uid://bgwmdxqpopxo" path="res://scenes/buildings/shithouse.tscn" id="3_q6e3f"]
+[ext_resource type="PackedScene" uid="uid://k2865pts53gq" path="res://scenes/hud.tscn" id="4_2f8vd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rxodp"]
 vertices = PackedVector2Array(67.6484, 75.6484, 32607.1, 18052.5, -27066.6, 18220.2, -71.6484, 75.6484, -30173, -20072.8, -71.6484, -76.6484, 33367.5, -22200.9, 67.6484, -76.6484)
@@ -24,3 +25,27 @@ navigation_polygon = SubResource("NavigationPolygon_rxodp")
 position = Vector2(1, -70)
 
 [node name="DudeRoot" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -236.0
+offset_top = -174.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Hud" parent="CanvasLayer/Control" instance=ExtResource("4_2f8vd")]
+layout_mode = 1
+offset_left = -3.0
+offset_top = 29.0
+offset_right = 587.0
+offset_bottom = 347.0
+scale = Vector2(0.26, 0.26)
+
+[connection signal="pressed" from="CanvasLayer/Control/Hud" to="." method="_on_hud_pressed"]

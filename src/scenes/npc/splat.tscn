@@ -6,6 +6,7 @@
 [node name="Splat" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -4096
 texture = ExtResource("1_fbrls")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

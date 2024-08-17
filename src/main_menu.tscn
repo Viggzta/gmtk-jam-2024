@@ -6,7 +6,7 @@
 [ext_resource type="Shader" path="res://scripts/ui/rainbow.gdshader" id="2_qvix1"]
 [ext_resource type="Texture2D" uid="uid://bbnehs7lltb76" path="res://art/ui/Play.png" id="3_j3s7x"]
 [ext_resource type="Texture2D" uid="uid://depno8oo2u4c8" path="res://art/ui/Quit.png" id="4_68jj3"]
-[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="4_yrx0g"]
+[ext_resource type="PackedScene" uid="uid://k2865pts53gq" path="res://scenes/hud.tscn" id="4_yrx0g"]
 
 [sub_resource type="Gradient" id="Gradient_6ejqk"]
 colors = PackedColorArray(0.904579, 0.803487, 0.435676, 1, 0.420689, 0.437864, 0.875207, 1)
