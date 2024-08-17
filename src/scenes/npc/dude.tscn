@@ -18,3 +18,6 @@ texture = ExtResource("3_w8clx")
 shape = SubResource("CircleShape2D_h70pd")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_max_distance = 1845.0
+radius = 56.3
+debug_enabled = true

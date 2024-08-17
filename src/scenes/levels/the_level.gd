@@ -4,7 +4,8 @@ const HOUSE = preload("res://scenes/buildings/house.tscn")
 const DUDE = preload("res://scenes/npc/dude.tscn")
 
 @onready var dude_root: Node2D = $DudeRoot
-@onready var building_root: Node2D = $BuildingRoot
+@onready var building_root: Node2D = $Navmesh/BuildingRoot
+@onready var navmesh: NavigationRegion2D = $Navmesh
 
 @export var buildable_radius: float = 2.5
 @export var building_offset: int = 256
@@ -26,10 +27,11 @@ func _create_build_spots(radius: float) -> void:
 					building_root.add_child(house)
 	if current_max_radius < radius:
 		current_max_radius = radius
+	navmesh.bake_navigation_polygon()
 
 func _ready() -> void:
 	_create_build_spots(buildable_radius)
-	_spawn_wave(50)
+	_spawn_wave(250)
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -44,6 +46,6 @@ func _spawn_wave(amount: int) -> void:
 			cos(spawn_location_radians) * current_max_radius * building_offset + cos(spawn_location_radians) * dude_spawn_offset,
 			sin(spawn_location_radians) * current_max_radius * building_offset + sin(spawn_location_radians) * dude_spawn_offset)
 		var dude: Node2D = DUDE.instantiate()
-		dude.current_need = Need.NeedType.Poop
-		dude.position = spawn_location
+		dude.initialize(spawn_location, [Dude.NeedType.Poop], building_root)
 		dude_root.add_child(dude)
+	

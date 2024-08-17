@@ -1,13 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://7q2324t0mnuw"]
 
 [ext_resource type="Script" path="res://scenes/levels/the_level.gd" id="1_vl667"]
-[ext_resource type="PackedScene" uid="uid://d3r14xo6jdyqj" path="res://scenes/camera.tscn" id="2_1diri"]
-[ext_resource type="PackedScene" path="res://scenes/buildings/shithouse.tscn" id="3_q6e3f"]
+[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="2_1diri"]
+[ext_resource type="PackedScene" uid="uid://bgwmdxqpopxo" path="res://scenes/buildings/shithouse.tscn" id="3_q6e3f"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rxodp"]
-vertices = PackedVector2Array(32638.2, 18084, -27095.8, 18252, -30207.2, -20103.4, 33399.8, -22233.6)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+vertices = PackedVector2Array(67.6484, 75.6484, 32607.1, 18052.5, -27066.6, 18220.2, -71.6484, 75.6484, -30173, -20072.8, -71.6484, -76.6484, 33367.5, -22200.9, 67.6484, -76.6484)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(7, 6, 1, 0)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-30218, -20113, -27105, 18262, 32648, 18094, 33410, -22244)])
+agent_radius = 20.0
 
 [node name="TheLevel" type="Node2D"]
 script = ExtResource("1_vl667")
@@ -17,8 +18,8 @@ script = ExtResource("1_vl667")
 [node name="Navmesh" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_rxodp")
 
-[node name="shithouse" parent="Navmesh" instance=ExtResource("3_q6e3f")]
+[node name="BuildingRoot" type="Node2D" parent="Navmesh"]
+
+[node name="shithouse" parent="Navmesh/BuildingRoot" instance=ExtResource("3_q6e3f")]
 
 [node name="DudeRoot" type="Node2D" parent="."]
-
-[node name="BuildingRoot" type="Node2D" parent="."]
