@@ -19,6 +19,7 @@ const DUDE = preload("res://scenes/npc/dude.tscn")
 
 var building_spots: Dictionary = {}
 var current_max_radius: float;
+var dude_amount : int = 100
 
 func house_clicked(building: Building) -> void:
 	var house: Building = SHITHOUSE.instantiate()
@@ -71,25 +72,30 @@ func _spawn_wave(amount: int) -> void:
 		dude_root.add_child(dude)
 
 func _on_hud_pressed() -> void:
-	_spawn_wave(250)
+	_spawn_wave(dude_amount)
 	_transition_game_state(globals.GameState.Rush)
 
 func _transition_game_state(state: globals.GameState) -> void:
 	$"/root/Globals".current_state = state
 	
 	if state == globals.GameState.Setup:
-		$CanvasLayer/Control/Hud.set_interact(true)
 		$CanvasLayer/SatisfactionUi.visible = false
 		$"/root/Globals".dude_count = 0
 		$CanvasLayer/SatisfactionUi/ProgressBar.value = 100
 	elif state == globals.GameState.Rush:
 		$CanvasLayer/SatisfactionUi.visible = true
 	elif state== globals.GameState.Failure:
-		pass
+		get_tree().change_scene_to_file("res://scenes/levels/the_level.tscn")
 	elif state == globals.GameState.Success:
-		pass
-		
+		buildable_radius += 0.5
+		dude_amount *= 1.5
+		_create_build_spots(buildable_radius)
+		_transition_game_state(globals.GameState.Setup)
 
 
 func _on_satisfaction_ui_lose() -> void:
 	_transition_game_state(globals.GameState.Failure)
+
+
+func _on_satisfaction_ui_win() -> void:
+	_transition_game_state(globals.GameState.Success)
