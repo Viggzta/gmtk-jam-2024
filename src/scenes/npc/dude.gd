@@ -106,7 +106,8 @@ func _hit_building(area: Node2D)->void:#area is the Area2D of the building
 				_go_splat()
 			else:
 				target_need_building = get_need_location()
-				set_movement_target(target_need_building.position + (Vector2(randf()*2-1, randf()*2-1))*15)
+				
+				set_movement_target(target_need_building.position + (Vector2(randf()*2-1, randf()*2-1))*3)
 
 func _go_splat() -> void:
 	var splat: Node2D = SPLAT.instantiate()

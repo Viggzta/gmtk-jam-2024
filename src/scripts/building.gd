@@ -5,6 +5,7 @@ var need_type: Dude.NeedType
 var capacity: int
 var sprite: Sprite2D
 var body : StaticBody2D
+var shape: RectangleShape2D
 signal pressed(building: Building)
 
 func initialize(position: Vector2) -> void:
