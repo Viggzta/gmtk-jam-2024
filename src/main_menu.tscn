@@ -107,9 +107,11 @@ script = ExtResource("1_hncmw")
 
 [node name="Click" type="AudioStreamPlayer2D" parent="Play"]
 stream = ExtResource("5_k1wij")
+bus = &"FX"
 
 [node name="Hover" type="AudioStreamPlayer2D" parent="Play"]
 stream = ExtResource("6_u82nw")
+bus = &"FX"
 
 [node name="Quit" type="TextureButton" parent="."]
 material = SubResource("ShaderMaterial_3lycb")
@@ -124,9 +126,11 @@ script = ExtResource("2_e7pyd")
 
 [node name="Click" type="AudioStreamPlayer2D" parent="Quit"]
 stream = ExtResource("5_k1wij")
+bus = &"FX"
 
 [node name="Hover" type="AudioStreamPlayer2D" parent="Quit"]
 stream = ExtResource("9_tdhnb")
+bus = &"FX"
 
 [connection signal="mouse_entered" from="Play" to="Play" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Play" to="Play" method="_on_mouse_exited"]

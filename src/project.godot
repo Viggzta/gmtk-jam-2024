@@ -15,9 +15,14 @@ run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://audio/audio_bus_layout.tres"
+
 [autoload]
 
 Interpolation="*res://scripts/Interpolation.gd"
+Globals="*res://scripts/Globals.gd"
 
 [debug]
 
