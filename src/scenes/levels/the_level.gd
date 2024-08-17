@@ -2,8 +2,6 @@ extends Node2D
 
 const globals = preload("res://scripts/Globals.gd")
 
-const SHITHOUSE = preload("res://scenes/buildings/shithouse.tscn")
-const HOUSE = preload("res://scenes/buildings/house.tscn")
 const DUDE = preload("res://scenes/npc/dude.tscn")
 
 @onready var dude_root: Node2D = $DudeRoot
@@ -19,9 +17,14 @@ const DUDE = preload("res://scenes/npc/dude.tscn")
 
 var building_spots: Dictionary = {}
 var current_max_radius: float;
+var building_map: Dictionary = {
+	BuildingType.Type.House:preload("res://scenes/buildings/house.tscn"),
+	BuildingType.Type.ShitHouse:preload("res://scenes/buildings/shithouse.tscn"),
+BuildingType.Type.Donken:preload("res://scenes/buildings/donken.tscn") }
 
 func house_clicked(building: Building) -> void:
-	var house: Building = SHITHOUSE.instantiate()
+	var house_resource: Resource = building_map[Globals.current_building_type]
+	var house : Building = house_resource.instantiate()
 	house.initialize(building.position)
 	house.pressed.connect(house_clicked)
 	building_spots[building.position] = house
@@ -36,7 +39,8 @@ func _create_build_spots(radius: float) -> void:
 			if length < radius:
 				var new_pos: Vector2 = Vector2(x * building_offset, y * building_offset)
 				if !building_spots.has(new_pos):
-					var house: Building = HOUSE.instantiate()
+					var house_resource : Resource = building_map[BuildingType.Type.House]
+					var house: Building = house_resource.instantiate()
 					house.initialize(new_pos)
 					house.pressed.connect(house_clicked)
 					building_spots[new_pos] = house

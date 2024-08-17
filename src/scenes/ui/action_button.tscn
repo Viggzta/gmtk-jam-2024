@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1pr6sqjviypy"]
+[gd_scene load_steps=4 format=3 uid="uid://cgrulqnbau4h2"]
 
 [ext_resource type="Texture2D" uid="uid://dludhoqvspkw7" path="res://art/ui/build_button.png" id="1_e1257"]
 [ext_resource type="Script" path="res://scenes/ui/action_button.gd" id="2_hx2xh"]
@@ -9,7 +9,7 @@ font_color = Color(1, 1, 0, 1)
 outline_size = 32
 outline_color = Color(0, 0, 0, 1)
 
-[node name="ActionButton" type="TextureRect"]
+[node name="ActionButton" type="TextureButton"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -22,7 +22,7 @@ offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(80, 80)
-texture = ExtResource("1_e1257")
+texture_normal = ExtResource("1_e1257")
 script = ExtResource("2_hx2xh")
 
 [node name="BuildingTexture" type="TextureRect" parent="."]
@@ -54,3 +54,4 @@ horizontal_alignment = 1
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
