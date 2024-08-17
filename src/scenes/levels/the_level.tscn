@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://7q2324t0mnuw"]
+[gd_scene load_steps=7 format=3 uid="uid://7q2324t0mnuw"]
 
 [ext_resource type="Script" path="res://scenes/levels/the_level.gd" id="1_vl667"]
-[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="2_1diri"]
-[ext_resource type="PackedScene" uid="uid://bgwmdxqpopxo" path="res://scenes/buildings/shithouse.tscn" id="3_q6e3f"]
+[ext_resource type="PackedScene" uid="uid://d3r14xo6jdyqj" path="res://scenes/camera.tscn" id="2_1diri"]
+[ext_resource type="PackedScene" path="res://scenes/buildings/shithouse.tscn" id="3_q6e3f"]
 [ext_resource type="PackedScene" uid="uid://k2865pts53gq" path="res://scenes/hud.tscn" id="4_2f8vd"]
+[ext_resource type="Material" uid="uid://2nan6h7ds1xj" path="res://scripts/level_base/background_material.tres" id="5_dbp6e"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rxodp"]
 vertices = PackedVector2Array(67.6484, 75.6484, 32607.1, 18052.5, -27066.6, 18220.2, -71.6484, 75.6484, -30173, -20072.8, -71.6484, -76.6484, 33367.5, -22200.9, 67.6484, -76.6484)
@@ -13,6 +14,29 @@ agent_radius = 20.0
 
 [node name="TheLevel" type="Node2D"]
 script = ExtResource("1_vl667")
+
+[node name="BackgroundControl" type="Control" parent="."]
+z_index = -4096
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundControl"]
+material = ExtResource("5_dbp6e")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -270.0
+offset_right = 230.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Camera" parent="." instance=ExtResource("2_1diri")]
 

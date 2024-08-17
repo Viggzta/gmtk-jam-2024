@@ -9,10 +9,13 @@ const DUDE = preload("res://scenes/npc/dude.tscn")
 @onready var dude_root: Node2D = $DudeRoot
 @onready var building_root: Node2D = $Navmesh/BuildingRoot
 @onready var navmesh: NavigationRegion2D = $Navmesh
+@onready var background_rect: ColorRect = $BackgroundControl/ColorRect
+
 
 @export var buildable_radius: float = 2.5
 @export var building_offset: int = 256
 @export var dude_spawn_offset: float = 50.0
+@export var platform_extra_offset: float = 80.0
 
 var building_spots: Dictionary = {}
 var current_max_radius: float;
@@ -31,6 +34,9 @@ func _create_build_spots(radius: float) -> void:
 	if current_max_radius < radius:
 		current_max_radius = radius
 	navmesh.bake_navigation_polygon()
+	var temp_radius: float = radius * building_offset + dude_spawn_offset + platform_extra_offset
+	background_rect.position = Vector2(-temp_radius, -temp_radius)
+	background_rect.size = Vector2(temp_radius * 2, temp_radius * 2)
 
 func _ready() -> void:
 	_create_build_spots(buildable_radius)

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://2nan6h7ds1xj"]
+
+[ext_resource type="Shader" path="res://scripts/level_base/background.gdshader" id="1_x1ys4"]
+[ext_resource type="Texture2D" uid="uid://r4av7ou5yclp" path="res://art/grass.png" id="2_guq40"]
+
+[resource]
+shader = ExtResource("1_x1ys4")
+shader_parameter/scale = 0.1
+shader_parameter/inTexture = ExtResource("2_guq40")
