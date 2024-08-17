@@ -1,7 +1,7 @@
 class_name Dude
 extends RigidBody2D
 
-enum NeedType {Poop, Eat, Entertainment, MedicalCare}
+enum NeedType {Poop, Eat, Entertainment, MedicalCare, HouseWalk}
 
 const SPLAT = preload("res://scenes/npc/splat.tscn")
 
@@ -60,7 +60,7 @@ func _ready() -> void:
 	target_need_building = get_need_location()
 	show_talk_bubble(_get_tex_for_need(needs[0]), 2.5)
 	
-	movement_target_position = target_need_building.position+ Vector2(randf()*2-1, randf()*2-1)*35.0
+	movement_target_position = target_need_building.position+ Vector2(randf()*2-1, randf()*2-1)*3
 
 func actor_setup() -> void:
 	# Wait for the first physics frame so the NavigationServer can sync.

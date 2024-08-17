@@ -5,7 +5,6 @@ var need_type: Dude.NeedType
 var capacity: int
 var sprite: Sprite2D
 var body : StaticBody2D
-var shape: RectangleShape2D
 var is_replaceable: bool = true
 signal pressed(building: Building)
 var animation_step: float = 0.0
