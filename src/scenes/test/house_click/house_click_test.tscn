@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://o1m2p0etbt7u"]
+
+[ext_resource type="Script" path="res://scenes/test/house_click/house_click_test.gd" id="1_fhshs"]
+[ext_resource type="PackedScene" uid="uid://bg83n6e2doi7w" path="res://scenes/buildings/house.tscn" id="1_g6j6r"]
+[ext_resource type="PackedScene" uid="uid://bgwmdxqpopxo" path="res://scenes/buildings/shithouse.tscn" id="2_jg2pl"]
+
+[node name="HouseClickTest" type="Node2D"]
+script = ExtResource("1_fhshs")
+
+[node name="house" parent="." instance=ExtResource("1_g6j6r")]
+position = Vector2(192, 116)
+
+[node name="shithouse" parent="." instance=ExtResource("2_jg2pl")]
+position = Vector2(534, 101)

@@ -15,7 +15,10 @@ texture = ExtResource("1_n1lm5")
 [node name="Collider" type="StaticBody2D" parent="."]
 collision_layer = 3
 collision_mask = 3
+input_pickable = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_yeq1w")
+
+[connection signal="input_event" from="Collider" to="." method="_on_collider_input_event"]
