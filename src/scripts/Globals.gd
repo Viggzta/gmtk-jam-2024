@@ -6,6 +6,11 @@ var _music_volume: float = 1.0
 var _music_bus_name: String = "Music"
 var _fx_bus_name: String = "FX"
 
+var dude_count: int = 0
+
+enum GameState { Setup, Rush, Failure, Success }
+var current_state: GameState = GameState.Setup
+
 @onready var _music_bus := AudioServer.get_bus_index(_music_bus_name)
 @onready var _fx_bus := AudioServer.get_bus_index(_fx_bus_name)
 

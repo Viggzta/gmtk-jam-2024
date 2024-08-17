@@ -108,6 +108,7 @@ func _go_splat() -> void:
 	splat.global_position = global_position
 	var sprite: Sprite2D = splat.get_node("Sprite2D")
 	sprite.modulate = sprite_2d.modulate
+	$"/root/Globals".dude_count -= 1
 	get_parent().add_child(splat)
 	self.queue_free()
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://1aye1f1hfbhr"]
+[gd_scene load_steps=5 format=3 uid="uid://1aye1f1hfbhr"]
 
 [ext_resource type="FontFile" uid="uid://blp4h173uu01v" path="res://gomarice_no_continue.ttf" id="1_8075w"]
+[ext_resource type="Script" path="res://scripts/ui/satisfaction_ui.gd" id="1_x6rn4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pttn7"]
 bg_color = Color(0.204439, 0.1414, 0.0603883, 1)
@@ -19,6 +20,7 @@ corner_radius_bottom_left = 15
 [node name="SatisfactionUi" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_x6rn4")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(1000, 30)
@@ -30,7 +32,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_pttn7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_hh0qc")
-value = 50.0
+value = 100.0
 show_percentage = false
 
 [node name="Label" type="Label" parent="ProgressBar"]
