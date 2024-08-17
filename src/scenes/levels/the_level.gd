@@ -65,8 +65,6 @@ func _create_build_spots(radius: float) -> void:
 func _ready() -> void:
 	Globals.current_state = Globals.GameState.Setup
 	_create_build_spots(buildable_radius)
-	var background_control: Control = $BackgroundControl
-	background_control.process_mode = Node.PROCESS_MODE_DISABLED
 	
 func _spawn_wave(amount: int) -> void:
 	$"/root/Globals".dude_count = amount

@@ -22,30 +22,6 @@ agent_radius = 20.0
 [node name="TheLevel" type="Node2D"]
 script = ExtResource("1_vl667")
 
-[node name="BackgroundControl" type="Control" parent="."]
-z_index = -4096
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("2_s734i")
-
-[node name="ColorRect" type="ColorRect" parent="BackgroundControl"]
-material = ExtResource("5_dbp6e")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -270.0
-offset_top = -270.0
-offset_right = 230.0
-offset_bottom = 230.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UpcomingNeedsUi" parent="CanvasLayer" instance=ExtResource("4_ht8ao")]
@@ -93,6 +69,30 @@ offset_bottom = 40.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="BackgroundControl" type="Control" parent="."]
+z_index = -4096
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_s734i")
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundControl"]
+material = ExtResource("5_dbp6e")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -270.0
+offset_right = 230.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
 [node name="Camera" parent="." instance=ExtResource("2_1diri")]
 
 [node name="Navmesh" type="NavigationRegion2D" parent="."]
@@ -110,5 +110,4 @@ script = ExtResource("7_ouja1")
 [connection signal="lose" from="CanvasLayer/SatisfactionUi" to="." method="_on_satisfaction_ui_lose"]
 [connection signal="win" from="CanvasLayer/SatisfactionUi" to="." method="_on_satisfaction_ui_win"]
 [connection signal="pressed" from="CanvasLayer/Control/Hud" to="." method="_on_hud_pressed"]
-[connection signal="zoom_changed" from="Camera" to="BackgroundControl" method="_on_camera_zoom_changed"]
 [connection signal="finished" from="MusicPlayer" to="MusicPlayer" method="_on_finished"]

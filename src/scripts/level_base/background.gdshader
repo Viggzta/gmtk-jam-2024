@@ -1,15 +1,14 @@
 shader_type canvas_item;
+render_mode world_vertex_coords;
 
 uniform sampler2D inTexture;
-uniform vec2 scale = vec2(1., 1.);
 
 void fragment() {
     vec2 viewport_size = 1.0 / SCREEN_PIXEL_SIZE;
     float aspect_ratio = viewport_size.x / viewport_size.y;
-	vec2 backgroundUV = VERTEX / 1000.0 / scale;
-	vec4 bg = texture(inTexture, backgroundUV);
+	vec4 bg = texture(inTexture, UV);
 
-    vec2 position = (UV  - 0.5) * aspect_ratio;
+    vec2 position = (UV - 0.5) * aspect_ratio;
 
     float circle = 1.0 - step(0.5, length(UV - 0.5));
     
