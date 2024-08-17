@@ -6,7 +6,6 @@
 [ext_resource type="Shader" path="res://scripts/ui/rainbow.gdshader" id="2_qvix1"]
 [ext_resource type="Texture2D" uid="uid://bbnehs7lltb76" path="res://art/ui/Play.png" id="3_j3s7x"]
 [ext_resource type="Texture2D" uid="uid://depno8oo2u4c8" path="res://art/ui/Quit.png" id="4_68jj3"]
-[ext_resource type="PackedScene" uid="uid://k2865pts53gq" path="res://scenes/hud.tscn" id="4_yrx0g"]
 
 [sub_resource type="Gradient" id="Gradient_6ejqk"]
 colors = PackedColorArray(0.904579, 0.803487, 0.435676, 1, 0.420689, 0.437864, 0.875207, 1)
@@ -14,7 +13,14 @@ colors = PackedColorArray(0.904579, 0.803487, 0.435676, 1, 0.420689, 0.437864, 0
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_b77s3"]
 gradient = SubResource("Gradient_6ejqk")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k1wr8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_37eja"]
+shader = ExtResource("2_qvix1")
+shader_parameter/strength = 0.5
+shader_parameter/speed = 0.5
+shader_parameter/angle = 0.0
+shader_parameter/active = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3lycb"]
 shader = ExtResource("2_qvix1")
 shader_parameter/strength = 0.5
 shader_parameter/speed = 0.5
@@ -86,7 +92,7 @@ offset_bottom = -78.0
 color = Color(0.898039, 0.8, 0.435294, 1)
 
 [node name="Play" type="TextureButton" parent="."]
-material = SubResource("ShaderMaterial_k1wr8")
+material = SubResource("ShaderMaterial_37eja")
 layout_mode = 2
 offset_left = 463.0
 offset_top = 200.0
@@ -97,7 +103,7 @@ texture_normal = ExtResource("3_j3s7x")
 script = ExtResource("1_hncmw")
 
 [node name="Quit" type="TextureButton" parent="."]
-material = SubResource("ShaderMaterial_k1wr8")
+material = SubResource("ShaderMaterial_3lycb")
 layout_mode = 2
 offset_left = 509.0
 offset_top = 402.0
@@ -106,9 +112,6 @@ offset_bottom = 884.0
 scale = Vector2(0.1, 0.1)
 texture_normal = ExtResource("4_68jj3")
 script = ExtResource("2_e7pyd")
-
-[node name="Hud" parent="." instance=ExtResource("4_yrx0g")]
-layout_mode = 1
 
 [connection signal="mouse_entered" from="Play" to="Play" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Play" to="Play" method="_on_mouse_exited"]

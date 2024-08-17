@@ -11,7 +11,8 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/test/felix/testscne.tscn")
+	print("pressed")
+	get_tree().change_scene_to_file("res://scenes/levels/the_level.tscn")
 
 
 func _on_mouse_entered() -> void:

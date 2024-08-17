@@ -15,7 +15,6 @@ func _on_pressed() -> void:
 	get_tree().quit()
 
 func _on_mouse_entered() -> void:
-	print("Hello?")
 	self.material.set_shader_parameter("active", true)
 
 func _on_mouse_exited() -> void:
