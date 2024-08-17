@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://scenes/levels/the_level.gd" id="1_vl667"]
 [ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="2_1diri"]
-[ext_resource type="Script" path="res://scenes/levels/background_control.gd" id="2_s734i"]
 [ext_resource type="PackedScene" uid="uid://bgwmdxqpopxo" path="res://scenes/buildings/shithouse.tscn" id="3_q6e3f"]
 [ext_resource type="PackedScene" uid="uid://dnpl5rn5olw8w" path="res://scenes/ui/hud.tscn" id="4_2f8vd"]
 [ext_resource type="PackedScene" uid="uid://dnaeccanj53nt" path="res://scenes/ui/satisfaction_ui.tscn" id="4_26rng"]
@@ -28,7 +27,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("2_s734i")
 
 [node name="ColorRect" type="ColorRect" parent="BackgroundControl"]
 material = ExtResource("5_dbp6e")
@@ -112,5 +110,3 @@ script = ExtResource("7_ouja1")
 [connection signal="lose" from="CanvasLayer/SatisfactionUi" to="." method="_on_satisfaction_ui_lose"]
 [connection signal="win" from="CanvasLayer/SatisfactionUi" to="." method="_on_satisfaction_ui_win"]
 [connection signal="pressed" from="CanvasLayer/Control/Hud" to="." method="_on_hud_pressed"]
-[connection signal="zoom_changed" from="Camera" to="BackgroundControl" method="_on_camera_zoom_changed"]
-[connection signal="finished" from="MusicPlayer" to="MusicPlayer" method="_on_finished"]
