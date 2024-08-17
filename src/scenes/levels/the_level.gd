@@ -18,15 +18,21 @@ const DUDE = preload("res://scenes/npc/dude.tscn")
 @export var dude_increase_multiply : float = 1.2
 @export var build_radius_increase_addition : float = 0.5
 
+var current_day: int = 1
+signal new_day(day: int)
+
 var building_spots: Dictionary = {}
 var current_max_radius: float;
 var building_map: Dictionary = {
 	BuildingType.Type.House:preload("res://scenes/buildings/house.tscn"),
 	BuildingType.Type.ShitHouse:preload("res://scenes/buildings/shithouse.tscn"),
-BuildingType.Type.Donken:preload("res://scenes/buildings/donken.tscn") }
+	BuildingType.Type.Donken:preload("res://scenes/buildings/donken.tscn"),
+ }
 var dude_amount : int = 100
 
 func house_clicked(building: Building) -> void:
+	if !building.is_replaceable || Globals.current_state != Globals.GameState.Setup:
+		return
 	var house_resource: Resource = building_map[Globals.current_building_type]
 	var house : Building = house_resource.instantiate()
 	house.initialize(building.position)
@@ -79,19 +85,28 @@ func _spawn_wave(amount: int) -> void:
 		dude_root.add_child(dude)
 
 func _on_hud_pressed() -> void:
+	_lock_in_all_buildings()
 	_spawn_wave(dude_amount)
 	_transition_game_state(globals.GameState.Rush)
+
+func _lock_in_all_buildings() -> void:
+	for building: Building in building_spots.values():
+		if building is not House:
+			building.is_replaceable = false
 
 func _transition_game_state(state: globals.GameState) -> void:
 	$"/root/Globals".current_state = state
 	
 	if state == globals.GameState.Setup:
+		current_day += 1
+		new_day.emit(current_day)
 		$CanvasLayer/SatisfactionUi.visible = false
 		$"/root/Globals".dude_count = 0
 		$CanvasLayer/SatisfactionUi/ProgressBar.value = 100
 	elif state == globals.GameState.Rush:
 		$CanvasLayer/SatisfactionUi.visible = true
 	elif state== globals.GameState.Failure:
+		current_day = 1
 		get_tree().change_scene_to_file("res://scenes/levels/the_level.tscn")
 	elif state == globals.GameState.Success:
 		buildable_radius += build_radius_increase_addition
