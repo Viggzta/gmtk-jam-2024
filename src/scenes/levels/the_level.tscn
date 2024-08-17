@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://7q2324t0mnuw"]
+[gd_scene load_steps=12 format=3 uid="uid://7q2324t0mnuw"]
 
 [ext_resource type="Script" path="res://scenes/levels/the_level.gd" id="1_vl667"]
-[ext_resource type="PackedScene" uid="uid://d3r14xo6jdyqj" path="res://scenes/camera.tscn" id="2_1diri"]
+[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="2_1diri"]
 [ext_resource type="Script" path="res://scenes/levels/background_control.gd" id="2_s734i"]
-[ext_resource type="PackedScene" path="res://scenes/buildings/shithouse.tscn" id="3_q6e3f"]
-[ext_resource type="PackedScene" uid="uid://k2865pts53gq" path="res://scenes/hud.tscn" id="4_2f8vd"]
+[ext_resource type="PackedScene" uid="uid://bgwmdxqpopxo" path="res://scenes/buildings/shithouse.tscn" id="3_q6e3f"]
+[ext_resource type="PackedScene" uid="uid://k2865pts53gq" path="res://scenes/ui/hud.tscn" id="4_2f8vd"]
+[ext_resource type="PackedScene" uid="uid://1aye1f1hfbhr" path="res://scenes/ui/satisfaction_ui.tscn" id="4_26rng"]
 [ext_resource type="PackedScene" uid="uid://ci78tpn52jqrb" path="res://scenes/ui/settings_control.tscn" id="4_v4ej8"]
 [ext_resource type="Material" uid="uid://2nan6h7ds1xj" path="res://scripts/level_base/background_material.tres" id="5_dbp6e"]
 [ext_resource type="AudioStream" uid="uid://deogsrqi7jxd" path="res://audio/music/song1.wav" id="6_mrrr6"]
@@ -45,6 +46,14 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SatisfactionUi" parent="CanvasLayer" instance=ExtResource("4_26rng")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
