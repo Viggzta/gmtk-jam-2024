@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfnehc2jieral"]
+
+[ext_resource type="Script" path="res://scenes/ui/upcoming_needs_ui.gd" id="1_kvjf1"]
+[ext_resource type="Texture2D" uid="uid://dy2sn8vwdg0w6" path="res://art/turkey/turkey.png" id="2_tkyec"]
+[ext_resource type="FontFile" uid="uid://blp4h173uu01v" path="res://gomarice_no_continue.ttf" id="3_8ta68"]
+[ext_resource type="Texture2D" uid="uid://byb12mv6661ew" path="res://art/emojjis/poop.tres" id="4_ria33"]
+
+[node name="UpcomingNeedsUi" type="Control"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -152.0
+offset_top = 50.0
+offset_right = -152.0
+offset_bottom = 50.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_kvjf1")
+
+[node name="FoodImg" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("2_tkyec")
+
+[node name="FoodTxt2" type="Label" parent="."]
+layout_mode = 2
+offset_left = 155.0
+offset_top = 35.0
+offset_right = 283.0
+offset_bottom = 101.0
+theme_override_fonts/font = ExtResource("3_8ta68")
+theme_override_font_sizes/font_size = 65
+text = "50%"
+
+[node name="ShitImg" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 21.0
+offset_top = 144.0
+offset_right = 112.0
+offset_bottom = 216.0
+texture = ExtResource("4_ria33")
+
+[node name="ShitTxt" type="Label" parent="."]
+layout_mode = 2
+offset_left = 155.0
+offset_top = 146.0
+offset_right = 283.0
+offset_bottom = 212.0
+theme_override_fonts/font = ExtResource("3_8ta68")
+theme_override_font_sizes/font_size = 65
+text = "50%"
