@@ -1,6 +1,6 @@
 extends Control
 
-const modifier: float = 0.2
+const modifier: float = 0.15
 
 signal lose
 signal win
