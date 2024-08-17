@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://k2865pts53gq"]
+[gd_scene load_steps=7 format=3 uid="uid://clr8o4motkuy8"]
 
 [ext_resource type="Shader" path="res://scripts/ui/rainbow.gdshader" id="1_acxn0"]
 [ext_resource type="Texture2D" uid="uid://c5b625vpmh5pv" path="res://art/ui/Start.png" id="1_e3jbb"]
