@@ -1,6 +1,6 @@
 extends Camera2D
 
-signal zoom_changed(new_zoom_factor: float)
+signal zoom_changed(new_zoom_factor: Vector2)
 
 var target_zoom: Vector2
 
