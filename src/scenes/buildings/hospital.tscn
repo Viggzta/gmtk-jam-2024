@@ -13,6 +13,8 @@ script = ExtResource("1_6owj2")
 texture = ExtResource("1_6q0s7")
 
 [node name="Collider" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
 position = Vector2(0.5, 13)
