@@ -21,6 +21,6 @@ navigation_polygon = SubResource("NavigationPolygon_rxodp")
 [node name="BuildingRoot" type="Node2D" parent="Navmesh"]
 
 [node name="shithouse" parent="Navmesh/BuildingRoot" instance=ExtResource("3_q6e3f")]
-position = Vector2(0, -70)
+position = Vector2(1, -70)
 
 [node name="DudeRoot" type="Node2D" parent="."]

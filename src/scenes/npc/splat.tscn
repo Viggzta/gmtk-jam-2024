@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn4ky16nw5nsa"]
+[gd_scene load_steps=3 format=3 uid="uid://bn4ky16nw5nsa"]
 
 [ext_resource type="Texture2D" uid="uid://bkgbk8otkyfb4" path="res://art/dude_splat1.png" id="1_fbrls"]
+[ext_resource type="AudioStream" uid="uid://bkj04y6ynh0c" path="res://audio/bops/bops.tres" id="2_xckp4"]
 
 [node name="Splat" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_fbrls")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_xckp4")
+autoplay = true
