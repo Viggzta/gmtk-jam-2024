@@ -63,6 +63,7 @@ func _create_build_spots(radius: float) -> void:
 	background_rect.size = Vector2(temp_radius * 2, temp_radius * 2)
 
 func _ready() -> void:
+	Globals.current_state = Globals.GameState.Setup
 	_create_build_spots(buildable_radius)
 	var background_control: Control = $BackgroundControl
 	background_control.process_mode = Node.PROCESS_MODE_DISABLED

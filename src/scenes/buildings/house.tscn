@@ -10,7 +10,9 @@ size = Vector2(96, 98)
 script = ExtResource("1_2qnk0")
 
 [node name="House" type="Sprite2D" parent="."]
+position = Vector2(0, 32)
 texture = ExtResource("2_6y67t")
+offset = Vector2(0, -46)
 
 [node name="Collider" type="StaticBody2D" parent="."]
 collision_layer = 3
