@@ -1,6 +1,6 @@
 class_name ActionButton
 
-extends TextureRect
+extends TextureButton
 
 var building_type: BuildingType.Type
 
@@ -26,3 +26,7 @@ func _on_mouse_exited() -> void:
 	_animation_step = 0
 	rotation_degrees = 0
 	_hoover = false
+
+
+func _on_pressed() -> void:
+	Globals.current_building_type = building_type

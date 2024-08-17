@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://clr8o4motkuy8"]
+[gd_scene load_steps=7 format=3 uid="uid://6ok3kippn38w"]
 
 [ext_resource type="Shader" path="res://scripts/ui/rainbow.gdshader" id="1_acxn0"]
 [ext_resource type="Texture2D" uid="uid://c5b625vpmh5pv" path="res://art/ui/Start.png" id="1_e3jbb"]
-[ext_resource type="AudioStream" uid="uid://b3nvt5inamv3e" path="res://scenes/go_boost.wav" id="3_y6lce"]
-[ext_resource type="AudioStream" uid="uid://b08i55gwv00da" path="res://audio/ui/hover_boost.wav" id="4_nq1vw"]
+[ext_resource type="AudioStream" uid="uid://bhsgcyu52e4pl" path="res://audio/ui/go.wav" id="3_l8tak"]
+[ext_resource type="AudioStream" uid="uid://qqdxxht1mgqj" path="res://audio/ui/hover.wav" id="4_0yaw6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oamxn"]
 shader = ExtResource("1_acxn0")
@@ -43,14 +43,10 @@ texture_normal = ExtResource("1_e3jbb")
 script = SubResource("GDScript_a58ak")
 
 [node name="Click" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_y6lce")
-volume_db = 24.0
-bus = &"FX"
+stream = ExtResource("3_l8tak")
 
 [node name="Hover" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_nq1vw")
-volume_db = 15.0
-bus = &"FX"
+stream = ExtResource("4_0yaw6")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

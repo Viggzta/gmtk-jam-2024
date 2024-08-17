@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://86g0du6x3vdp"]
+[gd_scene load_steps=9 format=3 uid="uid://djlmuqxobsbjc"]
 
 [ext_resource type="Script" path="res://scenes/npc/dude.gd" id="1_t7m2o"]
 [ext_resource type="Texture2D" uid="uid://bohxqey7kp7ay" path="res://art/shadow.png" id="3_3k5n3"]
 [ext_resource type="Texture2D" uid="uid://dav3o5ahega2w" path="res://art/dude1.png" id="3_w8clx"]
+[ext_resource type="Texture2D" uid="uid://cutiunebnjsxq" path="res://art/bubble.png" id="4_ihepi"]
+[ext_resource type="Script" path="res://scenes/npc/talk_bubble.gd" id="4_x6viw"]
+[ext_resource type="Texture2D" uid="uid://ci2g532nkrcq7" path="res://art/emojjis/wine.tres" id="5_cfylh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3j1se"]
 
@@ -44,8 +47,41 @@ position = Vector2(-2.98023e-07, 1.25)
 scale = Vector2(0.34375, 0.132813)
 texture = ExtResource("3_3k5n3")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = -20.0
-offset_top = -114.0
-offset_right = 20.0
-offset_bottom = -74.0
+[node name="TalkBubble" type="VBoxContainer" parent="."]
+z_index = 4096
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -168.0
+offset_right = 66.0
+offset_bottom = -77.0
+grow_vertical = 0
+pivot_offset = Vector2(23.2, 88.095)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_x6viw")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TalkBubble"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_ihepi")
+patch_margin_left = 49
+patch_margin_top = 17
+patch_margin_right = 14
+patch_margin_bottom = 16
+
+[node name="TextureRect" type="TextureRect" parent="TalkBubble/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.249
+anchor_top = 1.0
+anchor_right = 0.249
+anchor_bottom = 1.0
+offset_left = -13.651
+offset_top = -86.0
+offset_right = 58.349
+offset_bottom = -14.0
+texture = ExtResource("5_cfylh")
+
+[node name="TalkBubbleTimer" type="Timer" parent="."]
