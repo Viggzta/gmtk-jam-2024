@@ -3,6 +3,7 @@ extends Node2D
 enum GameState { Setup, Rush }
 var _current_state: GameState = GameState.Setup
 
+const SHITHOUSE = preload("res://scenes/buildings/shithouse.tscn")
 const HOUSE = preload("res://scenes/buildings/house.tscn")
 const DUDE = preload("res://scenes/npc/dude.tscn")
 
@@ -20,6 +21,15 @@ const DUDE = preload("res://scenes/npc/dude.tscn")
 var building_spots: Dictionary = {}
 var current_max_radius: float;
 
+func house_clicked(building: Building) -> void:
+	var house: Building = SHITHOUSE.instantiate()
+	house.initialize(building.position)
+	house.pressed.connect(house_clicked)
+	building_spots[building.position] = house
+	building_root.add_child(house)
+	building_root.remove_child(building)
+	pass
+
 func _create_build_spots(radius: float) -> void:
 	for x: int in range(-radius, radius + 1):
 		for y: int in range(-radius, radius + 1):
@@ -29,6 +39,7 @@ func _create_build_spots(radius: float) -> void:
 				if !building_spots.has(new_pos):
 					var house: Building = HOUSE.instantiate()
 					house.initialize(new_pos)
+					house.pressed.connect(house_clicked)
 					building_spots[new_pos] = house
 					building_root.add_child(house)
 	if current_max_radius < radius:
