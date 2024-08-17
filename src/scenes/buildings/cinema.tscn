@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://xqsofhu1mwuc"]
+
+[ext_resource type="Texture2D" uid="uid://b7gja5oqqwv0r" path="res://art/buildings/cinema.png" id="1_5f3ah"]
+[ext_resource type="Script" path="res://scripts/cinema.gd" id="1_ewhli"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyaup"]
+size = Vector2(94, 63)
+
+[node name="Cinema" type="Node2D"]
+script = ExtResource("1_ewhli")
+
+[node name="Cinema" type="Sprite2D" parent="."]
+texture = ExtResource("1_5f3ah")
+
+[node name="Collider" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+position = Vector2(1, 32.5)
+shape = SubResource("RectangleShape2D_eyaup")
