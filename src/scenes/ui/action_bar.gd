@@ -6,6 +6,7 @@ const BAJA_MAJA = preload("res://art/buildings/baja-maja.png")
 const HOUSE = preload("res://art/buildings/house3.png")
 const DONKEN = preload("res://art/buildings/donken.png")
 const HOSPITAL = preload("res://art/buildings/hospital.png")
+const CINEMA = preload("res://art/buildings/cinema.png")
 
 @export var button_offset: float = 100. 
 
@@ -13,6 +14,8 @@ func _ready() -> void:
 	_init_building_button(BAJA_MAJA, BuildingType.Type.ShitHouse)
 	_init_building_button(DONKEN, BuildingType.Type.Donken)
 	_init_building_button(HOSPITAL, BuildingType.Type.Hospital)
+	_init_building_button(CINEMA, BuildingType.Type.Cinema)
+
 	
 func _init_building_button(resource : Resource, building_type : BuildingType.Type) -> void:
 	var ab: ActionButton = ACTION_BUTTON.instantiate()

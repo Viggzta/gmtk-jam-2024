@@ -17,7 +17,7 @@ var current_building_type: BuildingType.Type
 
 
 var level_restrictions: Dictionary = {
-	1 : {BuildingType.Type.ShitHouse : 0, BuildingType.Type.Donken : 1},
+	1 : {BuildingType.Type.ShitHouse : 0, BuildingType.Type.Donken : 1, BuildingType.Type.Cinema : 1},
 	2 : {BuildingType.Type.ShitHouse : 2, BuildingType.Type.Donken : 0},
 	3 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
 	4 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 2},

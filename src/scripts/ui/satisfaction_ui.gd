@@ -27,3 +27,12 @@ func _process(delta: float) -> void:
 		$ProgressBar.value -= clampf(decrease, 0, max_percent_per_second * delta)
 		if($ProgressBar.value == 0):
 			lose.emit()
+
+func _add_satisfaction(delta : float) -> void:
+		$ProgressBar.value += delta
+	
+	
+	
+
+func _debug_print(dudes: int, needs:int)->void:
+	print("Total dudes: " + str(dudes) + " needs: " + str(needs))
