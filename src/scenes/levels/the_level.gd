@@ -61,9 +61,9 @@ func house_clicked(building: Building) -> void:
 				current_shithouse_nr -= 1
 				var new_value:int = Globals.level_restrictions[current_day][BuildingType.Type.ShitHouse] - current_shithouse_nr
 				$CanvasLayer/ActionBar.set_shithouse_count(new_value)
-	
-	
-	
+
+
+
 	var house_resource: Resource = building_map[Globals.current_building_type]
 	var house : Building = house_resource.instantiate()
 	house.initialize(building.position)
@@ -96,21 +96,14 @@ func _create_build_spots(radius: float) -> void:
 func _ready() -> void:
 	Globals.current_state = Globals.GameState.Setup
 	_create_build_spots(buildable_radius)
-	var background_control: Control = $BackgroundControl
-	background_control.process_mode = Node.PROCESS_MODE_DISABLED
 	calculate_restrictions()
-	
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		if event.keycode == KEY_B:
-			_spawn_wave(10)
 	
 func _spawn_wave(amount: int) -> void:
 	$"/root/Globals".dude_count = amount
 	print(current_max_radius)
 	for i in range(0, amount):
 		var spawn_location_radians: float = randf() * TAU
-		var spawn_location: Vector2 = Vector2( 
+		var spawn_location: Vector2 = Vector2(
 			cos(spawn_location_radians) * current_max_radius * building_offset + cos(spawn_location_radians) * dude_spawn_offset,
 			sin(spawn_location_radians) * current_max_radius * building_offset + sin(spawn_location_radians) * dude_spawn_offset)
 		var dude: Node2D = DUDE.instantiate()
@@ -118,9 +111,10 @@ func _spawn_wave(amount: int) -> void:
 		dude_root.add_child(dude)
 
 func _on_hud_pressed() -> void:
-	_lock_in_all_buildings()
-	_spawn_wave(dude_amount)
-	_transition_game_state(globals.GameState.Rush)
+	if Globals.current_state == Globals.GameState.Setup:
+		_lock_in_all_buildings()
+		_spawn_wave(dude_amount)
+		_transition_game_state(globals.GameState.Rush)
 
 func _lock_in_all_buildings() -> void:
 	for building: Building in building_spots.values():
@@ -129,7 +123,7 @@ func _lock_in_all_buildings() -> void:
 
 func _transition_game_state(state: globals.GameState) -> void:
 	$"/root/Globals".current_state = state
-	
+
 	if state == globals.GameState.Setup:
 		current_day += 1
 		new_day.emit(current_day)
@@ -155,7 +149,7 @@ func _on_satisfaction_ui_lose() -> void:
 
 func _on_satisfaction_ui_win() -> void:
 	_transition_game_state(globals.GameState.Success)
-	
+
 func calculate_restrictions() -> void:
 	var available_donken:int = Globals.level_restrictions[current_day][BuildingType.Type.Donken]
 	var available_shithouse:int = Globals.level_restrictions[current_day][BuildingType.Type.ShitHouse]
