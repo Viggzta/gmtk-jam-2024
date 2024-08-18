@@ -18,6 +18,8 @@ var character_index: int = 0
 var conversation_index:int = 0
 var wait_for_input: bool = false
 
+var start_talking : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	message.text = ""
@@ -34,7 +36,7 @@ func _process(delta: float) -> void:
 			_skip_to_end_of_line()
 	
 	
-	if not text_fully_rendered and not wait_for_input:
+	if not text_fully_rendered and not wait_for_input and start_talking:
 		_write_text(delta)
 		_talk()
 	else:
@@ -90,4 +92,3 @@ func _handle_end_of_line()->void:
 func _skip_to_end_of_line()->void:
 	message.text = boss_conversation[conversation_index]
 	_handle_end_of_line()
-	

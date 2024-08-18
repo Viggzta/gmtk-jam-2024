@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://1umqahv6hp4p"]
+[gd_scene load_steps=6 format=3 uid="uid://cdonjgl5qeebw"]
 
 [ext_resource type="Script" path="res://scenes/ui/failure_screen.gd" id="1_ld4k6"]
 [ext_resource type="PackedScene" uid="uid://dhk5kf6843qh" path="res://scenes/boss/boss.tscn" id="2_kkkwy"]

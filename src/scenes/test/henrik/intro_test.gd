@@ -6,6 +6,7 @@ func _ready() -> void:
 	var intro_boss : Boss = BOSS.instantiate()
 	intro_boss.initialize(["Yooo, congratulations on your new job as mayor!", "The people will move in today"])
 	add_child(intro_boss)
+	intro_boss.start_talking = true
 	pass # Replace with function body.
 
 
