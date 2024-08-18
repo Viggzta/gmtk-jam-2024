@@ -11,5 +11,4 @@ script = ExtResource("1_1c1ei")
 stream = SubResource("AudioStreamPolyphonic_1d7e4")
 volume_db = 24.0
 autoplay = true
-stream_paused = true
 bus = &"FX"
