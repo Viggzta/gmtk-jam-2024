@@ -10,6 +10,7 @@ func _ready() -> void:
 	super._ready()
 
 func building_placed() -> void:
+	Globals.camera_shake += 1.5
 	drop_particles.emitting = true
 	drop_sound.play()
 	pass
