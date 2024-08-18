@@ -215,7 +215,6 @@ func _on_satisfaction_ui_lose() -> void:
 	$CanvasLayer/FailureScreen.show_screen()
 	get_tree().paused = true
 
-
 func _on_satisfaction_ui_win() -> void:
 	_transition_game_state(globals.GameState.Success)
 
@@ -234,8 +233,7 @@ func _on_failure_screen_pressed_try_again() -> void:
 	_transition_game_state(globals.GameState.Failure)
 	
 func _process(delta: float) -> void:
-	_debug_logic()
-	
+	_debug_logic() #TODO: Remove when releasing
 	
 	
 func _debug_logic()->void:
