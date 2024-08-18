@@ -46,6 +46,7 @@ func _ready() -> void:
 	# and the navigation layout.
 	navigation_agent.path_desired_distance = 4.0
 	navigation_agent.target_desired_distance = 4.0
+	$"/root/Globals".total_needs += needs.size()
 	
 	_randomize_dude_sprite()
 
@@ -90,6 +91,8 @@ func _physics_process(_delta: float) -> void:
 
 	var current_agent_position: Vector2 = global_position
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
+	if global_position.distance_to(target_need_building.global_position) < 200:
+		next_path_position = target_need_building.global_position
 	
 	# print(navigation_agent.is_navigation_finished(), "   current: ", current_agent_position, " next: ", next_path_position)
 	var movement: Vector2 = position - lastpos
@@ -125,6 +128,7 @@ func _hit_building(area: Node2D)->void:#area is the Area2D of the building
 		var building: Building = area.get_parent()
 		if building == target_need_building:
 			needs.remove_at(0)
+			$"/root/Globals".total_needs -= 1
 			if len(needs) == 0:
 				_go_splat()
 			else:

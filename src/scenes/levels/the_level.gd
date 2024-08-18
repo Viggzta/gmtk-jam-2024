@@ -205,3 +205,6 @@ func calculate_restrictions() -> void:
 		var max_available: int = Globals.level_restrictions[current_day][b]
 		$CanvasLayer/ActionBar.set_building_count(b, max_available)
 	
+func _update_day_globally() -> void:
+	Globals.current_day = current_day
+	

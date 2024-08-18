@@ -8,11 +8,17 @@ var last_mouse: Vector2
 @export var min_zoom: float = 0.25
 
 func _ready() -> void:
-	zoom = Vector2.ONE * 0.25
+	zoom = Vector2.ONE * 0.5
 	target_zoom = zoom
 	last_mouse = get_local_mouse_position()
 
 func _process(delta: float) -> void:
+	Globals.camera_shake -= delta * 15
+	Globals.camera_shake = clamp(Globals.camera_shake, 0, 5)
+	offset = Vector2(
+		randf_range(-Globals.camera_shake, Globals.camera_shake),
+		randf_range(-Globals.camera_shake, Globals.camera_shake)) * 10
+	
 	var oldZoom: Vector2 = zoom
 	zoom = zoom.move_toward(target_zoom, delta*5)
 
