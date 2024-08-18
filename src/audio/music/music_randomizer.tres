@@ -6,4 +6,5 @@
 [resource]
 streams_count = 2
 stream_0/stream = ExtResource("1_jwumt")
+stream_0/weight = 15.0
 stream_1/stream = ExtResource("2_e2vae")
