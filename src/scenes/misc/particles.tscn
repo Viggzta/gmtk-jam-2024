@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv3jgb50cewy3"]
+
+[sub_resource type="Curve" id="Curve_aph4e"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.447183, 68.3381), 0.0, 0.0, 0, 0, Vector2(0.989437, 92.5501), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Particles" type="CPUParticles2D"]
+amount = 70
+explosiveness = 1.0
+lifetime_randomness = 0.58
+emission_shape = 1
+emission_sphere_radius = 32.03
+direction = Vector2(0, 1)
+spread = 96.63
+gravity = Vector2(0, 0)
+initial_velocity_min = 246.67
+initial_velocity_max = 470.36
+damping_min = 80.263
+damping_max = 97.368
+damping_curve = SubResource("Curve_aph4e")
+angle_min = -322.1
+angle_max = -56.8
+scale_amount_min = 1.1
+scale_amount_max = 10.75

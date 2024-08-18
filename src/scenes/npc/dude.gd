@@ -22,7 +22,9 @@ var possible_dude_sprites : Array[Texture2D] = [preload("res://art/dude1.png"), 
 var movement_speed: float = 200.0
 var current_movement_speed: float = 0.0
 var movement_target_position: Vector2 = Vector2(60.0, 180.0)
+var moved: float
 var lastpos: Vector2
+var lastpostime: float
 var id: int
 
 var talk_timer: float
@@ -91,24 +93,26 @@ func _physics_process(_delta: float) -> void:
 	
 	# print(navigation_agent.is_navigation_finished(), "   current: ", current_agent_position, " next: ", next_path_position)
 	var movement: Vector2 = position - lastpos
-	
+	lastpos = position
 	var target_velocity: Vector2 = current_agent_position.direction_to(next_path_position) * movement_speed;
 
-	if movement.length() < 0.05 and not navigation_agent.is_navigation_finished():
-		show_talk_bubble(ANGREY, 1.5)
+	lastpostime += _delta
+	if lastpostime > 1.0:
+		if moved < 40:
+			show_talk_bubble(ANGREY, 1.5)
+			set_movement_target(movement_target_position)
+			next_path_position = navigation_agent.get_next_path_position()
+			target_velocity = current_agent_position.direction_to(next_path_position) * movement_speed;
+			#linear_velocity = target_velocity * 3.0
 
-		var bodies: Array[Node2D] = $Area2D.get_overlapping_bodies()
-		for b in bodies:
-			if b is RigidBody2D:
-				var dir: Vector2 = position.direction_to(b.position)
-				#b.apply_impulse(dir * 10)
-		# position += target_velocity*0.1 #.move_toward(position+target_velocity, _delta*60)# target_velocity*0.1#apply_impulse(target_velocity * 150.0)
-		#linear_velocity = target_velocity * 3.0
-		set_movement_target(movement_target_position)
+		lastpostime = 0
+		moved = 0
+
+	moved += movement.length()
 
 	linear_velocity = linear_velocity.move_toward(target_velocity, _delta*400)#lerp(linear_velocity, target_velocity, _delta*5)
 	current_movement_speed = movement.length()
-	# move_and_collide(velocity)
+	# move_and_collide(target_velocity/100)
 	lastpos = position
 
 func _process(delta: float) -> void:
@@ -181,7 +185,7 @@ func show_talk_bubble(tex: Texture2D, time: float) -> void:
 	if tween:
 		tween.kill()
 	tween = get_tree().create_tween()
-	tween.tween_property(talk_bubble, "scale", Vector2(1, 1), 0.3).set_trans(Tween.TRANS_BOUNCE)
+	tween.tween_property(talk_bubble, "scale", Vector2(0.5, 0.5), 0.3).set_trans(Tween.TRANS_BOUNCE)
 	tween.tween_property(talk_bubble, "rotation_degrees", 0, 0.13).set_trans(Tween.TRANS_CUBIC)
 	talk_bubble.visible = true
 	
@@ -189,7 +193,10 @@ func talk_bubble_timeout() -> void:
 	if tween:
 		tween.kill()
 	tween = get_tree().create_tween()
-	tween.tween_property(talk_bubble, "scale", Vector2(), 0.5).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(talk_bubble, "scale", Vector2(), 0.5).set_trans(Tween.TRANS_LINEAR).call_deferred("talk_ween_finish")
 	
+func talk_ween_finish() -> void:
+	talk_bubble.visible = false
+
 func _get_pissed() -> void:
 	movement_target_position = Vector2(randf() * 2 - 1, randf() * 2 - 1) * 512
