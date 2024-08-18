@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk335kpls1y1h"]
+
+[ext_resource type="Script" path="res://scenes/ui/dude_template_ui.gd" id="1_5hb8l"]
+
+[node name="DudeTemplateUi" type="HBoxContainer"]
+anchors_preset = -1
+anchor_top = -0.0462963
+anchor_bottom = -0.0462963
+offset_right = 100.0
+offset_bottom = 80.0
+size_flags_horizontal = 3
+script = ExtResource("1_5hb8l")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "80"

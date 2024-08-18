@@ -11,6 +11,7 @@ const FIRE_AND_FORGET_SOUND = preload("res://scenes/fx/fire_and_forget_sound.tsc
 @onready var background_rect: ColorRect = $BackgroundControl/ColorRectPlatform
 @onready var water_rect: ColorRect = $BackgroundControl/ColorRectWater
 @onready var fog_rect: ColorRect = $BackgroundControl/ColorRectFog
+@onready var upcoming_needs_ui: Control = $CanvasLayer/UpcomingNeedsUi
 
 
 @onready var debug_window: Control = $CanvasLayer/DebugWindow
@@ -148,17 +149,17 @@ func _ready() -> void:
 	_create_build_spots(buildable_radius)
 	calculate_restrictions()
 	buildings_placed = {}
+	upcoming_needs_ui.set_level_definition(1)
 	
 func _spawn_wave() -> void:
 	Globals.dude_count = 0
-	for level_need_arrays: Array in Globals.level_needs[current_day]:
-		for level_need: Pair in level_need_arrays:
-			for i in range(0, level_need.count):
-				var spawn_location_radians: float = randf() * TAU
-				var spawn_location: Vector2 = Vector2(
-					cos(spawn_location_radians) * current_max_radius * building_offset + cos(spawn_location_radians) * dude_spawn_offset,
-					sin(spawn_location_radians) * current_max_radius * building_offset + sin(spawn_location_radians) * dude_spawn_offset)
-				_spawn_dude(spawn_location, level_need.needs_array)
+	for level_need: Pair in Globals.level_needs[current_day]:
+		for i in range(0, level_need.count):
+			var spawn_location_radians: float = randf() * TAU
+			var spawn_location: Vector2 = Vector2(
+				cos(spawn_location_radians) * current_max_radius * building_offset + cos(spawn_location_radians) * dude_spawn_offset,
+				sin(spawn_location_radians) * current_max_radius * building_offset + sin(spawn_location_radians) * dude_spawn_offset)
+			_spawn_dude(spawn_location, level_need.needs_array)
 		
 func _spawn_dude(spawn_location: Vector2, needs: Array[Dude.NeedType]) -> void:
 	var dude: Node2D = DUDE.instantiate()
@@ -181,7 +182,10 @@ func _transition_game_state(state: globals.GameState) -> void:
 	Globals.current_state = state
 
 	if state == globals.GameState.Setup:
+		
 		current_day += 1
+		upcoming_needs_ui.set_level_definition(current_day)
+
 		new_day.emit(current_day)
 		$CanvasLayer/SatisfactionUi.visible = false
 		Globals.dude_count = 0
@@ -194,6 +198,7 @@ func _transition_game_state(state: globals.GameState) -> void:
 	elif state== globals.GameState.Failure:
 		current_day = 1
 		Globals.total_needs = 0
+		upcoming_needs_ui.set_level_definition(0)
 		get_tree().change_scene_to_file("res://scenes/levels/the_level.tscn")
 	elif state == globals.GameState.Success:
 		buildable_radius += build_radius_increase_addition
