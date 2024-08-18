@@ -2,6 +2,7 @@ extends Camera2D
 
 var target_zoom: Vector2
 var target_position: Vector2
+var last_mouse: Vector2
 
 @export var max_zoom: float = 1.5
 @export var min_zoom: float = 0.25
@@ -9,6 +10,7 @@ var target_position: Vector2
 func _ready() -> void:
 	zoom = Vector2.ONE * 0.25
 	target_zoom = zoom
+	last_mouse = get_local_mouse_position()
 
 func _process(delta: float) -> void:
 	var oldZoom: Vector2 = zoom
@@ -24,6 +26,13 @@ func _process(delta: float) -> void:
 		target_position.y += camera_speed
 	if Input.is_action_pressed("up"):
 		target_position.y -= camera_speed
+	
+	var mouse: Vector2 = get_local_mouse_position()
+	var diff: Vector2 = mouse - last_mouse
+	last_mouse = mouse
+	
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
+		target_position -= diff
 		
 	position = target_position
 
