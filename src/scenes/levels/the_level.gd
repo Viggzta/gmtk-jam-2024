@@ -21,8 +21,7 @@ const DUDE = preload("res://scenes/npc/dude.tscn")
 var current_day: int = 1
 signal new_day(day: int)
 
-var current_donken_nr : int = 0
-var current_shithouse_nr : int = 0
+var buildings_placed: Dictionary = {}
 
 var building_spots: Dictionary = {}
 var current_max_radius: float;
@@ -36,33 +35,22 @@ var dude_amount : int = 80
 func house_clicked(building: Building) -> void:
 	if !building.is_replaceable || Globals.current_state != Globals.GameState.Setup:
 		return
-
-	match Globals.current_building_type:
-		BuildingType.Type.ShitHouse:
-			if(current_shithouse_nr >= Globals.level_restrictions[current_day][Globals.current_building_type]):
-				return
-			else:
-				current_shithouse_nr+=1
-				var new_value:int = Globals.level_restrictions[current_day][Globals.current_building_type] - current_shithouse_nr
-				$CanvasLayer/ActionBar.set_shithouse_count(new_value)
-		BuildingType.Type.Donken:
-			if(current_donken_nr >= Globals.level_restrictions[current_day][Globals.current_building_type]):
-				return
-			else:
-				current_donken_nr+=1
-				var new_value:int = Globals.level_restrictions[current_day][Globals.current_building_type] - current_donken_nr
-				$CanvasLayer/ActionBar.set_donken_count(new_value)
-		BuildingType.Type.House:
-			if(building is Donken):
-				current_donken_nr -= 1
-				var new_value:int = Globals.level_restrictions[current_day][BuildingType.Type.Donken] - current_donken_nr
-				$CanvasLayer/ActionBar.set_donken_count(new_value)
-			elif(building is ShitHouse):
-				current_shithouse_nr -= 1
-				var new_value:int = Globals.level_restrictions[current_day][BuildingType.Type.ShitHouse] - current_shithouse_nr
-				$CanvasLayer/ActionBar.set_shithouse_count(new_value)
-
-
+	
+	var current_day_restrictions: Dictionary = Globals.level_restrictions[current_day]
+	var max_allowed_count: int = 0
+	if current_day_restrictions.has(Globals.current_building_type):
+		max_allowed_count = Globals.level_restrictions[current_day][Globals.current_building_type]
+	var current_count: int = 0
+	if buildings_placed.has(Globals.current_building_type):
+		current_count = buildings_placed[Globals.current_building_type]
+	else:
+		buildings_placed[Globals.current_building_type] = 0
+	if current_count >= max_allowed_count:
+		return
+	
+	buildings_placed[Globals.current_building_type] += 1
+	var new_current_count: int = buildings_placed[Globals.current_building_type]
+	$CanvasLayer/ActionBar.set_building_count(Globals.current_building_type, max_allowed_count - new_current_count)
 
 	var house_resource: Resource = building_map[Globals.current_building_type]
 	var house : Building = house_resource.instantiate()
@@ -97,6 +85,7 @@ func _ready() -> void:
 	Globals.current_state = Globals.GameState.Setup
 	_create_build_spots(buildable_radius)
 	calculate_restrictions()
+	buildings_placed = {}
 	
 func _spawn_wave(amount: int) -> void:
 	$"/root/Globals".dude_count = amount
@@ -130,8 +119,7 @@ func _transition_game_state(state: globals.GameState) -> void:
 		$CanvasLayer/SatisfactionUi.visible = false
 		$"/root/Globals".dude_count = 0
 		$CanvasLayer/SatisfactionUi/ProgressBar.value = 100
-		current_donken_nr = 0
-		current_shithouse_nr = 0
+		buildings_placed.clear()
 		calculate_restrictions()
 	elif state == globals.GameState.Rush:
 		$CanvasLayer/SatisfactionUi.visible = true
@@ -153,6 +141,8 @@ func _on_satisfaction_ui_win() -> void:
 	_transition_game_state(globals.GameState.Success)
 
 func calculate_restrictions() -> void:
-	var available_donken:int = Globals.level_restrictions[current_day][BuildingType.Type.Donken]
-	var available_shithouse:int = Globals.level_restrictions[current_day][BuildingType.Type.ShitHouse]
-	$CanvasLayer/ActionBar.set_building_count(available_donken, available_shithouse)
+	var level_restriction: Dictionary = Globals.level_restrictions[current_day]
+	for b: BuildingType.Type in level_restriction.keys():
+		var max_available: int = Globals.level_restrictions[current_day][b]
+		$CanvasLayer/ActionBar.set_building_count(b, max_available)
+	
