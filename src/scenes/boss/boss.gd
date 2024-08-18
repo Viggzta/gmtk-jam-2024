@@ -20,9 +20,11 @@ var wait_for_input: bool = false
 
 var start_talking : bool = false
 
+@onready var _talker: Talker = $Talker
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	message.text = ""
+	message.text = "" 
 	pass # Replace with function body.
 
 
@@ -53,8 +55,12 @@ func _write_text(delta:float) -> void:
 		mouth_should_be_closed = false
 		var current_message: String = boss_conversation[conversation_index]
 		message.text += current_message[character_index]
+		var wait_time_char: float = _talker.play_and_get_length(current_message[character_index])
+		if wait_time_char > 0.0:
+			timer = wait_time_char
+		else:
+			timer = time_per_character
 		character_index += 1
-		timer = time_per_character
 		if character_index == (current_message.length()):
 			_handle_end_of_line()
 		else:
