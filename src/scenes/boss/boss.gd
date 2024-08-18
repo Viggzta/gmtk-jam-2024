@@ -7,7 +7,7 @@ class_name Boss extends Control
 @onready var current_mouth: Sprite2D = open_close
 @onready var message: RichTextLabel = $message
 
-var boss_message: String = "temp"
+var boss_conversation: Array[String] = ["temp"]
 var time_per_character : float = 0.01
 var wait_time_for_space: float = 0.2
 var timer : float = 0
@@ -15,6 +15,8 @@ var text_fully_rendered : bool = false
 var mouth_should_be_closed: bool = false
 
 var character_index: int = 0
+var conversation_index:int = 0
+var wait_for_input: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,7 +27,14 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:		
 	
-	if not text_fully_rendered:
+	if Input.is_action_just_pressed("conversation_skip"):
+		if wait_for_input:
+			_move_on_to_next_line()
+		else:
+			_skip_to_end_of_line()
+	
+	
+	if not text_fully_rendered and not wait_for_input:
 		_write_text(delta)
 		_talk()
 	else:
@@ -33,20 +42,21 @@ func _process(delta: float) -> void:
 	
 	pass
 	
-func initialize(boss_message : String) -> void:
-	self.boss_message = boss_message
+func initialize(boss_conversation : Array[String]) -> void:
+	self.boss_conversation = boss_conversation
 	pass
 	
 func _write_text(delta:float) -> void:
 	if timer <= 0:
 		mouth_should_be_closed = false
-		message.text += boss_message[character_index]
+		var current_message: String = boss_conversation[conversation_index]
+		message.text += current_message[character_index]
 		character_index += 1
 		timer = time_per_character
-		if character_index == (boss_message.length()):
-			text_fully_rendered = true
+		if character_index == (current_message.length()):
+			_handle_end_of_line()
 		else:
-			if boss_message[character_index] == " ":
+			if current_message[character_index] == " ":
 				timer += wait_time_for_space
 				_close_mouth()
 	else:
@@ -59,12 +69,25 @@ func _talk()->void:
 	current_mouth = mouths.pick_random()
 	current_mouth.visible = true
 
+func _move_on_to_next_line()->void:
+	conversation_index += 1
+	character_index = 0
+	message.text = ""
+	wait_for_input = false
+
 func _close_mouth()->void:
 	current_mouth.visible = false
 	current_mouth = open_close
 	current_mouth.visible = true
 	mouth_should_be_closed = true
 	
-	
-	
+func _handle_end_of_line()->void:
+	if (conversation_index + 1) < boss_conversation.size():
+		wait_for_input = true
+	else:
+		text_fully_rendered = true
+		
+func _skip_to_end_of_line()->void:
+	message.text = boss_conversation[conversation_index]
+	_handle_end_of_line()
 	
