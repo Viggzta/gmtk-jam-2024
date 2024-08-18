@@ -13,6 +13,8 @@ const FIRE_AND_FORGET_SOUND = preload("res://scenes/fx/fire_and_forget_sound.tsc
 @onready var fog_rect: ColorRect = $BackgroundControl/ColorRectFog
 
 
+@onready var debug_window: Control = $CanvasLayer/DebugWindow
+
 
 @export var buildable_radius: float = 2
 @export var building_offset: int = 256
@@ -149,11 +151,8 @@ func _ready() -> void:
 	
 func _spawn_wave() -> void:
 	Globals.dude_count = 0
-	print("Current day: " + str(current_day))
 	for level_need_arrays: Array in Globals.level_needs[current_day]:
-		print("Step1: " + str(level_need_arrays))
 		for level_need: Pair in level_need_arrays:
-			print("Step2: " + str(level_need))
 			for i in range(0, level_need.count):
 				var spawn_location_radians: float = randf() * TAU
 				var spawn_location: Vector2 = Vector2(
@@ -179,14 +178,14 @@ func _lock_in_all_buildings() -> void:
 			building.is_replaceable = false
 
 func _transition_game_state(state: globals.GameState) -> void:
-	$"/root/Globals".current_state = state
+	Globals.current_state = state
 
 	if state == globals.GameState.Setup:
 		current_day += 1
 		new_day.emit(current_day)
 		$CanvasLayer/SatisfactionUi.visible = false
-		$"/root/Globals".dude_count = 0
-		$"/root/Globals".total_needs = 0
+		Globals.dude_count = 0
+		Globals.total_needs = 0
 		$CanvasLayer/SatisfactionUi/ProgressBar.value = 100
 		buildings_placed.clear()
 		calculate_restrictions()
@@ -194,13 +193,17 @@ func _transition_game_state(state: globals.GameState) -> void:
 		$CanvasLayer/SatisfactionUi.visible = true
 	elif state== globals.GameState.Failure:
 		current_day = 1
-		$"/root/Globals".total_needs = 0
+		Globals.total_needs = 0
 		get_tree().change_scene_to_file("res://scenes/levels/the_level.tscn")
 	elif state == globals.GameState.Success:
 		buildable_radius += build_radius_increase_addition
 		dude_amount *= dude_increase_multiply
 		_create_build_spots(buildable_radius)
-		_transition_game_state(globals.GameState.Setup)
+		if(Globals.current_day == 1):
+			$CanvasLayer/WinScreen.show_screen()
+			get_tree().paused = true
+		else:
+			_transition_game_state(globals.GameState.Setup)
 
 
 func _on_satisfaction_ui_lose() -> void:
@@ -222,4 +225,29 @@ func _update_day_globally() -> void:
 	
 
 func _on_failure_screen_pressed_try_again() -> void:
+	_transition_game_state(globals.GameState.Failure)
+	
+func _process(delta: float) -> void:
+	_debug_logic()
+	
+	
+	
+func _debug_logic()->void:
+	if Input.is_key_pressed(KEY_B):
+		debug_window.visible = !debug_window.visible
+	
+	var text:String = "DEBUG WINDOW\n"
+	text += "Dudes: '" + str(Globals.dude_count) + "'" + "\n"
+	text += "Total needs: '" + str(Globals.total_needs) + "'" + "\n"
+	text += "Music volume: '" + str(Globals.music_volume) + "'" + "\n"
+	text += "SFX volume: '" + str(Globals.sound_fx_volume) + "'" + "\n"
+	text += "Current day: '" + str(Globals.current_day) + "'" + "\n"
+	text += "Current state: '" + str(Globals.current_state) +"'" + "\n"
+	debug_window.get_child(0).text = text
+	
+	
+	
+
+
+func _on_win_screen_pressed_play_again() -> void:
 	_transition_game_state(globals.GameState.Failure)

@@ -1,0 +1,102 @@
+[gd_scene load_steps=6 format=3 uid="uid://s68crfjmh1ua"]
+
+[ext_resource type="Script" path="res://scenes/ui/win_screen.gd" id="1_tpjcx"]
+[ext_resource type="PackedScene" uid="uid://dhk5kf6843qh" path="res://scenes/boss/boss.tscn" id="2_0wn0x"]
+[ext_resource type="FontFile" uid="uid://blp4h173uu01v" path="res://gomarice_no_continue.ttf" id="3_353re"]
+
+[sub_resource type="Gradient" id="Gradient_vomn0"]
+colors = PackedColorArray(0.610643, 0.751166, 0.631913, 1, 0.453314, 0.387821, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5xjkk"]
+gradient = SubResource("Gradient_vomn0")
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tpjcx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_5xjkk")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 55.0
+offset_right = 1482.0
+offset_bottom = 210.0
+color = Color(0.45098, 0.388235, 0.996078, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = 354.0
+offset_top = -605.0
+offset_right = 526.0
+offset_bottom = -76.0
+color = Color(0.80961, 0.708213, 0.322403, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -431.0
+offset_top = 220.0
+offset_right = -115.0
+offset_bottom = 1245.0
+color = Color(0.745098, 0.517647, 0.00392157, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -1106.0
+offset_top = -203.0
+offset_right = -205.0
+offset_bottom = -78.0
+color = Color(0.607843, 0.74902, 0.631373, 1)
+
+[node name="Boss" parent="." instance=ExtResource("2_0wn0x")]
+layout_mode = 1
+offset_left = 51.0
+offset_top = -5.0
+offset_right = 51.0
+offset_bottom = -5.0
+scale = Vector2(1.5, 1.5)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -31.0
+offset_right = -57.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_353re")
+theme_override_font_sizes/font_size = 40
+text = "PLAY AGAIN!!!!!!!!"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
