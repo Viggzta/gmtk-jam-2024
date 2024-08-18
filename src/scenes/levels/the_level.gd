@@ -10,7 +10,7 @@ const DUDE = preload("res://scenes/npc/dude.tscn")
 @onready var background_rect: ColorRect = $BackgroundControl/ColorRect
 
 
-@export var buildable_radius: float = 2.5
+@export var buildable_radius: float = 2
 @export var building_offset: int = 256
 @export var dude_spawn_offset: float = 50.0
 @export var platform_extra_offset: float = 80.0
@@ -21,6 +21,9 @@ const DUDE = preload("res://scenes/npc/dude.tscn")
 var current_day: int = 1
 signal new_day(day: int)
 
+var current_donken_nr : int = 0
+var current_shithouse_nr : int = 0
+
 var building_spots: Dictionary = {}
 var current_max_radius: float;
 var building_map: Dictionary = {
@@ -28,11 +31,39 @@ var building_map: Dictionary = {
 	BuildingType.Type.ShitHouse:preload("res://scenes/buildings/shithouse.tscn"),
 	BuildingType.Type.Donken:preload("res://scenes/buildings/donken.tscn"),
  }
-var dude_amount : int = 100
+var dude_amount : int = 80
 
 func house_clicked(building: Building) -> void:
 	if !building.is_replaceable || Globals.current_state != Globals.GameState.Setup:
 		return
+
+	match Globals.current_building_type:
+		BuildingType.Type.ShitHouse:
+			if(current_shithouse_nr >= Globals.level_restrictions[current_day][Globals.current_building_type]):
+				return
+			else:
+				current_shithouse_nr+=1
+				var new_value:int = Globals.level_restrictions[current_day][Globals.current_building_type] - current_shithouse_nr
+				$CanvasLayer/ActionBar.set_shithouse_count(new_value)
+		BuildingType.Type.Donken:
+			if(current_donken_nr >= Globals.level_restrictions[current_day][Globals.current_building_type]):
+				return
+			else:
+				current_donken_nr+=1
+				var new_value:int = Globals.level_restrictions[current_day][Globals.current_building_type] - current_donken_nr
+				$CanvasLayer/ActionBar.set_donken_count(new_value)
+		BuildingType.Type.House:
+			if(building is Donken):
+				current_donken_nr -= 1
+				var new_value:int = Globals.level_restrictions[current_day][BuildingType.Type.Donken] - current_donken_nr
+				$CanvasLayer/ActionBar.set_donken_count(new_value)
+			elif(building is ShitHouse):
+				current_shithouse_nr -= 1
+				var new_value:int = Globals.level_restrictions[current_day][BuildingType.Type.ShitHouse] - current_shithouse_nr
+				$CanvasLayer/ActionBar.set_shithouse_count(new_value)
+	
+	
+	
 	var house_resource: Resource = building_map[Globals.current_building_type]
 	var house : Building = house_resource.instantiate()
 	house.initialize(building.position)
@@ -67,6 +98,7 @@ func _ready() -> void:
 	_create_build_spots(buildable_radius)
 	var background_control: Control = $BackgroundControl
 	background_control.process_mode = Node.PROCESS_MODE_DISABLED
+	calculate_restrictions()
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -104,6 +136,7 @@ func _transition_game_state(state: globals.GameState) -> void:
 		$CanvasLayer/SatisfactionUi.visible = false
 		$"/root/Globals".dude_count = 0
 		$CanvasLayer/SatisfactionUi/ProgressBar.value = 100
+		calculate_restrictions()
 	elif state == globals.GameState.Rush:
 		$CanvasLayer/SatisfactionUi.visible = true
 	elif state== globals.GameState.Failure:
@@ -122,3 +155,8 @@ func _on_satisfaction_ui_lose() -> void:
 
 func _on_satisfaction_ui_win() -> void:
 	_transition_game_state(globals.GameState.Success)
+	
+func calculate_restrictions() -> void:
+	var available_donken:int = Globals.level_restrictions[current_day][BuildingType.Type.Donken]
+	var available_shithouse:int = Globals.level_restrictions[current_day][BuildingType.Type.ShitHouse]
+	$CanvasLayer/ActionBar.set_building_count(available_donken, available_shithouse)

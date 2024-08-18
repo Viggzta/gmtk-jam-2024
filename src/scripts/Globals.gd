@@ -13,6 +13,11 @@ var current_state: GameState = GameState.Setup
 var current_building_type: BuildingType.Type
 
 
+var level_restrictions: Dictionary = {
+	1 : {BuildingType.Type.ShitHouse : 2, BuildingType.Type.Donken : 1},
+	2 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4}
+}
+
 @onready var _music_bus := AudioServer.get_bus_index(_music_bus_name)
 @onready var _fx_bus := AudioServer.get_bus_index(_fx_bus_name)
 

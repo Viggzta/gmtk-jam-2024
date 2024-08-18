@@ -18,4 +18,19 @@ func _init_building_button(resource : Resource, building_type : BuildingType.Typ
 	ab.initialize(resource, building_type)
 	action_buttons.add_child(ab)
 
-	
+func set_building_count(donken:int, shithouse:int) -> void:
+	for action_btn: ActionButton in action_buttons.get_children():
+		if(action_btn.building_type == BuildingType.Type.ShitHouse):
+			action_btn.set_level_count(shithouse)
+		elif(action_btn.building_type == BuildingType.Type.Donken):
+			action_btn.set_level_count(donken)
+
+func set_donken_count(count:int) -> void:
+	for action_btn: ActionButton in action_buttons.get_children():
+		if(action_btn.building_type == BuildingType.Type.Donken):
+			action_btn.set_level_count(count)
+
+func set_shithouse_count(count:int) -> void:
+	for action_btn: ActionButton in action_buttons.get_children():
+		if(action_btn.building_type == BuildingType.Type.ShitHouse):
+			action_btn.set_level_count(count)
