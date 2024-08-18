@@ -1,11 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3guiqx7ist3r"]
+[gd_scene load_steps=8 format=3 uid="uid://c3guiqx7ist3r"]
 
 [ext_resource type="Texture2D" uid="uid://770cyr7u0xkr" path="res://art/buildings/donken.png" id="1_onj5d"]
 [ext_resource type="Script" path="res://scripts/donken.gd" id="1_tyvw2"]
 [ext_resource type="Texture2D" uid="uid://bohxqey7kp7ay" path="res://art/shadow.png" id="3_reah8"]
+[ext_resource type="PackedScene" uid="uid://bv3jgb50cewy3" path="res://scenes/misc/particles.tscn" id="4_77xvr"]
+[ext_resource type="AudioStream" uid="uid://bd16ai1yw2noe" path="res://audio/bops/6.wav" id="5_t5tww"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlg2l"]
 size = Vector2(106, 94)
+
+[sub_resource type="Curve" id="Curve_vab2s"]
+min_value = -1.0
+_data = [Vector2(0, -0.601719), 0.0, 0.0, 0, 0, Vector2(0.996479, 0.515759), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Donken" type="Node2D"]
 script = ExtResource("1_tyvw2")
@@ -29,3 +36,19 @@ z_index = -3000
 position = Vector2(-1, 38)
 scale = Vector2(0.9375, 0.546875)
 texture = ExtResource("3_reah8")
+
+[node name="DropParticles" parent="." instance=ExtResource("4_77xvr")]
+z_index = -3000
+emitting = false
+amount = 200
+one_shot = true
+scale_amount_min = 8.35
+scale_amount_max = 8.35
+color = Color(0.38, 0.286773, 0.2052, 1)
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+hue_variation_curve = SubResource("Curve_vab2s")
+
+[node name="DropSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_t5tww")
+bus = &"FX"

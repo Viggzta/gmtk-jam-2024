@@ -3,6 +3,7 @@ extends Node2D
 const globals = preload("res://scripts/Globals.gd")
 
 const DUDE = preload("res://scenes/npc/dude.tscn")
+const FIRE_AND_FORGET_SOUND = preload("res://scenes/fx/fire_and_forget_sound.tscn")
 
 @onready var dude_root: Node2D = $DudeRoot
 @onready var building_root: Node2D = $Navmesh/BuildingRoot
@@ -36,7 +37,13 @@ var building_map: Dictionary = {
 var dude_amount : int = 80
 
 func house_clicked(building: Building) -> void:
-	if !building.is_replaceable || building.building_type != BuildingType.Type.House || Globals.current_state != Globals.GameState.Setup:
+	if Globals.current_state != Globals.GameState.Setup:
+		return
+		
+	if !building.is_replaceable || building.building_type != BuildingType.Type.House:
+		var sound: FireAndForgetSound = FIRE_AND_FORGET_SOUND.instantiate()
+		sound.set_and_play(FireAndForgetSound.SoundClips.Uuuh)
+		building.add_child(sound)
 		return
 	
 	var current_day_restrictions: Dictionary = Globals.level_restrictions[current_day]
@@ -63,6 +70,10 @@ func house_clicked(building: Building) -> void:
 	building_spots[building.position] = house
 	building_root.add_child(house)
 	building_root.remove_child(building)
+	
+	var sound: FireAndForgetSound = FIRE_AND_FORGET_SOUND.instantiate()
+	sound.set_and_play(FireAndForgetSound.SoundClips.Woosh)
+	house.add_child(sound)
 	pass
 	
 func house_right_clicked(building: Building) -> void:
@@ -71,6 +82,9 @@ func house_right_clicked(building: Building) -> void:
 	
 	var basic_building_type: BuildingType.Type = BuildingType.Type.House
 	if building.building_type == basic_building_type:
+		var sound: FireAndForgetSound = FIRE_AND_FORGET_SOUND.instantiate()
+		sound.set_and_play(FireAndForgetSound.SoundClips.Uuuh)
+		building.add_child(sound)
 		return
 		
 	var current_building_type: BuildingType.Type = building.building_type
@@ -85,6 +99,9 @@ func house_right_clicked(building: Building) -> void:
 	building_root.remove_child(building)
 	
 	buildings_placed[current_building_type] -= 1
+	var sound: FireAndForgetSound = FIRE_AND_FORGET_SOUND.instantiate()
+	sound.set_and_play(FireAndForgetSound.SoundClips.Suuck)
+	house.add_child(sound)
 	
 	var current_day_restrictions: Dictionary = Globals.level_restrictions[current_day]
 	var max_allowed_count: int = 0
