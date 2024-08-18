@@ -1,7 +1,5 @@
 extends Camera2D
 
-signal zoom_changed(new_zoom_factor: Vector2)
-
 var target_zoom: Vector2
 var target_position: Vector2
 
@@ -15,8 +13,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var oldZoom: Vector2 = zoom
 	zoom = zoom.move_toward(target_zoom, delta*5)
-	if oldZoom != zoom:
-		zoom_changed.emit(zoom)
 
 	var normalized_zoom: float = (zoom.x - min_zoom) / (max_zoom - min_zoom)
 	var camera_speed: float = 5.0 * ((1.0 - normalized_zoom) + 1.0)

@@ -27,6 +27,8 @@ func _on_mouse_exited() -> void:
 	rotation_degrees = 0
 	_hoover = false
 
+func set_level_count(count : int) -> void:
+	$Count.text = str(count)
 
 func _on_pressed() -> void:
 	Globals.current_building_type = building_type

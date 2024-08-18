@@ -13,6 +13,39 @@ var current_state: GameState = GameState.Setup
 var current_building_type: BuildingType.Type
 
 
+var level_restrictions: Dictionary = {
+	1 : {BuildingType.Type.ShitHouse : 2, BuildingType.Type.Donken : 1},
+	2 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	3 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	4 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	5 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	6 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	7 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	8 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	9 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	10 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	11 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	12 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	13 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	14 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	15 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	16 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	17 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	18 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	19 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	20 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	21 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	22 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	23 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	24 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	25 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	26 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	27 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	28 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	29 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	30 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4}
+}
+
 @onready var _music_bus := AudioServer.get_bus_index(_music_bus_name)
 @onready var _fx_bus := AudioServer.get_bus_index(_fx_bus_name)
 
