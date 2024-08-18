@@ -1,19 +1,20 @@
-[gd_scene load_steps=16 format=3 uid="uid://7q2324t0mnuw"]
+[gd_scene load_steps=17 format=3 uid="uid://7q2324t0mnuw"]
 
 [ext_resource type="Script" path="res://scenes/levels/the_level.gd" id="1_vl667"]
 [ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="2_1diri"]
 [ext_resource type="Script" path="res://scenes/levels/background_control.gd" id="2_s734i"]
+[ext_resource type="PackedScene" uid="uid://1umqahv6hp4p" path="res://scenes/ui/failure_screen.tscn" id="2_u8utb"]
 [ext_resource type="PackedScene" uid="uid://clr8o4motkuy8" path="res://scenes/ui/hud.tscn" id="4_2f8vd"]
 [ext_resource type="PackedScene" uid="uid://1aye1f1hfbhr" path="res://scenes/ui/satisfaction_ui.tscn" id="4_26rng"]
-[ext_resource type="PackedScene" path="res://scenes/ui/upcoming needs ui.tscn" id="4_ht8ao"]
+[ext_resource type="PackedScene" uid="uid://dfnehc2jieral" path="res://scenes/ui/upcoming needs ui.tscn" id="4_ht8ao"]
 [ext_resource type="PackedScene" uid="uid://ci78tpn52jqrb" path="res://scenes/ui/settings_control.tscn" id="4_v4ej8"]
 [ext_resource type="Material" uid="uid://2nan6h7ds1xj" path="res://scripts/level_base/background_material.tres" id="5_dbp6e"]
 [ext_resource type="PackedScene" uid="uid://dlt5hvje4cgux" path="res://scenes/ui/action_bar.tscn" id="7_56pmc"]
 [ext_resource type="Script" path="res://scenes/levels/music_player.gd" id="7_ouja1"]
 [ext_resource type="PackedScene" uid="uid://dc2yesmdvvnvq" path="res://scenes/ui/day_ui.tscn" id="8_yypo5"]
-[ext_resource type="Material" path="res://scripts/level_base/backestground_material.tres" id="10_20baa"]
+[ext_resource type="Material" uid="uid://uctq3bvt04uy" path="res://scripts/level_base/backestground_material.tres" id="10_20baa"]
 [ext_resource type="Material" path="res://scripts/level_base/fog_material.tres" id="11_l824i"]
-[ext_resource type="AudioStream" uid="uid://bxgv0q1c7dcni" path="res://audio/music/music_randomizer.tres" id="12_rtxqu"]
+[ext_resource type="AudioStream" uid="uid://cyaf16755cxhm" path="res://audio/music/music_randomizer.tres" id="12_rtxqu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rxodp"]
 vertices = PackedVector2Array(47, -16, 32628.4, 18074.1, -27086.6, 18241.9, -49, -16, -30196.4, -20093.7, -49, -125, 33389.6, -22223.3, 47, -125)
@@ -70,6 +71,8 @@ offset_right = 15.0
 offset_bottom = 40.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="FailureScreen" parent="CanvasLayer" instance=ExtResource("2_u8utb")]
 
 [node name="BackgroundControl" type="Control" parent="."]
 z_index = -4096
@@ -143,4 +146,5 @@ script = ExtResource("7_ouja1")
 [connection signal="lose" from="CanvasLayer/SatisfactionUi" to="." method="_on_satisfaction_ui_lose"]
 [connection signal="win" from="CanvasLayer/SatisfactionUi" to="." method="_on_satisfaction_ui_win"]
 [connection signal="pressed" from="CanvasLayer/Control/Hud" to="." method="_on_hud_pressed"]
+[connection signal="pressed_try_again" from="CanvasLayer/FailureScreen" to="." method="_on_failure_screen_pressed_try_again"]
 [connection signal="finished" from="MusicPlayer" to="MusicPlayer" method="_on_finished"]
