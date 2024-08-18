@@ -28,6 +28,10 @@ func _on_mouse_exited() -> void:
 	_hoover = false
 
 func set_level_count(count : int) -> void:
+	if count <= 0:
+		hide()
+	else:
+		show()
 	$Count.text = str(count)
 
 func _on_pressed() -> void:

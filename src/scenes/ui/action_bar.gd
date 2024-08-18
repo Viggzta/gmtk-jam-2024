@@ -10,7 +10,6 @@ const DONKEN = preload("res://art/buildings/donken.png")
 
 func _ready() -> void:
 	_init_building_button(BAJA_MAJA, BuildingType.Type.ShitHouse)
-	_init_building_button(HOUSE, BuildingType.Type.House)
 	_init_building_button(DONKEN, BuildingType.Type.Donken)
 	
 func _init_building_button(resource : Resource, building_type : BuildingType.Type) -> void:
