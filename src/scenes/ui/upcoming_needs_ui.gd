@@ -16,8 +16,7 @@ func calculate_upcoming_needs() -> void:
 	var total_shit_nr : int = 0
 	var total_food_nr : int = 0
 	
-	for needsForADay: Array in Globals.level_needs[Globals.current_day]:
-		for needPair: Pair in needsForADay:
+	for needPair: Pair in Globals.level_needs[Globals.current_day]:
 			for need : Dude.NeedType in needPair.needs_array:
 				match need:
 					Dude.NeedType.Poop:

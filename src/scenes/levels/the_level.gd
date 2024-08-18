@@ -148,11 +148,11 @@ func _ready() -> void:
 	_create_build_spots(buildable_radius)
 	calculate_restrictions()
 	buildings_placed = {}
-	$CanvasLayer/UpcomingNeedsUi.calculate_upcoming_needs()	upcoming_needs_ui.set_level_definition(1)
+	$CanvasLayer/UpcomingNeedsUi.calculate_upcoming_needs()
 
 func _spawn_wave() -> void:
 	Globals.dude_count = 0
-	for level_need: Pair in Globals.level_needs[current_day]:
+	for level_need: Pair in Globals.level_needs[Globals.current_day]:
 		for i in range(0, level_need.count):
 			var spawn_location_radians: float = randf() * TAU
 			var spawn_location: Vector2 = Vector2(

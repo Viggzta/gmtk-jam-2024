@@ -1,20 +1,20 @@
 [gd_scene load_steps=19 format=3 uid="uid://7q2324t0mnuw"]
 
 [ext_resource type="Script" path="res://scenes/levels/the_level.gd" id="1_vl667"]
-[ext_resource type="PackedScene" uid="uid://d3r14xo6jdyqj" path="res://scenes/camera.tscn" id="2_1diri"]
+[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="2_1diri"]
+[ext_resource type="PackedScene" uid="uid://cybnyexuikhyc" path="res://scenes/ui/upcoming needs ui.tscn" id="2_ci3sc"]
 [ext_resource type="Script" path="res://scenes/levels/background_control.gd" id="2_s734i"]
-[ext_resource type="PackedScene" path="res://scenes/ui/failure_screen.tscn" id="2_u8utb"]
+[ext_resource type="PackedScene" uid="uid://1umqahv6hp4p" path="res://scenes/ui/failure_screen.tscn" id="2_u8utb"]
 [ext_resource type="PackedScene" uid="uid://clr8o4motkuy8" path="res://scenes/ui/hud.tscn" id="4_2f8vd"]
 [ext_resource type="PackedScene" uid="uid://1aye1f1hfbhr" path="res://scenes/ui/satisfaction_ui.tscn" id="4_26rng"]
-[ext_resource type="PackedScene" uid="uid://dfnehc2jieral" path="res://scenes/ui/upcoming needs ui.tscn" id="4_ht8ao"]
 [ext_resource type="PackedScene" uid="uid://ci78tpn52jqrb" path="res://scenes/ui/settings_control.tscn" id="4_v4ej8"]
 [ext_resource type="Material" uid="uid://2nan6h7ds1xj" path="res://scripts/level_base/background_material.tres" id="5_dbp6e"]
 [ext_resource type="PackedScene" uid="uid://dlt5hvje4cgux" path="res://scenes/ui/action_bar.tscn" id="7_56pmc"]
 [ext_resource type="Script" path="res://scenes/levels/music_player.gd" id="7_ouja1"]
 [ext_resource type="PackedScene" uid="uid://dc2yesmdvvnvq" path="res://scenes/ui/day_ui.tscn" id="8_yypo5"]
-[ext_resource type="PackedScene" path="res://scenes/ui/win_screen.tscn" id="9_6fjku"]
-[ext_resource type="PackedScene" path="res://scenes/ui/debug_window.tscn" id="9_j00qm"]
-[ext_resource type="Material" uid="uid://cqqsr00su2lhj" path="res://scripts/level_base/backestground_material.tres" id="10_20baa"]
+[ext_resource type="PackedScene" uid="uid://bnvd5nmfehhj0" path="res://scenes/ui/win_screen.tscn" id="9_6fjku"]
+[ext_resource type="PackedScene" uid="uid://b2u6rmlb6n2dm" path="res://scenes/ui/debug_window.tscn" id="9_j00qm"]
+[ext_resource type="Material" uid="uid://c2jvxc03e5iwf" path="res://scripts/level_base/backestground_material.tres" id="10_20baa"]
 [ext_resource type="Material" path="res://scripts/level_base/fog_material.tres" id="11_l824i"]
 [ext_resource type="AudioStream" uid="uid://cyaf16755cxhm" path="res://audio/music/music_randomizer.tres" id="12_rtxqu"]
 
@@ -29,9 +29,7 @@ script = ExtResource("1_vl667")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="UpcomingNeedsUi" parent="CanvasLayer" instance=ExtResource("4_ht8ao")]
-offset_left = 40.0
-offset_right = 290.0
+[node name="UpcomingNeedsUi" parent="CanvasLayer" instance=ExtResource("2_ci3sc")]
 
 [node name="ActionBar" parent="CanvasLayer" instance=ExtResource("7_56pmc")]
 
