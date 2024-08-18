@@ -195,7 +195,8 @@ func _transition_game_state(state: globals.GameState) -> void:
 
 
 func _on_satisfaction_ui_lose() -> void:
-	_transition_game_state(globals.GameState.Failure)
+	$CanvasLayer/FailureScreen.show_screen()
+	get_tree().paused = true
 
 
 func _on_satisfaction_ui_win() -> void:
@@ -210,3 +211,6 @@ func calculate_restrictions() -> void:
 func _update_day_globally() -> void:
 	Globals.current_day = current_day
 	
+
+func _on_failure_screen_pressed_try_again() -> void:
+	_transition_game_state(globals.GameState.Failure)

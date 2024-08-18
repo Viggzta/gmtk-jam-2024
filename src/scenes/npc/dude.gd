@@ -91,7 +91,7 @@ func _physics_process(_delta: float) -> void:
 
 	var current_agent_position: Vector2 = global_position
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
-	if global_position.distance_to(target_need_building.global_position) < 200:
+	if target_need_building and global_position.distance_to(target_need_building.global_position) < 200:
 		next_path_position = target_need_building.global_position
 	
 	# print(navigation_agent.is_navigation_finished(), "   current: ", current_agent_position, " next: ", next_path_position)
