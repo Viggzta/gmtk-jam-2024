@@ -130,6 +130,8 @@ func _transition_game_state(state: globals.GameState) -> void:
 		$CanvasLayer/SatisfactionUi.visible = false
 		$"/root/Globals".dude_count = 0
 		$CanvasLayer/SatisfactionUi/ProgressBar.value = 100
+		current_donken_nr = 0
+		current_shithouse_nr = 0
 		calculate_restrictions()
 	elif state == globals.GameState.Rush:
 		$CanvasLayer/SatisfactionUi.visible = true
