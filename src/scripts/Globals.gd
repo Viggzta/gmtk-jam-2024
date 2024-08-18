@@ -17,10 +17,10 @@ var current_building_type: BuildingType.Type
 
 
 var level_restrictions: Dictionary = {
-	1 : {BuildingType.Type.ShitHouse : 2, BuildingType.Type.Donken : 1},
-	2 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 2},
+	1 : {BuildingType.Type.ShitHouse : 0, BuildingType.Type.Donken : 1},
+	2 : {BuildingType.Type.ShitHouse : 2, BuildingType.Type.Donken : 0},
 	3 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	4 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
+	4 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 2},
 	5 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
 	6 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
 	7 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
@@ -34,38 +34,38 @@ var level_needs: Dictionary = {
 		[Pair.new([Dude.NeedType.Eat], 80)],
 	],
 	2 : [
-		[Pair.new([Dude.NeedType.Poop], 80)],
+		[Pair.new([Dude.NeedType.Poop], 100)],
 	],
 	3 : [
 		[Pair.new([Dude.NeedType.Eat], 80)],
 		[Pair.new([Dude.NeedType.Poop], 80)],
 	],
 	4 : [
-		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 80)],
+		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 160)],
 	],
 	5 : [
-		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 80)],
-		[Pair.new([Dude.NeedType.Poop], 80)],
+		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 100)],
+		[Pair.new([Dude.NeedType.Poop], 100)],
 	],
 	6 : [
-		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 80)],
-		[Pair.new([Dude.NeedType.Poop], 80)],
+		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 120)],
+		[Pair.new([Dude.NeedType.Poop], 120)],
 	],
 	7 : [
-		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 80)],
-		[Pair.new([Dude.NeedType.Poop], 80)],
+		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 140)],
+		[Pair.new([Dude.NeedType.Poop], 140)],
 	],
 	8 : [
-		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 80)],
-		[Pair.new([Dude.NeedType.Poop], 80)],
+		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 160)],
+		[Pair.new([Dude.NeedType.Poop], 160)],
 	],
 	9 : [
-		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 80)],
-		[Pair.new([Dude.NeedType.Poop], 80)],
+		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 180)],
+		[Pair.new([Dude.NeedType.Poop], 180)],
 	],
 	10 : [
-		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 80)],
-		[Pair.new([Dude.NeedType.Poop], 80)],
+		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 200)],
+		[Pair.new([Dude.NeedType.Poop], 200)],
 	],
 }
 
