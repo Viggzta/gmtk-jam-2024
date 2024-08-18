@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://di033g3q3mg8k"]
+
+[ext_resource type="Script" path="res://scripts/scissor.gd" id="1_7unkx"]
+[ext_resource type="Texture2D" uid="uid://dwu88hsrce2sg" path="res://art/scissor/scissor_closed.png" id="1_sgdus"]
+[ext_resource type="Texture2D" uid="uid://bubap24gnjkiu" path="res://art/scissor/scissor_open.png" id="2_t0owu"]
+
+[node name="Scissor" type="Node2D"]
+script = ExtResource("1_7unkx")
+
+[node name="ScissorClosed" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_sgdus")
+
+[node name="ScissorOpen" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_t0owu")
