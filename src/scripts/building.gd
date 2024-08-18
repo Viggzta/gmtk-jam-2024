@@ -34,22 +34,18 @@ func building_placed() -> void:
 
 func _on_clicked(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("left_mouse_click"):
-		print("Left clicked building")
 		pressed.emit(self)
 	if event.is_action_pressed("right_mouse_click"):
-		print("Right clicked building")
 		right_pressed.emit(self)
 		
 func _on_hover() -> void:
 	if !is_replaceable || Globals.current_state != Globals.GameState.Setup:
 		return
-	print("hovering on building")
 	sprite.scale = Vector2(1.2, 1.2)
 
 func _on_hover_exit() -> void:
 	if !is_replaceable || Globals.current_state != Globals.GameState.Setup:
 		return
-	print("hovering exoit on building")
 	sprite.scale = Vector2(1, 1)
 	
 func _process(delta: float) -> void:
