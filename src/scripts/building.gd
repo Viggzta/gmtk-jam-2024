@@ -27,7 +27,11 @@ func _ready() -> void:
 	var animation_time: float = 0.3 + randf() * 0.5
 	get_tree().create_tween().tween_property(sprite, "position", Vector2(pos.x, pos.y), animation_time).set_trans(Tween.TRANS_ELASTIC)
 	get_tree().create_tween().tween_property(sprite, "scale", Vector2(1, 1), animation_time).set_trans(Tween.TRANS_ELASTIC)
-	
+	get_tree().create_tween().tween_callback(building_placed).set_delay(animation_time-0.2)
+
+func building_placed() -> void:
+	pass
+
 func _on_clicked(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("left_mouse_click"):
 		print("Left clicked building")
