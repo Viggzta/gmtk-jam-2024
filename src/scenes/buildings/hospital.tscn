@@ -27,6 +27,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+visible = false
 position = Vector2(1, 13)
 shape = SubResource("RectangleShape2D_dyen6")
 
@@ -44,7 +45,7 @@ amount = 200
 one_shot = true
 scale_amount_min = 8.35
 scale_amount_max = 8.35
-color = Color(0.38, 0.286773, 0.2052, 1)
+color = Color(0.807843, 0.807843, 0.807843, 1)
 hue_variation_min = -0.1
 hue_variation_max = 0.1
 hue_variation_curve = SubResource("Curve_546p1")

@@ -21,6 +21,7 @@ func _ready() -> void:
 	body.input_event.connect(_on_clicked)
 	body.mouse_entered.connect(_on_hover)
 	body.mouse_exited.connect(_on_hover_exit)
+	
 	var pos: Vector2 = Vector2(sprite.position.x, sprite.position.y)
 	sprite.position.y -= 150
 	sprite.scale = Vector2(2.5, 2.5)
