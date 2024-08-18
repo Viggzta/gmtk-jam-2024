@@ -35,8 +35,9 @@ var _sound_dictionary: Dictionary = {
 func play_and_get_length(letter: String) -> float:
 	var small_letter: String = letter.to_lower()
 	if _sound_dictionary.has(small_letter):
-		audio_stream_player_2d.stream = _sound_dictionary[small_letter]
-		audio_stream_player_2d.play()
-		return audio_stream_player_2d.stream.get_length()
+		var playback: AudioStreamPlaybackPolyphonic = audio_stream_player_2d.get_stream_playback()
+		var stream: AudioStream = _sound_dictionary[small_letter]
+		playback.play_stream(stream, 0, 0, randf_range(0.9, 1.1))
+		return stream.get_length()
 	else:
 		return 0.0

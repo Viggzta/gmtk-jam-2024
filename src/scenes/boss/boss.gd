@@ -57,7 +57,7 @@ func _write_text(delta:float) -> void:
 		message.text += current_message[character_index]
 		var wait_time_char: float = _talker.play_and_get_length(current_message[character_index])
 		if wait_time_char > 0.0:
-			timer = wait_time_char
+			timer = wait_time_char / 2
 		else:
 			timer = time_per_character
 		character_index += 1
