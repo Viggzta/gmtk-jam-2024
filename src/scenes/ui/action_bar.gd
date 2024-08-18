@@ -30,3 +30,7 @@ func set_building_count(building_type: BuildingType.Type, count:int) -> void:
 func reset_selection() -> void:
 	for action_btn: ActionButton in action_buttons.get_children():
 		action_btn.is_selected = false
+
+func reset_all_building_count() -> void:
+	for action_btn: ActionButton in action_buttons.get_children():
+		action_btn.set_level_count(0)

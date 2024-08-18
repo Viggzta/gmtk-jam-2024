@@ -221,6 +221,7 @@ func _on_satisfaction_ui_win() -> void:
 
 func calculate_restrictions() -> void:
 	var level_restriction: Dictionary = Globals.level_restrictions[current_day]
+	$CanvasLayer/ActionBar.reset_all_building_count()
 	for b: BuildingType.Type in level_restriction.keys():
 		var max_available: int = Globals.level_restrictions[current_day][b]
 		$CanvasLayer/ActionBar.set_building_count(b, max_available)
