@@ -36,7 +36,7 @@ var building_map: Dictionary = {
 var dude_amount : int = 80
 
 func house_clicked(building: Building) -> void:
-	if !building.is_replaceable || Globals.current_state != Globals.GameState.Setup:
+	if !building.is_replaceable || building.building_type != BuildingType.Type.House || Globals.current_state != Globals.GameState.Setup:
 		return
 	
 	var current_day_restrictions: Dictionary = Globals.level_restrictions[current_day]
