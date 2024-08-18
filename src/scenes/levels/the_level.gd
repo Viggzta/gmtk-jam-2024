@@ -54,12 +54,41 @@ func house_clicked(building: Building) -> void:
 
 	var house_resource: Resource = building_map[Globals.current_building_type]
 	var house : Building = house_resource.instantiate()
-	house.initialize(building.position)
+	house.initialize(building.position, Globals.current_building_type)
 	house.pressed.connect(house_clicked)
+	house.right_pressed.connect(house_right_clicked)
 	building_spots[building.position] = house
 	building_root.add_child(house)
 	building_root.remove_child(building)
 	pass
+	
+func house_right_clicked(building: Building) -> void:
+	if !building.is_replaceable || Globals.current_state != Globals.GameState.Setup:
+		return
+	
+	var basic_building_type: BuildingType.Type = BuildingType.Type.House
+	if building.building_type == basic_building_type:
+		return
+		
+	var current_building_type: BuildingType.Type = building.building_type
+	
+	var house_resource: Resource = building_map[basic_building_type]
+	var house : Building = house_resource.instantiate()
+	house.initialize(building.position, basic_building_type)
+	house.pressed.connect(house_clicked)
+	house.right_pressed.connect(house_right_clicked)
+	building_spots[building.position] = house
+	building_root.add_child(house)
+	building_root.remove_child(building)
+	
+	buildings_placed[current_building_type] -= 1
+	
+	var current_day_restrictions: Dictionary = Globals.level_restrictions[current_day]
+	var max_allowed_count: int = 0
+	if current_day_restrictions.has(current_building_type):
+		max_allowed_count = Globals.level_restrictions[current_day][current_building_type]
+	var new_current_count: int = buildings_placed[current_building_type]
+	$CanvasLayer/ActionBar.set_building_count(current_building_type, max_allowed_count - new_current_count)
 
 func _create_build_spots(radius: float) -> void:
 	for x: int in range(-radius, radius + 1):
@@ -70,8 +99,9 @@ func _create_build_spots(radius: float) -> void:
 				if !building_spots.has(new_pos):
 					var house_resource : Resource = building_map[BuildingType.Type.House]
 					var house: Building = house_resource.instantiate()
-					house.initialize(new_pos)
+					house.initialize(new_pos, BuildingType.Type.House)
 					house.pressed.connect(house_clicked)
+					house.right_pressed.connect(house_right_clicked)
 					building_spots[new_pos] = house
 					building_root.add_child(house)
 	if current_max_radius < radius:
