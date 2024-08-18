@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cqqsr00su2lhj"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c2jvxc03e5iwf"]
 
 [ext_resource type="Shader" path="res://scripts/level_base/backestground.gdshader" id="1_mb86v"]
 [ext_resource type="Texture2D" uid="uid://18t2j6kamrjx" path="res://art/water.png" id="2_utgkh"]
