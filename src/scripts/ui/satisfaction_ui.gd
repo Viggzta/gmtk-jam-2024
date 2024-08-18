@@ -1,6 +1,7 @@
 extends Control
 
-const modifier: float = 0.15
+const modifier: float = 0.14
+const max_percent_per_second: float = 50
 
 signal lose
 signal win
@@ -12,12 +13,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if ($"/root/Globals".current_state == $"/root/Globals".GameState.Rush):
-		var dudes : int = $"/root/Globals".dude_count
+	if (Globals.current_state == Globals.GameState.Rush):
+		var dudes : int = Globals.dude_count
 		if(dudes <= 0):
 			win.emit()
 			return
 		
-		$ProgressBar.value -= dudes * modifier * delta
+		$ProgressBar.value -= clampf(dudes * modifier * delta, 0, max_percent_per_second * delta)
 		if($ProgressBar.value == 0):
 			lose.emit()
