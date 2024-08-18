@@ -1,6 +1,6 @@
 extends Control
 
-const modifier: float = 0.14
+const modifier: float = 0.08
 const max_percent_per_second: float = 50
 const day_modifier:float = 0.005
 
@@ -24,7 +24,8 @@ func _process(delta: float) -> void:
 			win.emit()
 			return
 
-		$ProgressBar.value -= needs * modifier * delta + current_day * day_modifier
+		var decrease: float = needs * modifier * delta + current_day * day_modifier
+		$ProgressBar.value -= clampf(decrease, 0, max_percent_per_second * delta)
 		if($ProgressBar.value == 0):
 			lose.emit()
 
