@@ -8,7 +8,7 @@ var _fx_bus_name: String = "FX"
 
 var dude_count: int = 0
 var total_needs: int = 0 
-var current_day :int = 0
+var current_day :int = 1
 var camera_shake: float = 0
 
 enum GameState { Setup, Rush, Failure, Success }
@@ -27,26 +27,46 @@ var level_restrictions: Dictionary = {
 	8 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
 	9 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
 	10 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	11 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	12 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	13 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	14 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	15 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	16 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	17 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	18 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	19 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	20 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	21 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	22 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	23 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	24 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	25 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	26 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	27 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	28 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	29 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4},
-	30 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4}
+}
+
+var level_needs: Dictionary = {
+	1 : [
+		[Pair.new([Dude.NeedType.Eat], 80)],
+	],
+	2 : [
+		[Pair.new([Dude.NeedType.Poop], 80)],
+	],
+	3 : [
+		[Pair.new([Dude.NeedType.Eat], 80)],
+		[Pair.new([Dude.NeedType.Poop], 80)],
+	],
+	4 : [
+		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 80)],
+	],
+	5 : [
+		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 80)],
+		[Pair.new([Dude.NeedType.Poop], 80)],
+	],
+	6 : [
+		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 80)],
+		[Pair.new([Dude.NeedType.Poop], 80)],
+	],
+	7 : [
+		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 80)],
+		[Pair.new([Dude.NeedType.Poop], 80)],
+	],
+	8 : [
+		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 80)],
+		[Pair.new([Dude.NeedType.Poop], 80)],
+	],
+	9 : [
+		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 80)],
+		[Pair.new([Dude.NeedType.Poop], 80)],
+	],
+	10 : [
+		[Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 80)],
+		[Pair.new([Dude.NeedType.Poop], 80)],
+	],
 }
 
 @onready var _music_bus := AudioServer.get_bus_index(_music_bus_name)

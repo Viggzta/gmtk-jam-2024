@@ -146,22 +146,30 @@ func _ready() -> void:
 	calculate_restrictions()
 	buildings_placed = {}
 	
-func _spawn_wave(amount: int) -> void:
-	$"/root/Globals".dude_count = amount
-	print(current_max_radius)
-	for i in range(0, amount):
-		var spawn_location_radians: float = randf() * TAU
-		var spawn_location: Vector2 = Vector2(
-			cos(spawn_location_radians) * current_max_radius * building_offset + cos(spawn_location_radians) * dude_spawn_offset,
-			sin(spawn_location_radians) * current_max_radius * building_offset + sin(spawn_location_radians) * dude_spawn_offset)
-		var dude: Node2D = DUDE.instantiate()
-		dude.initialize(spawn_location, [Dude.NeedType.Eat, Dude.NeedType.Poop], building_root)
-		dude_root.add_child(dude)
+func _spawn_wave() -> void:
+	Globals.dude_count = 0
+	print("Current day: " + str(current_day))
+	for level_need_arrays: Array in Globals.level_needs[current_day]:
+		print("Step1: " + str(level_need_arrays))
+		for level_need: Pair in level_need_arrays:
+			print("Step2: " + str(level_need))
+			for i in range(0, level_need.count):
+				var spawn_location_radians: float = randf() * TAU
+				var spawn_location: Vector2 = Vector2(
+					cos(spawn_location_radians) * current_max_radius * building_offset + cos(spawn_location_radians) * dude_spawn_offset,
+					sin(spawn_location_radians) * current_max_radius * building_offset + sin(spawn_location_radians) * dude_spawn_offset)
+				_spawn_dude(spawn_location, level_need.needs_array)
+		
+func _spawn_dude(spawn_location: Vector2, needs: Array[Dude.NeedType]) -> void:
+	var dude: Node2D = DUDE.instantiate()
+	dude.initialize(spawn_location, needs.duplicate(), building_root)
+	dude_root.add_child(dude)
+	Globals.dude_count += 1
 
 func _on_hud_pressed() -> void:
 	if Globals.current_state == Globals.GameState.Setup:
 		_lock_in_all_buildings()
-		_spawn_wave(dude_amount)
+		_spawn_wave()
 		_transition_game_state(globals.GameState.Rush)
 
 func _lock_in_all_buildings() -> void:

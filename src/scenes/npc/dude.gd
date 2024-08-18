@@ -1,7 +1,13 @@
 class_name Dude
 extends RigidBody2D
 
-enum NeedType {Poop, Eat, Entertainment, MedicalCare, HouseWalk}
+enum NeedType {
+	Poop,
+	Eat,
+	Entertainment,
+	MedicalCare,
+	HouseWalk,
+}
 
 const SPLAT = preload("res://scenes/npc/splat.tscn")
 
