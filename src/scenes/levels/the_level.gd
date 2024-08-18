@@ -33,6 +33,7 @@ var building_map: Dictionary = {
 	BuildingType.Type.House:preload("res://scenes/buildings/house.tscn"),
 	BuildingType.Type.ShitHouse:preload("res://scenes/buildings/shithouse.tscn"),
 	BuildingType.Type.Donken:preload("res://scenes/buildings/donken.tscn"),
+	BuildingType.Type.Cinema:preload("res://scenes/buildings/cinema.tscn"),
  }
 var dude_amount : int = 80
 
