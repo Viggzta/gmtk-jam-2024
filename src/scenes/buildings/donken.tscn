@@ -26,6 +26,6 @@ shape = SubResource("RectangleShape2D_mlg2l")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.572549)
 z_index = -3000
-position = Vector2(4, 38.5)
+position = Vector2(-1, 38)
 scale = Vector2(0.9375, 0.546875)
 texture = ExtResource("3_reah8")
