@@ -177,6 +177,7 @@ func _transition_game_state(state: globals.GameState) -> void:
 		new_day.emit(current_day)
 		$CanvasLayer/SatisfactionUi.visible = false
 		$"/root/Globals".dude_count = 0
+		$"/root/Globals".total_needs = 0
 		$CanvasLayer/SatisfactionUi/ProgressBar.value = 100
 		buildings_placed.clear()
 		calculate_restrictions()
@@ -184,6 +185,7 @@ func _transition_game_state(state: globals.GameState) -> void:
 		$CanvasLayer/SatisfactionUi.visible = true
 	elif state== globals.GameState.Failure:
 		current_day = 1
+		$"/root/Globals".total_needs = 0
 		get_tree().change_scene_to_file("res://scenes/levels/the_level.tscn")
 	elif state == globals.GameState.Success:
 		buildable_radius += build_radius_increase_addition
