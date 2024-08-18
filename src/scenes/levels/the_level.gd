@@ -198,7 +198,7 @@ func _transition_game_state(state: globals.GameState) -> void:
 	elif state== globals.GameState.Failure:
 		current_day = 1
 		Globals.total_needs = 0
-		upcoming_needs_ui.set_level_definition(0)
+		upcoming_needs_ui.set_level_definition(1)
 		get_tree().change_scene_to_file("res://scenes/levels/the_level.tscn")
 	elif state == globals.GameState.Success:
 		buildable_radius += build_radius_increase_addition
