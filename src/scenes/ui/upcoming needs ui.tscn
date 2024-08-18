@@ -24,7 +24,7 @@ offset_right = 128.0
 offset_bottom = 128.0
 texture = ExtResource("2_tkyec")
 
-[node name="FoodTxt2" type="Label" parent="."]
+[node name="FoodTxt" type="Label" parent="."]
 layout_mode = 2
 offset_left = 155.0
 offset_top = 35.0
