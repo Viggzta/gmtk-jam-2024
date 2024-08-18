@@ -4,15 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://d3r14xo6jdyqj" path="res://scenes/camera.tscn" id="2_1diri"]
 [ext_resource type="Script" path="res://scenes/levels/background_control.gd" id="2_s734i"]
 [ext_resource type="PackedScene" uid="uid://clr8o4motkuy8" path="res://scenes/ui/hud.tscn" id="4_2f8vd"]
-[ext_resource type="PackedScene" path="res://scenes/ui/satisfaction_ui.tscn" id="4_26rng"]
-[ext_resource type="PackedScene" path="res://scenes/ui/upcoming needs ui.tscn" id="4_ht8ao"]
+[ext_resource type="PackedScene" uid="uid://1aye1f1hfbhr" path="res://scenes/ui/satisfaction_ui.tscn" id="4_26rng"]
+[ext_resource type="PackedScene" uid="uid://dfnehc2jieral" path="res://scenes/ui/upcoming needs ui.tscn" id="4_ht8ao"]
 [ext_resource type="PackedScene" uid="uid://ci78tpn52jqrb" path="res://scenes/ui/settings_control.tscn" id="4_v4ej8"]
 [ext_resource type="Material" uid="uid://2nan6h7ds1xj" path="res://scripts/level_base/background_material.tres" id="5_dbp6e"]
 [ext_resource type="AudioStream" uid="uid://deogsrqi7jxd" path="res://audio/music/song1.wav" id="6_mrrr6"]
 [ext_resource type="PackedScene" uid="uid://dlt5hvje4cgux" path="res://scenes/ui/action_bar.tscn" id="7_56pmc"]
 [ext_resource type="Script" path="res://scenes/levels/music_player.gd" id="7_ouja1"]
-[ext_resource type="PackedScene" path="res://scenes/ui/day_ui.tscn" id="8_yypo5"]
-[ext_resource type="Material" uid="uid://c2jvxc03e5iwf" path="res://scripts/level_base/backestground_material.tres" id="10_20baa"]
+[ext_resource type="PackedScene" uid="uid://dc2yesmdvvnvq" path="res://scenes/ui/day_ui.tscn" id="8_yypo5"]
+[ext_resource type="Material" uid="uid://cqqsr00su2lhj" path="res://scripts/level_base/backestground_material.tres" id="10_20baa"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rxodp"]
 vertices = PackedVector2Array(47, -16, 32628.4, 18074.1, -27086.6, 18241.9, -49, -16, -30196.4, -20093.7, -49, -125, 33389.6, -22223.3, 47, -125)
@@ -86,13 +86,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -290.0
-offset_top = -290.0
-offset_right = 210.0
-offset_bottom = 210.0
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="ColorRectPlatform" type="ColorRect" parent="BackgroundControl"]
 material = ExtResource("5_dbp6e")

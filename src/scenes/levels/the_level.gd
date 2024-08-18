@@ -112,11 +112,12 @@ func _create_build_spots(radius: float) -> void:
 	_resize_platform(temp_radius)
 	
 func _resize_platform(r: float) -> void:
-	background_rect.position = Vector2(-r, -r)
-	background_rect.size = Vector2(r * 2, r * 2)
 	var r2: float = r + 500.0 
-	water_rect.position = Vector2(-r2, -r2)
-	water_rect.size = Vector2(r2 * 2, r2 * 2)
+
+	get_tree().create_tween().tween_property(background_rect, "size", Vector2(r * 2, r * 2), 0.5).set_trans(Tween.TRANS_ELASTIC)
+	get_tree().create_tween().tween_property(background_rect, "position", Vector2(-r, -r), 0.5).set_trans(Tween.TRANS_ELASTIC)
+	get_tree().create_tween().tween_property(water_rect, "size", Vector2(r2 * 2, r2 * 2), 0.5).set_trans(Tween.TRANS_ELASTIC)
+	get_tree().create_tween().tween_property(water_rect, "position", Vector2(-r2, -r2), 0.5).set_trans(Tween.TRANS_ELASTIC)
 
 func _ready() -> void:
 	Globals.current_state = Globals.GameState.Setup
