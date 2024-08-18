@@ -6,7 +6,9 @@ func _ready() -> void:
 	need_type = Dude.NeedType.Entertainment
 	super._ready()
 	
-func _on_dude_enter() -> void: 
-	print("call _add_satisfaction in progress bar from here")
+func _on_dude_enter() -> void:
+	Globals.incoming_satisfaction_buff += 0.1
+	
+
 	
 	

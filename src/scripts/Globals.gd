@@ -15,6 +15,8 @@ enum GameState { Setup, Rush, Failure, Success }
 var current_state: GameState = GameState.Setup
 var current_building_type: BuildingType.Type
 
+var incoming_satisfaction_buff:float = 0
+
 
 var level_restrictions: Dictionary = {
 	1 : {BuildingType.Type.ShitHouse : 0, BuildingType.Type.Donken : 1, BuildingType.Type.Cinema : 1},

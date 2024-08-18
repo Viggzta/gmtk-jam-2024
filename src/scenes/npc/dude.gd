@@ -147,6 +147,7 @@ func _hit_building(area: Node2D)->void:#area is the Area2D of the building
 		if(building is AuraBuilding):
 			building._on_dude_enter()
 			
+			
 
 func _get_tex_for_need(nt: NeedType) -> Texture2D:
 	match nt:

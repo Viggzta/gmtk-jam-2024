@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://ban5w4vkgugk0"]
+[gd_scene load_steps=3 format=3 uid="uid://ch0vxbilwjt7y"]
 
 [ext_resource type="Script" path="res://scenes/fx/talker.gd" id="1_1c1ei"]
 
@@ -11,5 +11,4 @@ script = ExtResource("1_1c1ei")
 stream = SubResource("AudioStreamPolyphonic_1d7e4")
 volume_db = 24.0
 autoplay = true
-stream_paused = true
 bus = &"FX"

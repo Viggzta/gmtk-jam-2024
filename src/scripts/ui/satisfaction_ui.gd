@@ -6,6 +6,7 @@ const day_modifier:float = 0.005
 
 signal lose
 signal win
+@onready var progress_bar: ProgressBar = $ProgressBar
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,6 +15,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if Input.is_key_pressed(KEY_F1):
+		Globals.incoming_satisfaction_buff += 0.2
+	
+	
 	if (Globals.current_state == Globals.GameState.Rush):
 		var dudes : int = Globals.dude_count
 		var needs : int =  Globals.total_needs
@@ -24,15 +30,14 @@ func _process(delta: float) -> void:
 			return
 
 		var decrease: float = needs * modifier * delta + current_day * day_modifier
-		$ProgressBar.value -= clampf(decrease, 0, max_percent_per_second * delta)
-		if($ProgressBar.value == 0):
+		progress_bar.value -= clampf(decrease, 0, max_percent_per_second * delta)
+		if Globals.incoming_satisfaction_buff > 0:
+			progress_bar.value += Globals.incoming_satisfaction_buff
+			Globals.incoming_satisfaction_buff = 0
+		
+		if(progress_bar.value == 0):
 			lose.emit()
 
 func _add_satisfaction(delta : float) -> void:
-		$ProgressBar.value += delta
+		progress_bar.value += delta
 	
-	
-	
-
-func _debug_print(dudes: int, needs:int)->void:
-	print("Total dudes: " + str(dudes) + " needs: " + str(needs))
