@@ -7,6 +7,7 @@ var _music_bus_name: String = "Music"
 var _fx_bus_name: String = "FX"
 
 var dude_count: int = 0
+var total_needs: int = 0 
 
 enum GameState { Setup, Rush, Failure, Success }
 var current_state: GameState = GameState.Setup

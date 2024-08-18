@@ -46,6 +46,7 @@ func _ready() -> void:
 	# and the navigation layout.
 	navigation_agent.path_desired_distance = 4.0
 	navigation_agent.target_desired_distance = 4.0
+	$"/root/Globals".total_needs += needs.size()
 	
 	_randomize_dude_sprite()
 
@@ -125,6 +126,7 @@ func _hit_building(area: Node2D)->void:#area is the Area2D of the building
 		var building: Building = area.get_parent()
 		if building == target_need_building:
 			needs.remove_at(0)
+			$"/root/Globals".total_needs -= 1
 			if len(needs) == 0:
 				_go_splat()
 			else:

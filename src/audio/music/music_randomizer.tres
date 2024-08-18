@@ -1,4 +1,4 @@
-[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://cyaf16755cxhm"]
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://bxgv0q1c7dcni"]
 
 [ext_resource type="AudioStream" uid="uid://deogsrqi7jxd" path="res://audio/music/song1.wav" id="1_jwumt"]
 [ext_resource type="AudioStream" uid="uid://3i2c8wwb5hw5" path="res://audio/music/song2.mp3" id="2_e2vae"]

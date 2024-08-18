@@ -1,6 +1,6 @@
 extends Control
 
-const modifier: float = 0.15
+const modifier: float = 0.08
 
 signal lose
 signal win
@@ -14,10 +14,16 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if ($"/root/Globals".current_state == $"/root/Globals".GameState.Rush):
 		var dudes : int = $"/root/Globals".dude_count
+		var needs : int =  $"/root/Globals".total_needs
+		_debug_print(dudes, needs)
 		if(dudes <= 0):
 			win.emit()
 			return
 		
-		$ProgressBar.value -= dudes * modifier * delta
+		$ProgressBar.value -= needs * modifier * delta
 		if($ProgressBar.value == 0):
 			lose.emit()
+
+
+func _debug_print(dudes: int, needs:int)->void:
+	print("Total dudes: " + str(dudes) + " needs: " + str(needs))
