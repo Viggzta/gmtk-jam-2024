@@ -7,7 +7,8 @@ const DUDE = preload("res://scenes/npc/dude.tscn")
 @onready var dude_root: Node2D = $DudeRoot
 @onready var building_root: Node2D = $Navmesh/BuildingRoot
 @onready var navmesh: NavigationRegion2D = $Navmesh
-@onready var background_rect: ColorRect = $BackgroundControl/ColorRect
+@onready var background_rect: ColorRect = $BackgroundControl/ColorRectPlatform
+@onready var water_rect: ColorRect = $BackgroundControl/ColorRectWater
 
 
 @export var buildable_radius: float = 2
@@ -108,8 +109,14 @@ func _create_build_spots(radius: float) -> void:
 		current_max_radius = radius
 	navmesh.bake_navigation_polygon()
 	var temp_radius: float = radius * building_offset + dude_spawn_offset + platform_extra_offset
-	background_rect.position = Vector2(-temp_radius, -temp_radius)
-	background_rect.size = Vector2(temp_radius * 2, temp_radius * 2)
+	_resize_platform(temp_radius)
+	
+func _resize_platform(r: float) -> void:
+	background_rect.position = Vector2(-r, -r)
+	background_rect.size = Vector2(r * 2, r * 2)
+	var r2: float = r + 500.0 
+	water_rect.position = Vector2(-r2, -r2)
+	water_rect.size = Vector2(r2 * 2, r2 * 2)
 
 func _ready() -> void:
 	Globals.current_state = Globals.GameState.Setup

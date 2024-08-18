@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c2jvxc03e5iwf"]
+
+[ext_resource type="Shader" path="res://scripts/level_base/backestground.gdshader" id="1_mb86v"]
+[ext_resource type="Texture2D" uid="uid://18t2j6kamrjx" path="res://art/water.png" id="2_utgkh"]
+
+[resource]
+shader = ExtResource("1_mb86v")
+shader_parameter/speed_scroll = 0.01
+shader_parameter/speed_wave = 0.25
+shader_parameter/amplitude = 0.03
+shader_parameter/scale = 2.885
+shader_parameter/inTexture = ExtResource("2_utgkh")
