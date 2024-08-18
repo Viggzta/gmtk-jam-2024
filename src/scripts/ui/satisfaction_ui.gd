@@ -1,7 +1,7 @@
 extends Control
 
 const modifier: float = 0.08
-const max_percent_per_second: float = 50
+const max_percent_per_second: float = 25
 const day_modifier:float = 0.005
 
 signal lose
