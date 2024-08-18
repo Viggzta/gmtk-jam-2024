@@ -3,7 +3,7 @@ on: push
 
 env:
   GODOT_VERSION: 4.3
-  EXPORT_NAME: gmtk-jam-2024
+  EXPORT_NAME: TouristRush
   PROJECT_PATH: src
 
 jobs:
