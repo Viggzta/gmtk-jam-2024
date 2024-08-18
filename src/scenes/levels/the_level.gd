@@ -198,7 +198,7 @@ func _transition_game_state(state: globals.GameState) -> void:
 		buildable_radius += build_radius_increase_addition
 		dude_amount *= dude_increase_multiply
 		_create_build_spots(buildable_radius)
-		if(Globals.current_day == 10):
+		if(Globals.current_day == 1):
 			$CanvasLayer/WinScreen.show_screen()
 			get_tree().paused = true
 		else:

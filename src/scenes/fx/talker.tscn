@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://enek6e0qcqd0"]
+[gd_scene load_steps=2 format=3 uid="uid://ch0vxbilwjt7y"]
 
 [ext_resource type="Script" path="res://scenes/fx/talker.gd" id="1_1c1ei"]
 
@@ -6,4 +6,5 @@
 script = ExtResource("1_1c1ei")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = 24.0
 bus = &"FX"
