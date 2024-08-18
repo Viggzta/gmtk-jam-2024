@@ -198,7 +198,7 @@ func _transition_game_state(state: globals.GameState) -> void:
 		buildable_radius += build_radius_increase_addition
 		dude_amount *= dude_increase_multiply
 		_create_build_spots(buildable_radius)
-		if(Globals.current_day == 1):
+		if(Globals.current_day == 10):
 			$CanvasLayer/WinScreen.show_screen()
 			get_tree().paused = true
 		else:
@@ -243,9 +243,6 @@ func _debug_logic()->void:
 	text += "Current day: '" + str(Globals.current_day) + "'" + "\n"
 	text += "Current state: '" + str(Globals.current_state) +"'" + "\n"
 	debug_window.get_child(0).text = text
-	
-	
-	
 
 
 func _on_win_screen_pressed_play_again() -> void:
