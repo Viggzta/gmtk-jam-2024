@@ -24,6 +24,7 @@ func initialize(texture: Texture2D, type: BuildingType.Type, action_bar: ActionB
 	$BuildingTexture.texture = texture
 	building_type = type
 	_parent_action_bar = action_bar
+	set_level_count(0)
 	
 func _process(delta: float) -> void:
 	if _hoover:

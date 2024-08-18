@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhk5kf6843qh"]
+[gd_scene load_steps=7 format=3 uid="uid://dhk5kf6843qh"]
 
 [ext_resource type="Texture2D" uid="uid://sbk4gb631rqi" path="res://art/boss/boss.png" id="1_80yie"]
 [ext_resource type="Texture2D" uid="uid://dc3wng1tq72l2" path="res://art/boss/openClose.png" id="2_hjp2p"]
 [ext_resource type="Script" path="res://scenes/boss/boss.gd" id="2_pnxck"]
 [ext_resource type="Texture2D" uid="uid://mghlo4uf6cah" path="res://art/boss/openMedium.png" id="3_q4i6n"]
 [ext_resource type="Texture2D" uid="uid://bar4m63uohb5q" path="res://art/boss/openMouth.png" id="4_o0u7f"]
+[ext_resource type="PackedScene" uid="uid://ch0vxbilwjt7y" path="res://scenes/fx/talker.tscn" id="6_hpt83"]
 
 [node name="Boss" type="Control"]
 layout_mode = 3
@@ -40,3 +41,5 @@ offset_top = -123.0
 offset_right = 114.0
 offset_bottom = 16.0
 text = "LOREM IPSUM STUFF LOLOLOL"
+
+[node name="Talker" parent="." instance=ExtResource("6_hpt83")]

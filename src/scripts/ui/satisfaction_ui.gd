@@ -14,12 +14,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if ($"/root/Globals".current_state == $"/root/Globals".GameState.Rush):
+	if (Globals.current_state == Globals.GameState.Rush):
 		var dudes : int = Globals.dude_count
 		var needs : int =  Globals.total_needs
 		var current_day : int = Globals.current_day
 
-		_debug_print(dudes, needs)
 		if(dudes <= 0):
 			win.emit()
 			return
@@ -29,6 +28,11 @@ func _process(delta: float) -> void:
 		if($ProgressBar.value == 0):
 			lose.emit()
 
+func _add_satisfaction(delta : float) -> void:
+		$ProgressBar.value += delta
+	
+	
+	
 
 func _debug_print(dudes: int, needs:int)->void:
 	print("Total dudes: " + str(dudes) + " needs: " + str(needs))
