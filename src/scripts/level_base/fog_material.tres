@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bewh4cwwk081y"]
+
+[ext_resource type="Shader" path="res://scripts/level_base/fog.gdshader" id="1_6kt8c"]
+
+[resource]
+shader = ExtResource("1_6kt8c")
+shader_parameter/inColor = Color(0.654902, 0.654902, 0.654902, 1)

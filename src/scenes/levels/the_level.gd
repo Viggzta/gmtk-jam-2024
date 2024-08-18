@@ -9,6 +9,8 @@ const DUDE = preload("res://scenes/npc/dude.tscn")
 @onready var navmesh: NavigationRegion2D = $Navmesh
 @onready var background_rect: ColorRect = $BackgroundControl/ColorRectPlatform
 @onready var water_rect: ColorRect = $BackgroundControl/ColorRectWater
+@onready var fog_rect: ColorRect = $BackgroundControl/ColorRectFog
+
 
 
 @export var buildable_radius: float = 2
@@ -118,6 +120,8 @@ func _resize_platform(r: float) -> void:
 	get_tree().create_tween().tween_property(background_rect, "position", Vector2(-r, -r), 0.5).set_trans(Tween.TRANS_ELASTIC)
 	get_tree().create_tween().tween_property(water_rect, "size", Vector2(r2 * 2, r2 * 2), 0.5).set_trans(Tween.TRANS_ELASTIC)
 	get_tree().create_tween().tween_property(water_rect, "position", Vector2(-r2, -r2), 0.5).set_trans(Tween.TRANS_ELASTIC)
+	get_tree().create_tween().tween_property(fog_rect, "size", Vector2(r2 * 2, r2 * 2), 0.5).set_trans(Tween.TRANS_ELASTIC)
+	get_tree().create_tween().tween_property(fog_rect, "position", Vector2(-r2, -r2), 0.5).set_trans(Tween.TRANS_ELASTIC)
 
 func _ready() -> void:
 	Globals.current_state = Globals.GameState.Setup
