@@ -13,6 +13,6 @@ void fragment() {
 	float circle2 = step(0.46, length(UV - 0.5)) * 0.5;
 	float circle3 = step(0.43, length(UV - 0.5)) * 0.25;
 	float circle99 = circle + circle2 + circle3;
-    
+
     COLOR = vec4(inColor.rgb, inColor.a * circle99);
 }

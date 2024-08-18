@@ -4,10 +4,12 @@ extends HBoxContainer
 @onready var rich_text_label: Label = $RichTextLabel
 
 var template: Pair
+var max_count: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	rich_text_label.text = "x" + str(template.count)
+	var percent_count: float = roundf((float(template.count) / float(max_count)) * 100.0)
+	rich_text_label.text = str(percent_count) + "%"
 
 	for n: Dude.NeedType in template.needs_array:
 		var tex: Texture2D = Helper.get_texture_for_need(n)
@@ -19,5 +21,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func set_template(t: Pair) -> void:
+func set_template(t: Pair, max: int) -> void:
 	template = t
+	max_count = max

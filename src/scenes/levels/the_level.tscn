@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://clr8o4motkuy8" path="res://scenes/ui/hud.tscn" id="4_2f8vd"]
 [ext_resource type="PackedScene" uid="uid://1aye1f1hfbhr" path="res://scenes/ui/satisfaction_ui.tscn" id="4_26rng"]
 [ext_resource type="PackedScene" path="res://scenes/ui/upcoming needs ui.tscn" id="4_ht8ao"]
+[ext_resource type="PackedScene" path="res://scenes/ui/satisfaction_ui.tscn" id="4_26rng"]
+[ext_resource type="PackedScene" uid="uid://dfnehc2jieral" path="res://scenes/ui/upcoming needs ui.tscn" id="4_ht8ao"]
 [ext_resource type="PackedScene" uid="uid://ci78tpn52jqrb" path="res://scenes/ui/settings_control.tscn" id="4_v4ej8"]
 [ext_resource type="Material" uid="uid://2nan6h7ds1xj" path="res://scripts/level_base/background_material.tres" id="5_dbp6e"]
 [ext_resource type="PackedScene" uid="uid://dlt5hvje4cgux" path="res://scenes/ui/action_bar.tscn" id="7_56pmc"]
@@ -16,6 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://b2u6rmlb6n2dm" path="res://scenes/ui/debug_window.tscn" id="9_j00qm"]
 [ext_resource type="Material" path="res://scripts/level_base/backestground_material.tres" id="10_20baa"]
 [ext_resource type="Material" path="res://scripts/level_base/fog_material.tres" id="11_l824i"]
+[ext_resource type="PackedScene" path="res://scenes/ui/day_ui.tscn" id="8_yypo5"]
+[ext_resource type="PackedScene" uid="uid://s68crfjmh1ua" path="res://scenes/ui/win_screen.tscn" id="9_6fjku"]
+[ext_resource type="PackedScene" path="res://scenes/ui/debug_window.tscn" id="9_j00qm"]
+[ext_resource type="Material" uid="uid://c2jvxc03e5iwf" path="res://scripts/level_base/backestground_material.tres" id="10_20baa"]
+[ext_resource type="Material" uid="uid://bewh4cwwk081y" path="res://scripts/level_base/fog_material.tres" id="11_l824i"]
 [ext_resource type="AudioStream" uid="uid://bxgv0q1c7dcni" path="res://audio/music/music_randomizer.tres" id="12_rtxqu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rxodp"]
@@ -30,8 +37,6 @@ script = ExtResource("1_vl667")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UpcomingNeedsUi" parent="CanvasLayer" instance=ExtResource("4_ht8ao")]
-offset_left = 40.0
-offset_right = 290.0
 
 [node name="ActionBar" parent="CanvasLayer" instance=ExtResource("7_56pmc")]
 
