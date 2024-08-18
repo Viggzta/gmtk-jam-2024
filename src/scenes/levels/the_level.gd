@@ -177,14 +177,14 @@ func _lock_in_all_buildings() -> void:
 			building.is_replaceable = false
 
 func _transition_game_state(state: globals.GameState) -> void:
-	$"/root/Globals".current_state = state
+	Globals.current_state = state
 
 	if state == globals.GameState.Setup:
 		current_day += 1
 		new_day.emit(current_day)
 		$CanvasLayer/SatisfactionUi.visible = false
-		$"/root/Globals".dude_count = 0
-		$"/root/Globals".total_needs = 0
+		Globals.dude_count = 0
+		Globals.total_needs = 0
 		$CanvasLayer/SatisfactionUi/ProgressBar.value = 100
 		buildings_placed.clear()
 		calculate_restrictions()
@@ -192,13 +192,17 @@ func _transition_game_state(state: globals.GameState) -> void:
 		$CanvasLayer/SatisfactionUi.visible = true
 	elif state== globals.GameState.Failure:
 		current_day = 1
-		$"/root/Globals".total_needs = 0
+		Globals.total_needs = 0
 		get_tree().change_scene_to_file("res://scenes/levels/the_level.tscn")
 	elif state == globals.GameState.Success:
 		buildable_radius += build_radius_increase_addition
 		dude_amount *= dude_increase_multiply
 		_create_build_spots(buildable_radius)
-		_transition_game_state(globals.GameState.Setup)
+		if(Globals.current_day == 10):
+			$CanvasLayer/WinScreen.show_screen()
+			get_tree().paused = true
+		else:
+			_transition_game_state(globals.GameState.Setup)
 
 
 func _on_satisfaction_ui_lose() -> void:
@@ -242,3 +246,7 @@ func _debug_logic()->void:
 	
 	
 	
+
+
+func _on_win_screen_pressed_play_again() -> void:
+	_transition_game_state(globals.GameState.Failure)
