@@ -1,7 +1,7 @@
 extends Control
 
-const modifier: float = 0.15
-const max_percent_per_second: float = 10
+const modifier: float = 0.08
+const max_percent_per_second: float = 7
 const day_modifier:float = 0.005
 
 signal lose
@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 			win.emit()
 			return
 
-		var decrease: float = needs * modifier * delta + current_day * day_modifier
+		var decrease: float = needs * modifier * delta + clampf(current_day * day_modifier, 0, 0.025)
 		progress_bar.value -= clampf(decrease, 0, max_percent_per_second * delta)
 		if Globals.incoming_satisfaction_buff > 0:
 			progress_bar.value += Globals.incoming_satisfaction_buff
