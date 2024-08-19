@@ -7,7 +7,7 @@ const HOUSE = preload("res://art/buildings/house3.png")
 const DONKEN = preload("res://art/buildings/donken.png")
 const HOSPITAL = preload("res://art/buildings/hospital.png")
 const CINEMA = preload("res://art/buildings/cinema.png")
-const NITECLUB = preload("res://art/buildings/niteclub.png")
+const NITECLUB = preload("res://art/buildings/nite_club_still.png")
 
 @export var button_offset: float = 100. 
 
