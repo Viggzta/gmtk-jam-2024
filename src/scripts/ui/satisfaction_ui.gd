@@ -16,10 +16,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	if Input.is_key_pressed(KEY_F1):
-		Globals.incoming_satisfaction_buff += 0.2
-	
-	
 	if (Globals.current_state == Globals.GameState.Rush):
 		var dudes : int = Globals.dude_count
 		var needs : int =  Globals.total_needs
