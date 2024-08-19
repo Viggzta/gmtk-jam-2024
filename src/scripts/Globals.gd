@@ -19,7 +19,7 @@ var incoming_satisfaction_buff:float = 0
 
 
 var level_restrictions: Dictionary = {
-	1 : {BuildingType.Type.ShitHouse : 0, BuildingType.Type.Donken : 1, BuildingType.Type.Cinema : 1},
+	1 : {BuildingType.Type.ShitHouse : 0, BuildingType.Type.Donken : 1, BuildingType.Type.Cinema : 1, BuildingType.Type.NiteClub : 1},
 	2 : {BuildingType.Type.ShitHouse : 2, BuildingType.Type.Donken : 0 },
 	3 : {BuildingType.Type.ShitHouse : 2, BuildingType.Type.Donken : 2 },
 	4 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 2, BuildingType.Type.Hospital : 1 },
@@ -28,7 +28,7 @@ var level_restrictions: Dictionary = {
 	7 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4 },
 	8 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4 },
 	9 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4 },
-	10 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4 },
+	10 : {BuildingType.Type.ShitHouse : 4, BuildingType.Type.Donken : 4, BuildingType.Type.NiteClub : 1 },
 }
 
 var level_needs: Dictionary = {
@@ -67,8 +67,9 @@ var level_needs: Dictionary = {
 		Pair.new([Dude.NeedType.Poop], 180),
 	],
 	10 : [
-		Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 200),
-		Pair.new([Dude.NeedType.Poop], 200),
+		Pair.new([Dude.NeedType.Eat, Dude.NeedType.Poop], 100),
+		Pair.new([Dude.NeedType.Poop], 100),
+		Pair.new([Dude.NeedType.Entertainment], 50),
 	],
 }
 
