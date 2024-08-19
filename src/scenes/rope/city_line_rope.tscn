@@ -1,0 +1,232 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg5vjfotr0s4e"]
+
+[ext_resource type="Texture2D" uid="uid://dcqiha0xtdodj" path="res://art/Circle.png" id="1_u5jwd"]
+[ext_resource type="PackedScene" uid="uid://fn00t2s7cv2v" path="res://scenes/rope/rope_segment.tscn" id="2_qg0bp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4wis"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3up5p"]
+
+[node name="CityLineRope" type="Node2D"]
+
+[node name="RopeHolder" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RopeHolder"]
+shape = SubResource("RectangleShape2D_d4wis")
+
+[node name="Circle" type="Sprite2D" parent="RopeHolder"]
+scale = Vector2(0.0640625, 0.0640625)
+texture = ExtResource("1_u5jwd")
+
+[node name="Joint" type="Node2D" parent="RopeHolder"]
+
+[node name="PinJoint2D" type="PinJoint2D" parent="RopeHolder/Joint"]
+position = Vector2(9, 0)
+node_a = NodePath("../..")
+node_b = NodePath("../../../1Rope Segment")
+
+[node name="Area2D" type="Area2D" parent="RopeHolder/Joint"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RopeHolder/Joint/Area2D"]
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_3up5p")
+debug_color = Color(0.197789, 0.29175, 0.807163, 0.42)
+
+[node name="1Rope Segment" parent="." instance=ExtResource("2_qg0bp")]
+position = Vector2(30, 1)
+
+[node name="Joint2" type="Node2D" parent="1Rope Segment"]
+position = Vector2(-7.15256e-07, 15)
+rotation = 1.5708
+
+[node name="Area2D" type="Area2D" parent="1Rope Segment/Joint2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1Rope Segment/Joint2/Area2D"]
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_3up5p")
+debug_color = Color(0.197789, 0.29175, 0.807163, 0.42)
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="1Rope Segment/Joint2"]
+position = Vector2(11, 0)
+node_a = NodePath("../..")
+node_b = NodePath("../../../Rope Segment2")
+
+[node name="Rope Segment2" parent="." instance=ExtResource("2_qg0bp")]
+position = Vector2(83, 1)
+
+[node name="Joint3" type="Node2D" parent="Rope Segment2"]
+position = Vector2(-7.15256e-07, 16)
+rotation = 1.5708
+
+[node name="Area2D" type="Area2D" parent="Rope Segment2/Joint3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rope Segment2/Joint3/Area2D"]
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_3up5p")
+debug_color = Color(0.197789, 0.29175, 0.807163, 0.42)
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="Rope Segment2/Joint3"]
+position = Vector2(11, 0)
+node_a = NodePath("../..")
+node_b = NodePath("../../../Rope Segment3")
+
+[node name="Rope Segment3" parent="." instance=ExtResource("2_qg0bp")]
+position = Vector2(137, 1)
+
+[node name="Joint4" type="Node2D" parent="Rope Segment3"]
+position = Vector2(-7.15256e-07, 15)
+rotation = 1.5708
+
+[node name="Area2D" type="Area2D" parent="Rope Segment3/Joint4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rope Segment3/Joint4/Area2D"]
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_3up5p")
+debug_color = Color(0.197789, 0.29175, 0.807163, 0.42)
+
+[node name="PinJoint2D4" type="PinJoint2D" parent="Rope Segment3/Joint4"]
+position = Vector2(11, 0)
+node_a = NodePath("../..")
+node_b = NodePath("../../../Rope Segment4")
+
+[node name="Rope Segment4" parent="." instance=ExtResource("2_qg0bp")]
+position = Vector2(190, 1)
+
+[node name="Joint5" type="Node2D" parent="Rope Segment4"]
+position = Vector2(-7.15256e-07, 16)
+rotation = 1.5708
+
+[node name="Area2D" type="Area2D" parent="Rope Segment4/Joint5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rope Segment4/Joint5/Area2D"]
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_3up5p")
+debug_color = Color(0.197789, 0.29175, 0.807163, 0.42)
+
+[node name="PinJoint2D5" type="PinJoint2D" parent="Rope Segment4/Joint5"]
+position = Vector2(11, 0)
+node_a = NodePath("../..")
+node_b = NodePath("../../../Rope Segment5")
+
+[node name="Rope Segment5" parent="." instance=ExtResource("2_qg0bp")]
+position = Vector2(244, 1)
+
+[node name="Joint6" type="Node2D" parent="Rope Segment5"]
+position = Vector2(-7.15256e-07, 15)
+rotation = 1.5708
+
+[node name="Area2D" type="Area2D" parent="Rope Segment5/Joint6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rope Segment5/Joint6/Area2D"]
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_3up5p")
+debug_color = Color(0.197789, 0.29175, 0.807163, 0.42)
+
+[node name="PinJoint2D6" type="PinJoint2D" parent="Rope Segment5/Joint6"]
+position = Vector2(11, 0)
+node_a = NodePath("../..")
+node_b = NodePath("../../../Rope Segment6")
+
+[node name="Rope Segment6" parent="." instance=ExtResource("2_qg0bp")]
+position = Vector2(297, 1)
+
+[node name="Joint7" type="Node2D" parent="Rope Segment6"]
+position = Vector2(-7.15256e-07, 16)
+rotation = 1.5708
+
+[node name="Area2D" type="Area2D" parent="Rope Segment6/Joint7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rope Segment6/Joint7/Area2D"]
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_3up5p")
+debug_color = Color(0.197789, 0.29175, 0.807163, 0.42)
+
+[node name="PinJoint2D7" type="PinJoint2D" parent="Rope Segment6/Joint7"]
+position = Vector2(11, 0)
+node_a = NodePath("../..")
+node_b = NodePath("../../../Rope Segment7")
+
+[node name="Rope Segment7" parent="." instance=ExtResource("2_qg0bp")]
+position = Vector2(351, 1)
+
+[node name="Joint8" type="Node2D" parent="Rope Segment7"]
+position = Vector2(-5.96046e-07, 15)
+rotation = 1.5708
+
+[node name="Area2D" type="Area2D" parent="Rope Segment7/Joint8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rope Segment7/Joint8/Area2D"]
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_3up5p")
+debug_color = Color(0.197789, 0.29175, 0.807163, 0.42)
+
+[node name="PinJoint2D8" type="PinJoint2D" parent="Rope Segment7/Joint8"]
+position = Vector2(11, 0)
+node_a = NodePath("../..")
+node_b = NodePath("../../../Rope Segment8")
+
+[node name="Rope Segment8" parent="." instance=ExtResource("2_qg0bp")]
+position = Vector2(404, 1)
+
+[node name="Joint9" type="Node2D" parent="Rope Segment8"]
+position = Vector2(-7.15256e-07, 16)
+rotation = 1.5708
+
+[node name="Area2D" type="Area2D" parent="Rope Segment8/Joint9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rope Segment8/Joint9/Area2D"]
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_3up5p")
+debug_color = Color(0.197789, 0.29175, 0.807163, 0.42)
+
+[node name="PinJoint2D9" type="PinJoint2D" parent="Rope Segment8/Joint9"]
+position = Vector2(11, 0)
+node_a = NodePath("../..")
+node_b = NodePath("../../../Rope Segment9")
+
+[node name="Rope Segment9" parent="." instance=ExtResource("2_qg0bp")]
+position = Vector2(458, 1)
+
+[node name="Joint10" type="Node2D" parent="Rope Segment9"]
+position = Vector2(-5.96046e-07, 15)
+rotation = 1.5708
+
+[node name="Area2D" type="Area2D" parent="Rope Segment9/Joint10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rope Segment9/Joint10/Area2D"]
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_3up5p")
+debug_color = Color(0.197789, 0.29175, 0.807163, 0.42)
+
+[node name="PinJoint2D10" type="PinJoint2D" parent="Rope Segment9/Joint10"]
+position = Vector2(11, 0)
+node_a = NodePath("../..")
+node_b = NodePath("../../../Rope Segment10")
+
+[node name="Rope Segment10" parent="." instance=ExtResource("2_qg0bp")]
+position = Vector2(511, 1)
+
+[node name="RopeHolder2" type="StaticBody2D" parent="."]
+position = Vector2(547, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RopeHolder2"]
+shape = SubResource("RectangleShape2D_d4wis")
+
+[node name="Circle" type="Sprite2D" parent="RopeHolder2"]
+scale = Vector2(0.0640625, 0.0640625)
+texture = ExtResource("1_u5jwd")
+
+[node name="Joint11" type="Node2D" parent="RopeHolder2"]
+position = Vector2(-23, 0)
+
+[node name="Area2D" type="Area2D" parent="RopeHolder2/Joint11"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RopeHolder2/Joint11/Area2D"]
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_3up5p")
+debug_color = Color(0.197789, 0.29175, 0.807163, 0.42)
+
+[node name="PinJoint2D11" type="PinJoint2D" parent="RopeHolder2/Joint11"]
+position = Vector2(13, 0)
+node_a = NodePath("../../../Rope Segment10")
+node_b = NodePath("../..")

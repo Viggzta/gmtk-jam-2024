@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://fn00t2s7cv2v"]
+
+[ext_resource type="Texture2D" uid="uid://sbk4gb631rqi" path="res://art/boss/boss.png" id="1_4wleg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_meykj"]
+radius = 7.0
+height = 54.0
+
+[node name="Rope Segment" type="RigidBody2D"]
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_meykj")
+
+[node name="RopeArt" type="Sprite2D" parent="."]
+position = Vector2(-1.19209e-07, -2)
+scale = Vector2(0.109375, 0.21582)
+texture = ExtResource("1_4wleg")
