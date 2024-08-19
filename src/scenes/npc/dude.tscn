@@ -14,6 +14,7 @@ radius = 44.0454
 
 [node name="Dude" type="RigidBody2D"]
 mass = 26.515
+gravity_scale = 0.0
 script = ExtResource("1_t7m2o")
 
 [node name="ImageRoot" type="Node2D" parent="."]
