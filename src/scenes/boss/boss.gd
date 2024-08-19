@@ -53,13 +53,14 @@ func reset(convo: Array[String])->void:
 func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("conversation_skip"):
-		if !wait_for_input:
+		if wait_for_input:
+			_move_on_to_next_line()
+		else:
 			_skip_to_end_of_line()
 			
 	if wait_for_input:
 		_wait_timer += delta
 		if _wait_timer > target_wait_timer:
-			_wait_timer = 0
 			_move_on_to_next_line()
 	
 	if not text_fully_rendered and not wait_for_input and start_talking:
@@ -106,6 +107,7 @@ func _move_on_to_next_line()->void:
 	character_index = 0
 	message.text = ""
 	wait_for_input = false
+	_wait_timer = 0
 
 func _close_mouth()->void:
 	current_mouth.visible = false
