@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://1a5exfqoma7m"]
+
+[ext_resource type="Script" path="res://scenes/ui/falling_dude.gd" id="1_o8b5w"]
+[ext_resource type="Texture2D" uid="uid://dav3o5ahega2w" path="res://art/dude1.png" id="2_q4ka4"]
+
+[node name="FallingDude" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_o8b5w")
+
+[node name="Sprite2D" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -118.0
+offset_right = 62.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_q4ka4")
