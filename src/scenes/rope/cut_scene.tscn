@@ -1,131 +1,156 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyxv7j2tn2cwc"]
+[gd_scene load_steps=13 format=3 uid="uid://dyxv7j2tn2cwc"]
 
 [ext_resource type="Texture2D" uid="uid://r4av7ou5yclp" path="res://art/grass.png" id="1_7g7v1"]
 [ext_resource type="PackedScene" uid="uid://bg5vjfotr0s4e" path="res://scenes/rope/city_line_rope.tscn" id="1_fpjl3"]
+[ext_resource type="Script" path="res://scenes/rope/cut_scene.gd" id="1_reyrm"]
 [ext_resource type="PackedScene" uid="uid://di033g3q3mg8k" path="res://scenes/test/henrik/scissor.tscn" id="2_1q317"]
 [ext_resource type="Texture2D" uid="uid://b7gja5oqqwv0r" path="res://art/buildings/cinema.png" id="4_notbi"]
 [ext_resource type="Texture2D" uid="uid://c4n0yaaowuoje" path="res://art/buildings/house3.png" id="4_pow0f"]
 [ext_resource type="Texture2D" uid="uid://d4i7prgkick60" path="res://art/buildings/baja-maja.png" id="5_w7ly1"]
 [ext_resource type="Texture2D" uid="uid://cx3404sc47tvc" path="res://art/buildings/hospital.png" id="6_8vep8"]
+[ext_resource type="Texture2D" uid="uid://770cyr7u0xkr" path="res://art/buildings/donken.png" id="9_1akiw"]
 [ext_resource type="PackedScene" uid="uid://dhk5kf6843qh" path="res://scenes/boss/boss.tscn" id="9_6rcgw"]
-[ext_resource type="Texture2D" uid="uid://dy2sn8vwdg0w6" path="res://art/turkey/turkey.png" id="9_ork1k"]
+[ext_resource type="PackedScene" uid="uid://ci78tpn52jqrb" path="res://scenes/ui/settings_control.tscn" id="11_b4bmd"]
+[ext_resource type="Texture2D" uid="uid://cjhasv3xkwnec" path="res://art/buildings/niteclub.png" id="12_25yt4"]
 
-[node name="CutScene" type="Node2D"]
+[node name="CutScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_reyrm")
 
-[node name="Grass" type="Sprite2D" parent="."]
-position = Vector2(579.5, 324.5)
+[node name="Grass" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.04427
+anchor_bottom = 1.04475
+offset_right = -179.0
+offset_bottom = 347.0
 scale = Vector2(1.1748, 0.661133)
 texture = ExtResource("1_7g7v1")
+metadata/_edit_use_anchors_ = true
 
-[node name="CityLineRope" parent="." instance=ExtResource("1_fpjl3")]
-position = Vector2(328, 421)
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Cinema" type="Sprite2D" parent="."]
-position = Vector2(417, 132)
-scale = Vector2(2, 2)
+[node name="CityLineRope" parent="Control" instance=ExtResource("1_fpjl3")]
+position = Vector2(-196, 134)
+
+[node name="Cinema" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -401.0
+offset_top = -148.0
+offset_right = -273.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_notbi")
 
-[node name="Hospital" type="Sprite2D" parent="."]
-position = Vector2(978, -29)
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("6_8vep8")
-
-[node name="Houses" type="Node2D" parent="."]
-
-[node name="Small house" type="Sprite2D" parent="Houses"]
-position = Vector2(287, 270)
-rotation = -0.0891102
-scale = Vector2(1.23199, 1.23199)
-texture = ExtResource("4_pow0f")
-
-[node name="Small house2" type="Sprite2D" parent="Houses"]
-position = Vector2(1117, 326)
-rotation = -0.0891102
-scale = Vector2(1.23199, 1.23199)
-texture = ExtResource("4_pow0f")
-
-[node name="Medium House" type="Sprite2D" parent="Houses"]
-position = Vector2(908, 232)
-rotation = -0.0751442
-scale = Vector2(1.82833, 1.82833)
-texture = ExtResource("4_pow0f")
-
-[node name="Medium House2" type="Sprite2D" parent="Houses"]
-position = Vector2(355, 274)
-rotation = -0.0751442
-scale = Vector2(1.82833, 1.82833)
-texture = ExtResource("4_pow0f")
-
-[node name="Medium House3" type="Sprite2D" parent="Houses"]
-position = Vector2(77.0001, 313)
-rotation = -0.0751442
-scale = Vector2(1.82833, 1.82833)
-texture = ExtResource("4_pow0f")
-
-[node name="BigHouse" type="Sprite2D" parent="Houses"]
-position = Vector2(206.336, 288.328)
-rotation = -0.194287
-scale = Vector2(3.4375, 3.4375)
-texture = ExtResource("4_pow0f")
-
-[node name="BigHouse3" type="Sprite2D" parent="Houses"]
-position = Vector2(206.336, 288.328)
-rotation = -0.194287
-scale = Vector2(3.4375, 3.4375)
-texture = ExtResource("4_pow0f")
-
-[node name="BigHouse2" type="Sprite2D" parent="Houses"]
-position = Vector2(1063.34, 241.328)
-rotation = 0.294106
-scale = Vector2(3.4375, 3.4375)
-texture = ExtResource("4_pow0f")
-
-[node name="Turkeys" type="Node2D" parent="."]
-position = Vector2(73, 94)
-scale = Vector2(0.5, 0.5)
-
-[node name="Turkey5" type="Sprite2D" parent="Turkeys"]
-position = Vector2(24, 2)
-texture = ExtResource("9_ork1k")
-
-[node name="Turkey4" type="Sprite2D" parent="Turkeys"]
-position = Vector2(60, 8)
-rotation = 0.34139
-texture = ExtResource("9_ork1k")
-
-[node name="Turkey6" type="Sprite2D" parent="Turkeys"]
-position = Vector2(26, 36)
-texture = ExtResource("9_ork1k")
-
-[node name="Turkey" type="Sprite2D" parent="Turkeys"]
-position = Vector2(38, 68)
-rotation = -0.272552
-texture = ExtResource("9_ork1k")
-
-[node name="Turkey2" type="Sprite2D" parent="Turkeys"]
-position = Vector2(60, 46)
-rotation = 0.384553
-texture = ExtResource("9_ork1k")
-
-[node name="Turkey3" type="Sprite2D" parent="Turkeys"]
-position = Vector2(88, 42)
-rotation = 0.641352
-texture = ExtResource("9_ork1k")
-
-[node name="Bajs" type="Node2D" parent="."]
-
-[node name="Baja-maja" type="Sprite2D" parent="Bajs"]
-position = Vector2(104, 404)
-texture = ExtResource("5_w7ly1")
-
-[node name="Baja-maja2" type="Sprite2D" parent="Bajs"]
-position = Vector2(895, 315)
-texture = ExtResource("5_w7ly1")
-
 [node name="Scissor" parent="." instance=ExtResource("2_1q317")]
+visible = false
 
 [node name="Boss" parent="." instance=ExtResource("9_6rcgw")]
-offset_left = 701.0
-offset_top = 368.0
-offset_right = 701.0
-offset_bottom = 368.0
+layout_mode = 1
+offset_left = 304.0
+offset_top = 26.0
+offset_right = 304.0
+offset_bottom = 26.0
+scale = Vector2(1, 1)
+
+[node name="SettingsControl" parent="." instance=ExtResource("11_b4bmd")]
+visible = false
+layout_mode = 1
+
+[node name="Baja-maja" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -226.0
+offset_right = -62.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_w7ly1")
+
+[node name="Donken" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 155.0
+offset_top = -230.0
+offset_right = 283.0
+offset_bottom = -102.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_1akiw")
+
+[node name="House3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -221.0
+offset_right = 122.0
+offset_bottom = -93.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_pow0f")
+
+[node name="Hospital" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 205.0
+offset_top = -77.0
+offset_right = 333.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_8vep8")
+
+[node name="Niteclub" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = -68.0
+offset_right = -44.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_25yt4")
