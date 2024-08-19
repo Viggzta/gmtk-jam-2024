@@ -25,7 +25,6 @@ const FIRE_AND_FORGET_SOUND = preload("res://scenes/fx/fire_and_forget_sound.tsc
 @export var dude_increase_multiply : float = 1.2
 @export var build_radius_increase_addition : float = 0.5
 
-var current_day: int = 1
 signal new_day(day: int)
 
 var buildings_placed: Dictionary = {}
@@ -37,6 +36,8 @@ var building_map: Dictionary = {
 	BuildingType.Type.ShitHouse:preload("res://scenes/buildings/shithouse.tscn"),
 	BuildingType.Type.Donken:preload("res://scenes/buildings/donken.tscn"),
 	BuildingType.Type.Cinema:preload("res://scenes/buildings/cinema.tscn"),
+	BuildingType.Type.Hospital:preload("res://scenes/buildings/hospital.tscn"),
+	BuildingType.Type.NiteClub:preload("res://scenes/buildings/niteclub.tscn"),
  }
 var dude_amount : int = 80
 
@@ -50,10 +51,10 @@ func house_clicked(building: Building) -> void:
 		building.add_child(sound)
 		return
 	
-	var current_day_restrictions: Dictionary = Globals.level_restrictions[current_day]
+	var current_day_restrictions: Dictionary = Globals.level_restrictions[Globals.current_day]
 	var max_allowed_count: int = 0
 	if current_day_restrictions.has(Globals.current_building_type):
-		max_allowed_count = Globals.level_restrictions[current_day][Globals.current_building_type]
+		max_allowed_count = Globals.level_restrictions[Globals.current_day][Globals.current_building_type]
 	var current_count: int = 0
 	if buildings_placed.has(Globals.current_building_type):
 		current_count = buildings_placed[Globals.current_building_type]
@@ -107,10 +108,10 @@ func house_right_clicked(building: Building) -> void:
 	sound.set_and_play(FireAndForgetSound.SoundClips.Suuck)
 	house.add_child(sound)
 	
-	var current_day_restrictions: Dictionary = Globals.level_restrictions[current_day]
+	var current_day_restrictions: Dictionary = Globals.level_restrictions[Globals.current_day]
 	var max_allowed_count: int = 0
 	if current_day_restrictions.has(current_building_type):
-		max_allowed_count = Globals.level_restrictions[current_day][current_building_type]
+		max_allowed_count = Globals.level_restrictions[Globals.current_day][current_building_type]
 	var new_current_count: int = buildings_placed[current_building_type]
 	$CanvasLayer/ActionBar.set_building_count(current_building_type, max_allowed_count - new_current_count)
 
@@ -153,7 +154,7 @@ func _ready() -> void:
 	
 func _spawn_wave() -> void:
 	Globals.dude_count = 0
-	for level_need: Pair in Globals.level_needs[current_day]:
+	for level_need: Pair in Globals.level_needs[Globals.current_day]:
 		for i in range(0, level_need.count):
 			var spawn_location_radians: float = randf() * TAU
 			var spawn_location: Vector2 = Vector2(
@@ -183,10 +184,10 @@ func _transition_game_state(state: globals.GameState) -> void:
 
 	if state == globals.GameState.Setup:
 		
-		current_day += 1
-		upcoming_needs_ui.set_level_definition(current_day)
+		Globals.current_day += 1
+		upcoming_needs_ui.set_level_definition(Globals.current_day)
 
-		new_day.emit(current_day)
+		new_day.emit(Globals.current_day)
 		$CanvasLayer/SatisfactionUi.visible = false
 		Globals.dude_count = 0
 		Globals.total_needs = 0
@@ -196,7 +197,7 @@ func _transition_game_state(state: globals.GameState) -> void:
 	elif state == globals.GameState.Rush:
 		$CanvasLayer/SatisfactionUi.visible = true
 	elif state== globals.GameState.Failure:
-		current_day = 1
+		Globals.current_day = 1
 		Globals.total_needs = 0
 		upcoming_needs_ui.set_level_definition(1)
 		get_tree().change_scene_to_file("res://scenes/levels/the_level.tscn")
@@ -204,7 +205,7 @@ func _transition_game_state(state: globals.GameState) -> void:
 		buildable_radius += build_radius_increase_addition
 		dude_amount *= dude_increase_multiply
 		_create_build_spots(buildable_radius)
-		if(Globals.current_day == 10):
+		if(Globals.current_day == min(len(Globals.level_needs), len(Globals.level_restrictions))):
 			$CanvasLayer/WinScreen.show_screen()
 			get_tree().paused = true
 		else:
@@ -219,14 +220,14 @@ func _on_satisfaction_ui_win() -> void:
 	_transition_game_state(globals.GameState.Success)
 
 func calculate_restrictions() -> void:
-	var level_restriction: Dictionary = Globals.level_restrictions[current_day]
+	var level_restriction: Dictionary = Globals.level_restrictions[Globals.current_day]
 	$CanvasLayer/ActionBar.reset_all_building_count()
 	for b: BuildingType.Type in level_restriction.keys():
-		var max_available: int = Globals.level_restrictions[current_day][b]
+		var max_available: int = Globals.level_restrictions[Globals.current_day][b]
 		$CanvasLayer/ActionBar.set_building_count(b, max_available)
 	
 func _update_day_globally() -> void:
-	Globals.current_day = current_day
+	pass # Legacy?
 	
 
 func _on_failure_screen_pressed_try_again() -> void:

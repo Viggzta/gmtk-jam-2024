@@ -73,7 +73,7 @@ func _ready() -> void:
 		show_talk_bubble(ANGREY, 2.5)
 	else:
 		movement_target_position = target_need_building.position+ Vector2(randf()*2-1, randf()*2-1)*3
-		show_talk_bubble(_get_tex_for_need(needs[0]), 2.5)
+		show_talk_bubble(Helper.get_texture_for_need(needs[0]), 2.5)
 
 func actor_setup() -> void:
 	# Wait for the first physics frame so the NavigationServer can sync.
@@ -142,21 +142,10 @@ func _hit_building(area: Node2D)->void:#area is the Area2D of the building
 				if target_need_building == null:
 					_get_pissed()
 				else:
-					show_talk_bubble(_get_tex_for_need(needs[0]), 2.5)
+					show_talk_bubble(Helper.get_texture_for_need(needs[0]), 2.5)
 					set_movement_target(target_need_building.position + (Vector2(randf()*2-1, randf()*2-1))*3)
 		if(building is AuraBuilding):
 			building._on_dude_enter()
-			
-			
-
-func _get_tex_for_need(nt: NeedType) -> Texture2D:
-	match nt:
-		NeedType.Poop:
-			return POOP
-		NeedType.Eat:
-			return FOOD
-		_:
-			return WINE
 
 func _go_splat() -> void:
 	var splat: Node2D = SPLAT.instantiate()
