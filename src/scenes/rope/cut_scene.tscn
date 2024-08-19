@@ -1,17 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyxv7j2tn2cwc"]
+[gd_scene load_steps=8 format=3 uid="uid://dyxv7j2tn2cwc"]
 
 [ext_resource type="Texture2D" uid="uid://r4av7ou5yclp" path="res://art/grass.png" id="1_7g7v1"]
 [ext_resource type="PackedScene" uid="uid://bg5vjfotr0s4e" path="res://scenes/rope/city_line_rope.tscn" id="1_fpjl3"]
 [ext_resource type="Script" path="res://scenes/rope/cut_scene.gd" id="1_reyrm"]
 [ext_resource type="PackedScene" uid="uid://di033g3q3mg8k" path="res://scenes/test/henrik/scissor.tscn" id="2_1q317"]
-[ext_resource type="Texture2D" uid="uid://b7gja5oqqwv0r" path="res://art/buildings/cinema.png" id="4_notbi"]
 [ext_resource type="Texture2D" uid="uid://c4n0yaaowuoje" path="res://art/buildings/house3.png" id="4_pow0f"]
-[ext_resource type="Texture2D" uid="uid://d4i7prgkick60" path="res://art/buildings/baja-maja.png" id="5_w7ly1"]
-[ext_resource type="Texture2D" uid="uid://cx3404sc47tvc" path="res://art/buildings/hospital.png" id="6_8vep8"]
-[ext_resource type="Texture2D" uid="uid://770cyr7u0xkr" path="res://art/buildings/donken.png" id="9_1akiw"]
 [ext_resource type="PackedScene" uid="uid://dhk5kf6843qh" path="res://scenes/boss/boss.tscn" id="9_6rcgw"]
 [ext_resource type="PackedScene" uid="uid://ci78tpn52jqrb" path="res://scenes/ui/settings_control.tscn" id="11_b4bmd"]
-[ext_resource type="Texture2D" uid="uid://cjhasv3xkwnec" path="res://art/buildings/niteclub.png" id="12_25yt4"]
 
 [node name="CutScene" type="Control"]
 layout_mode = 3
@@ -24,14 +19,12 @@ script = ExtResource("1_reyrm")
 
 [node name="Grass" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.04427
-anchor_bottom = 1.04475
-offset_right = -179.0
-offset_bottom = 347.0
-scale = Vector2(1.1748, 0.661133)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_7g7v1")
-metadata/_edit_use_anchors_ = true
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -47,68 +40,26 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CityLineRope" parent="Control" instance=ExtResource("1_fpjl3")]
-position = Vector2(-196, 134)
-
-[node name="Cinema" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -401.0
-offset_top = -148.0
-offset_right = -273.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_notbi")
-
-[node name="Scissor" parent="." instance=ExtResource("2_1q317")]
-visible = false
-
-[node name="Boss" parent="." instance=ExtResource("9_6rcgw")]
-layout_mode = 1
-offset_left = 304.0
-offset_top = 26.0
-offset_right = 304.0
-offset_bottom = 26.0
-scale = Vector2(1, 1)
-
 [node name="SettingsControl" parent="." instance=ExtResource("11_b4bmd")]
 visible = false
 layout_mode = 1
 
-[node name="Baja-maja" type="TextureRect" parent="."]
+[node name="RopeParent" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -190.0
-offset_top = -226.0
-offset_right = -62.0
-offset_bottom = -98.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_w7ly1")
 
-[node name="Donken" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 155.0
-offset_top = -230.0
-offset_right = 283.0
-offset_bottom = -102.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_1akiw")
+[node name="CityLineRope" parent="RopeParent" instance=ExtResource("1_fpjl3")]
+position = Vector2(-230, -2)
 
 [node name="House3" type="TextureRect" parent="."]
 layout_mode = 1
@@ -117,40 +68,1318 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -6.0
-offset_top = -221.0
-offset_right = 122.0
-offset_bottom = -93.0
+offset_left = -487.0
+offset_top = -266.0
+offset_right = -359.0
+offset_bottom = -138.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 texture = ExtResource("4_pow0f")
 
-[node name="Hospital" type="TextureRect" parent="."]
+[node name="House4" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 205.0
-offset_top = -77.0
-offset_right = 333.0
-offset_bottom = 51.0
+offset_left = -131.0
+offset_top = -300.0
+offset_right = -3.0
+offset_bottom = -172.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_8vep8")
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
 
-[node name="Niteclub" type="TextureRect" parent="."]
+[node name="House5" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -172.0
-offset_top = -68.0
-offset_right = -44.0
-offset_bottom = 60.0
+offset_left = 33.0
+offset_top = -303.0
+offset_right = 161.0
+offset_bottom = -175.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("12_25yt4")
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House9" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 356.0
+offset_top = -336.0
+offset_right = 484.0
+offset_bottom = -208.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House6" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -407.0
+offset_top = 48.0
+offset_right = -279.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House10" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -955.0
+offset_top = -132.0
+offset_right = -827.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House11" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -923.0
+offset_top = -424.0
+offset_right = -795.0
+offset_bottom = -296.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House12" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -803.0
+offset_right = -352.0
+offset_bottom = -675.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House13" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 222.0
+offset_top = -744.0
+offset_right = 350.0
+offset_bottom = -616.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House14" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 871.0
+offset_top = -546.0
+offset_right = 999.0
+offset_bottom = -418.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House15" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1082.0
+offset_top = 57.0
+offset_right = 1210.0
+offset_bottom = 185.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House16" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 815.0
+offset_top = -106.0
+offset_right = 943.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House17" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 561.0
+offset_top = -549.0
+offset_right = 689.0
+offset_bottom = -421.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House18" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 676.0
+offset_top = -1182.0
+offset_right = 804.0
+offset_bottom = -1054.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House19" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -1467.0
+offset_right = 136.0
+offset_bottom = -1339.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House20" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -407.0
+offset_top = -1064.0
+offset_right = -279.0
+offset_bottom = -936.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House21" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1112.0
+offset_top = -944.0
+offset_right = -984.0
+offset_bottom = -816.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House60" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1047.0
+offset_top = -1163.0
+offset_right = 1175.0
+offset_bottom = -1035.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House61" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1717.0
+offset_top = -992.0
+offset_right = 1845.0
+offset_bottom = -864.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House62" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1907.0
+offset_top = -362.0
+offset_right = 2035.0
+offset_bottom = -234.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House63" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1640.0
+offset_top = -525.0
+offset_right = 1768.0
+offset_bottom = -397.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House64" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1386.0
+offset_top = -968.0
+offset_right = 1514.0
+offset_bottom = -840.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House65" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1498.0
+offset_top = -1382.0
+offset_right = 1626.0
+offset_bottom = -1254.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House66" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 943.0
+offset_top = -1483.0
+offset_right = 1071.0
+offset_bottom = -1355.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House67" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 418.0
+offset_top = -1483.0
+offset_right = 546.0
+offset_bottom = -1355.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House68" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -287.0
+offset_top = -1363.0
+offset_right = -159.0
+offset_bottom = -1235.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House69" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 689.0
+offset_top = -869.0
+offset_right = 817.0
+offset_bottom = -741.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House70" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1412.0
+offset_top = -567.0
+offset_right = 1540.0
+offset_bottom = -439.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House71" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1602.0
+offset_top = 63.0
+offset_right = 1730.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House72" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1335.0
+offset_top = -100.0
+offset_right = 1463.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House73" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1142.0
+offset_top = -599.0
+offset_right = 1270.0
+offset_bottom = -471.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House74" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1193.0
+offset_top = -957.0
+offset_right = 1321.0
+offset_bottom = -829.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House75" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 347.0
+offset_top = -1250.0
+offset_right = 475.0
+offset_bottom = -1122.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House76" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 113.0
+offset_top = -1058.0
+offset_right = 241.0
+offset_bottom = -930.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House77" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -592.0
+offset_top = -938.0
+offset_right = -464.0
+offset_bottom = -810.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House22" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1494.0
+offset_top = -383.0
+offset_right = -1366.0
+offset_bottom = -255.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House23" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1283.0
+offset_top = 215.0
+offset_right = -1155.0
+offset_bottom = 343.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House24" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -915.0
+offset_top = 471.0
+offset_right = -787.0
+offset_bottom = 599.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House25" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1337.0
+offset_top = -168.0
+offset_right = -1209.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House26" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1161.0
+offset_top = -547.0
+offset_right = -1033.0
+offset_bottom = -419.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House27" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -851.0
+offset_top = -841.0
+offset_right = -723.0
+offset_bottom = -713.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House28" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -785.0
+offset_right = 67.0
+offset_bottom = -657.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House29" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -785.0
+offset_right = 67.0
+offset_bottom = -657.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House78" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -550.0
+offset_top = -545.0
+offset_right = -422.0
+offset_bottom = -417.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House79" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -259.0
+offset_top = -548.0
+offset_right = -131.0
+offset_bottom = -420.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House80" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 91.0
+offset_top = -513.0
+offset_right = 219.0
+offset_bottom = -385.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House81" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 259.0
+offset_top = -545.0
+offset_right = 387.0
+offset_bottom = -417.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House82" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -505.0
+offset_top = 227.0
+offset_right = -377.0
+offset_bottom = 355.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House83" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -625.0
+offset_top = -248.0
+offset_right = -497.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House84" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -625.0
+offset_top = -248.0
+offset_right = -497.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House30" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -998.0
+offset_top = -1350.0
+offset_right = -870.0
+offset_bottom = -1222.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House31" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1703.0
+offset_top = -1230.0
+offset_right = -1575.0
+offset_bottom = -1102.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House32" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2085.0
+offset_top = -669.0
+offset_right = -1957.0
+offset_bottom = -541.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House33" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1874.0
+offset_top = -71.0
+offset_right = -1746.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House34" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1506.0
+offset_top = 185.0
+offset_right = -1378.0
+offset_bottom = 313.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House35" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1928.0
+offset_top = -454.0
+offset_right = -1800.0
+offset_bottom = -326.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House36" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1752.0
+offset_top = -833.0
+offset_right = -1624.0
+offset_bottom = -705.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House37" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1442.0
+offset_top = -1127.0
+offset_right = -1314.0
+offset_bottom = -999.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House38" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -1436.0
+offset_right = -372.0
+offset_bottom = -1308.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House39" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -737.0
+offset_top = -1362.0
+offset_right = -609.0
+offset_bottom = -1234.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House40" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1728.0
+offset_top = -1718.0
+offset_right = -1600.0
+offset_bottom = -1590.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House41" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2433.0
+offset_top = -1598.0
+offset_right = -2305.0
+offset_bottom = -1470.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House42" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2815.0
+offset_top = -1037.0
+offset_right = -2687.0
+offset_bottom = -909.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House43" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2604.0
+offset_top = -439.0
+offset_right = -2476.0
+offset_bottom = -311.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House44" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2236.0
+offset_top = -183.0
+offset_right = -2108.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House45" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2658.0
+offset_top = -822.0
+offset_right = -2530.0
+offset_bottom = -694.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House46" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2482.0
+offset_top = -1201.0
+offset_right = -2354.0
+offset_bottom = -1073.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House47" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2172.0
+offset_top = -1495.0
+offset_right = -2044.0
+offset_bottom = -1367.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House48" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1382.0
+offset_top = -1439.0
+offset_right = -1254.0
+offset_bottom = -1311.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House49" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1382.0
+offset_top = -1439.0
+offset_right = -1254.0
+offset_bottom = -1311.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House50" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1728.0
+offset_top = -1718.0
+offset_right = -1600.0
+offset_bottom = -1590.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House51" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2433.0
+offset_top = -1598.0
+offset_right = -2305.0
+offset_bottom = -1470.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House52" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2815.0
+offset_top = -1037.0
+offset_right = -2687.0
+offset_bottom = -909.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House53" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2604.0
+offset_top = -439.0
+offset_right = -2476.0
+offset_bottom = -311.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House54" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2236.0
+offset_top = -183.0
+offset_right = -2108.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House55" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2658.0
+offset_top = -822.0
+offset_right = -2530.0
+offset_bottom = -694.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House56" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2482.0
+offset_top = -1201.0
+offset_right = -2354.0
+offset_bottom = -1073.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House57" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2172.0
+offset_top = -1495.0
+offset_right = -2044.0
+offset_bottom = -1367.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House58" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1382.0
+offset_top = -1439.0
+offset_right = -1254.0
+offset_bottom = -1311.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House59" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1382.0
+offset_top = -1439.0
+offset_right = -1254.0
+offset_bottom = -1311.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House7" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -572.0
+offset_top = 20.0
+offset_right = -444.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="House8" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 339.0
+offset_top = 203.0
+offset_right = 467.0
+offset_bottom = 331.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_pow0f")
+
+[node name="Boss" parent="." instance=ExtResource("9_6rcgw")]
+layout_mode = 1
+offset_left = 200.0
+offset_top = -37.0
+offset_right = 200.0
+offset_bottom = -37.0
+scale = Vector2(1.5, 1.5)
+
+[node name="Scissor" parent="." instance=ExtResource("2_1q317")]
+visible = false

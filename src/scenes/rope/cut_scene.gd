@@ -30,6 +30,8 @@ func _process(delta: float) -> void:
 		has_started_time = true
 		await get_tree().create_timer(time_after_cut_to_start_game).timeout
 		print("START GAME")
+		get_tree().change_scene_to_file("res://scenes/levels/the_level.tscn")
+
 	
 func _on_boss_finished() -> void:
 	scissor.visible = true
