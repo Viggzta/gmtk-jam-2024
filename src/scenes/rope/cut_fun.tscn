@@ -15,3 +15,21 @@ position = Vector2(323, 300)
 
 [node name="CityLineRope3" parent="." instance=ExtResource("2_cqiws")]
 position = Vector2(310, 457)
+
+[node name="CityLineRope4" parent="." instance=ExtResource("2_cqiws")]
+position = Vector2(98, 250)
+
+[node name="CityLineRope5" parent="." instance=ExtResource("2_cqiws")]
+position = Vector2(58, 364)
+
+[node name="CityLineRope6" parent="." instance=ExtResource("2_cqiws")]
+position = Vector2(45, 521)
+
+[node name="CityLineRope7" parent="." instance=ExtResource("2_cqiws")]
+position = Vector2(773, 262)
+
+[node name="CityLineRope8" parent="." instance=ExtResource("2_cqiws")]
+position = Vector2(733, 376)
+
+[node name="CityLineRope9" parent="." instance=ExtResource("2_cqiws")]
+position = Vector2(720, 533)
