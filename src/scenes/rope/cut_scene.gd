@@ -4,6 +4,7 @@ extends Control
 var has_started_time: bool = false
 var time_after_cut_to_start_game : int = 5
 
+
 var intro_speech: Array[String] = [
 	"Hello! Welcome to the tourist island!",
 	"Your new job is to be a mayor of this town.",

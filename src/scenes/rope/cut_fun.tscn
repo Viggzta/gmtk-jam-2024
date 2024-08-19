@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxthpi3hj01b7"]
+
+[ext_resource type="PackedScene" uid="uid://di033g3q3mg8k" path="res://scenes/test/henrik/scissor.tscn" id="1_h1e0o"]
+[ext_resource type="PackedScene" uid="uid://bg5vjfotr0s4e" path="res://scenes/rope/city_line_rope.tscn" id="2_cqiws"]
+
+[node name="CutFun" type="Node2D"]
+
+[node name="Scissor" parent="." instance=ExtResource("1_h1e0o")]
+
+[node name="CityLineRope" parent="." instance=ExtResource("2_cqiws")]
+position = Vector2(363, 186)
+
+[node name="CityLineRope2" parent="." instance=ExtResource("2_cqiws")]
+position = Vector2(323, 300)
+
+[node name="CityLineRope3" parent="." instance=ExtResource("2_cqiws")]
+position = Vector2(310, 457)
