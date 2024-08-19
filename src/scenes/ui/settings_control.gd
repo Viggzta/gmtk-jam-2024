@@ -1,7 +1,15 @@
 extends Control
+@onready var fx_slider: HSlider = $SoundFX/Slider
+@onready var music_slider: HSlider = $Music/Slider
 
 func _ready() -> void:
 	hide()
+	
+	print("setting fx to " + str(db_to_linear(Globals.sound_fx_volume)) )
+	print("setting music to " + str(db_to_linear(Globals.music_volume)) )
+	fx_slider.value = db_to_linear(Globals.sound_fx_volume)
+	music_slider.value = db_to_linear(Globals.music_volume)
+	
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:

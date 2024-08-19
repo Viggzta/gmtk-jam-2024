@@ -1,7 +1,7 @@
 extends Node
 
-var _sound_fx_volume: float = 1.0
-var _music_volume: float = 1.0
+var _sound_fx_volume: float = 0.2
+var _music_volume: float = 0.2
 
 var _music_bus_name: String = "Music"
 var _fx_bus_name: String = "FX"
