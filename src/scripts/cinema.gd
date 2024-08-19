@@ -11,7 +11,7 @@ func _ready() -> void:
 	super._ready()
 	
 func _on_dude_enter() -> void:
-	Globals.incoming_satisfaction_buff += 0.1
+	Globals.incoming_satisfaction_buff += 0.3
 	
 
 func building_placed() -> void:
