@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://scenes/levels/music_player.gd" id="7_ouja1"]
 [ext_resource type="PackedScene" uid="uid://dc2yesmdvvnvq" path="res://scenes/ui/day_ui.tscn" id="8_yypo5"]
 [ext_resource type="PackedScene" path="res://scenes/ui/win_screen.tscn" id="9_6fjku"]
-[ext_resource type="PackedScene" path="res://scenes/ui/debug_window.tscn" id="9_j00qm"]
+[ext_resource type="PackedScene" uid="uid://u8vdne5nypg3" path="res://scenes/ui/debug_window.tscn" id="9_j00qm"]
 [ext_resource type="Material" uid="uid://cqqsr00su2lhj" path="res://scripts/level_base/backestground_material.tres" id="10_20baa"]
 [ext_resource type="Material" path="res://scripts/level_base/fog_material.tres" id="11_l824i"]
 [ext_resource type="AudioStream" uid="uid://cyaf16755cxhm" path="res://audio/music/music_randomizer.tres" id="12_rtxqu"]
