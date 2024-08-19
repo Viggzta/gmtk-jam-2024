@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3r6yqhybmrxg"]
+[gd_scene load_steps=3 format=3 uid="uid://d3r6yqhybmrxg"]
 
 [ext_resource type="Script" path="res://scenes/ui/dude_template_ui.gd" id="1_5hb8l"]
+[ext_resource type="FontFile" uid="uid://blp4h173uu01v" path="res://gomarice_no_continue.ttf" id="2_2juey"]
 
 [node name="DudeTemplateUi" type="HBoxContainer"]
 anchors_preset = -1
@@ -15,5 +16,6 @@ metadata/_edit_use_anchors_ = true
 [node name="RichTextLabel" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 2
-theme_override_font_sizes/font_size = 36
+theme_override_fonts/font = ExtResource("2_2juey")
+theme_override_font_sizes/font_size = 40
 text = "80"
