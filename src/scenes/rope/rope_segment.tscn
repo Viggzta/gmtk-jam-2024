@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://fn00t2s7cv2v"]
 
-[ext_resource type="Texture2D" uid="uid://sbk4gb631rqi" path="res://art/boss/boss.png" id="1_4wleg"]
+[ext_resource type="Texture2D" uid="uid://b55g8sn80w3an" path="res://art/rope.png" id="1_r6g08"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_meykj"]
 radius = 7.0
@@ -15,4 +15,4 @@ shape = SubResource("CapsuleShape2D_meykj")
 [node name="RopeArt" type="Sprite2D" parent="."]
 position = Vector2(-1.19209e-07, -2)
 scale = Vector2(0.109375, 0.21582)
-texture = ExtResource("1_4wleg")
+texture = ExtResource("1_r6g08")
