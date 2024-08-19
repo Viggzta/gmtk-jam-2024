@@ -74,6 +74,8 @@ func show_screen() -> void:
 	
 
 func _on_button_pressed() -> void:
+	$Click.play()
+	await $Click.finished
 	get_tree().paused = false
 	pressed_play_again.emit()
 
