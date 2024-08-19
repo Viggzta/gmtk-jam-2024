@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://t2nugvvlv7mc"]
+[gd_scene load_steps=3 format=3 uid="uid://t2nugvvlv7mc"]
 
-[ext_resource type="PackedScene" uid="uid://dlt5hvje4cgux" path="res://scenes/ui/action_bar.tscn" id="1_j5erf"]
+[ext_resource type="Script" path="res://scenes/test/victorj/victorj_test.gd" id="1_2t65n"]
+[ext_resource type="PackedScene" uid="uid://s68crfjmh1ua" path="res://scenes/ui/win_screen.tscn" id="1_221yd"]
 
 [node name="VictorjTest" type="Node2D"]
+script = ExtResource("1_2t65n")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ActionBar" parent="CanvasLayer" instance=ExtResource("1_j5erf")]
+[node name="WinScreen" parent="CanvasLayer" instance=ExtResource("1_221yd")]

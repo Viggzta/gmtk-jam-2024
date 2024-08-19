@@ -1,8 +1,10 @@
-extends Node2D
+class_name Scissor extends Node2D
 @onready var scissor_closed: Sprite2D = $ScissorClosed
 @onready var scissor_open: Sprite2D = $ScissorOpen
 
 var rope_that_is_touched:Area2D 
+var time_after_cut_to_start_game : bool = false
+var has_cut :bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,15 +12,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("left_mouse_click"):
-		_set_to_visible(scissor_closed)
-	else:
-		_set_to_visible(scissor_open)
-		
-	if Input.is_action_just_pressed("left_mouse_click"):
-		_cut()
-		
 	global_position = get_global_mouse_position()
+	
+	if self.visible:
+		if Input.is_action_pressed("left_mouse_click"):
+			_set_to_visible(scissor_closed)
+		else:
+			_set_to_visible(scissor_open)
+			
+		if Input.is_action_just_pressed("left_mouse_click"):
+			_cut()			
 	
 func _set_to_visible(scissor_image :Sprite2D)->void:
 	scissor_closed.visible = false
@@ -28,6 +31,7 @@ func _set_to_visible(scissor_image :Sprite2D)->void:
 func _cut()-> void:
 	if rope_that_is_touched != null:
 		print("cut")
+		has_cut = true
 		rope_that_is_touched.get_parent().queue_free()
 	else:
 		print("cant cut")

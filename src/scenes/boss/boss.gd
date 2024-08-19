@@ -1,4 +1,7 @@
 class_name Boss extends Control
+
+signal talk_completed
+
 @onready var open_medium: Sprite2D = $Boss/Mouths/OpenMedium
 @onready var open_mouth: Sprite2D = $Boss/Mouths/OpenMouth
 @onready var open_close: Sprite2D = $Boss/Mouths/OpenClose
@@ -19,6 +22,8 @@ var conversation_index:int = 0
 var wait_for_input: bool = false
 
 var start_talking : bool = false
+var _wait_timer: float = 0
+var target_wait_timer : float = 2.0
 
 @onready var _talker: Talker = $Talker
 
@@ -26,17 +31,37 @@ var start_talking : bool = false
 func _ready() -> void:
 	message.text = "" 
 	pass # Replace with function body.
+	
+func reset(convo: Array[String])->void:
+	message.text = ""
+	boss_conversation = convo
+	time_per_character = 0.01
+	wait_time_for_space = 0.2
+	timer = 0
+	text_fully_rendered = false
+	mouth_should_be_closed = false
 
+	character_index = 0
+	conversation_index = 0
+	wait_for_input = false
+
+	start_talking = false
+	_wait_timer = 0
+	target_wait_timer = 2.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:		
+func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("conversation_skip"):
 		if wait_for_input:
 			_move_on_to_next_line()
 		else:
 			_skip_to_end_of_line()
-	
+			
+	if wait_for_input:
+		_wait_timer += delta
+		if _wait_timer > target_wait_timer:
+			_move_on_to_next_line()
 	
 	if not text_fully_rendered and not wait_for_input and start_talking:
 		_write_text(delta)
@@ -82,6 +107,7 @@ func _move_on_to_next_line()->void:
 	character_index = 0
 	message.text = ""
 	wait_for_input = false
+	_wait_timer = 0
 
 func _close_mouth()->void:
 	current_mouth.visible = false
@@ -94,6 +120,7 @@ func _handle_end_of_line()->void:
 		wait_for_input = true
 	else:
 		text_fully_rendered = true
+		talk_completed.emit()
 		
 func _skip_to_end_of_line()->void:
 	message.text = boss_conversation[conversation_index]
