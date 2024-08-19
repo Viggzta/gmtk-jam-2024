@@ -24,6 +24,7 @@ var wait_for_input: bool = false
 var start_talking : bool = false
 var _wait_timer: float = 0
 var target_wait_timer : float = 2.0
+var is_started: bool = true
 
 @onready var _talker: Talker = $Talker
 
@@ -48,9 +49,12 @@ func reset(convo: Array[String])->void:
 	start_talking = false
 	_wait_timer = 0
 	target_wait_timer = 2.0
+	is_started = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if !is_started:
+		return
 	
 	if Input.is_action_just_pressed("conversation_skip"):
 		if wait_for_input:

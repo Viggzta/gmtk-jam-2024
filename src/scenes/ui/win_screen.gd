@@ -43,6 +43,7 @@ func _ready() -> void:
 		"Ah well see you next season, dude!"
 	]
 	boss.initialize(text)
+	boss.is_started = false
 	
 
 func _process(delta: float) -> void:
@@ -69,6 +70,7 @@ func _spawn_a_fall_dude() -> void:
 
 func show_screen() -> void:
 	show()
+	boss.is_started = true
 	boss.start_talking = true
 	audio_stream_player_2d.play()
 	
