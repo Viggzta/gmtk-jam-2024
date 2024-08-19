@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbivtmgevf3bh"]
+
+[ext_resource type="Script" path="res://scripts/niteclub.gd" id="1_0eff2"]
+[ext_resource type="Texture2D" uid="uid://cjhasv3xkwnec" path="res://art/buildings/niteclub.png" id="1_3c4i0"]
+[ext_resource type="Texture2D" uid="uid://bohxqey7kp7ay" path="res://art/shadow.png" id="3_4kc55"]
+[ext_resource type="PackedScene" uid="uid://bv3jgb50cewy3" path="res://scenes/misc/particles.tscn" id="4_nicpd"]
+[ext_resource type="AudioStream" uid="uid://bd16ai1yw2noe" path="res://audio/bops/6.wav" id="5_oxlaa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlg2l"]
+size = Vector2(106, 94)
+
+[sub_resource type="Curve" id="Curve_vab2s"]
+min_value = -1.0
+_data = [Vector2(0, -0.601719), 0.0, 0.0, 0, 0, Vector2(0.996479, 0.515759), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Donken" type="Node2D"]
+script = ExtResource("1_0eff2")
+
+[node name="Donken" type="Sprite2D" parent="."]
+position = Vector2(0, 45)
+texture = ExtResource("1_3c4i0")
+offset = Vector2(0, -44)
+
+[node name="Collider" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_mlg2l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.572549)
+z_index = -3000
+position = Vector2(-1, 38)
+scale = Vector2(0.9375, 0.546875)
+texture = ExtResource("3_4kc55")
+
+[node name="DropParticles" parent="." instance=ExtResource("4_nicpd")]
+z_index = -3000
+emitting = false
+amount = 200
+one_shot = true
+scale_amount_min = 8.35
+scale_amount_max = 8.35
+color = Color(0.815686, 0.317647, 0, 1)
+hue_variation_min = -0.41
+hue_variation_max = 0.5
+hue_variation_curve = SubResource("Curve_vab2s")
+
+[node name="DropSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_oxlaa")
+bus = &"FX"

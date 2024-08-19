@@ -1,0 +1,129 @@
+[gd_scene load_steps=10 format=3 uid="uid://dyxv7j2tn2cwc"]
+
+[ext_resource type="Texture2D" uid="uid://r4av7ou5yclp" path="res://art/grass.png" id="1_7g7v1"]
+[ext_resource type="PackedScene" uid="uid://bg5vjfotr0s4e" path="res://scenes/rope/city_line_rope.tscn" id="1_fpjl3"]
+[ext_resource type="PackedScene" uid="uid://di033g3q3mg8k" path="res://scenes/test/henrik/scissor.tscn" id="2_1q317"]
+[ext_resource type="Texture2D" uid="uid://b7gja5oqqwv0r" path="res://art/buildings/cinema.png" id="4_notbi"]
+[ext_resource type="Texture2D" uid="uid://c4n0yaaowuoje" path="res://art/buildings/house3.png" id="4_pow0f"]
+[ext_resource type="Texture2D" uid="uid://d4i7prgkick60" path="res://art/buildings/baja-maja.png" id="5_w7ly1"]
+[ext_resource type="Texture2D" uid="uid://cx3404sc47tvc" path="res://art/buildings/hospital.png" id="6_8vep8"]
+[ext_resource type="Texture2D" uid="uid://sbk4gb631rqi" path="res://art/boss/boss.png" id="8_tyora"]
+[ext_resource type="Texture2D" uid="uid://dy2sn8vwdg0w6" path="res://art/turkey/turkey.png" id="9_ork1k"]
+
+[node name="CutScene" type="Node2D"]
+
+[node name="Grass" type="Sprite2D" parent="."]
+position = Vector2(579.5, 324.5)
+scale = Vector2(1.1748, 0.661133)
+texture = ExtResource("1_7g7v1")
+
+[node name="Boss" type="Sprite2D" parent="."]
+position = Vector2(1034, 513)
+texture = ExtResource("8_tyora")
+
+[node name="CityLineRope" parent="." instance=ExtResource("1_fpjl3")]
+position = Vector2(328, 421)
+
+[node name="Cinema" type="Sprite2D" parent="."]
+position = Vector2(417, 132)
+scale = Vector2(2, 2)
+texture = ExtResource("4_notbi")
+
+[node name="Houses" type="Node2D" parent="."]
+
+[node name="Small house" type="Sprite2D" parent="Houses"]
+position = Vector2(287, 270)
+rotation = -0.0891102
+scale = Vector2(1.23199, 1.23199)
+texture = ExtResource("4_pow0f")
+
+[node name="Small house2" type="Sprite2D" parent="Houses"]
+position = Vector2(1117, 326)
+rotation = -0.0891102
+scale = Vector2(1.23199, 1.23199)
+texture = ExtResource("4_pow0f")
+
+[node name="Medium House" type="Sprite2D" parent="Houses"]
+position = Vector2(908, 232)
+rotation = -0.0751442
+scale = Vector2(1.82833, 1.82833)
+texture = ExtResource("4_pow0f")
+
+[node name="Medium House2" type="Sprite2D" parent="Houses"]
+position = Vector2(355, 274)
+rotation = -0.0751442
+scale = Vector2(1.82833, 1.82833)
+texture = ExtResource("4_pow0f")
+
+[node name="Medium House3" type="Sprite2D" parent="Houses"]
+position = Vector2(77.0001, 313)
+rotation = -0.0751442
+scale = Vector2(1.82833, 1.82833)
+texture = ExtResource("4_pow0f")
+
+[node name="BigHouse" type="Sprite2D" parent="Houses"]
+position = Vector2(206.336, 288.328)
+rotation = -0.194287
+scale = Vector2(3.4375, 3.4375)
+texture = ExtResource("4_pow0f")
+
+[node name="BigHouse3" type="Sprite2D" parent="Houses"]
+position = Vector2(206.336, 288.328)
+rotation = -0.194287
+scale = Vector2(3.4375, 3.4375)
+texture = ExtResource("4_pow0f")
+
+[node name="BigHouse2" type="Sprite2D" parent="Houses"]
+position = Vector2(1063.34, 241.328)
+rotation = 0.294106
+scale = Vector2(3.4375, 3.4375)
+texture = ExtResource("4_pow0f")
+
+[node name="Hospital" type="Sprite2D" parent="."]
+position = Vector2(751, 9)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("6_8vep8")
+
+[node name="Turkeys" type="Node2D" parent="."]
+position = Vector2(73, 94)
+scale = Vector2(0.5, 0.5)
+
+[node name="Turkey5" type="Sprite2D" parent="Turkeys"]
+position = Vector2(24, 2)
+texture = ExtResource("9_ork1k")
+
+[node name="Turkey4" type="Sprite2D" parent="Turkeys"]
+position = Vector2(60, 8)
+rotation = 0.34139
+texture = ExtResource("9_ork1k")
+
+[node name="Turkey6" type="Sprite2D" parent="Turkeys"]
+position = Vector2(26, 36)
+texture = ExtResource("9_ork1k")
+
+[node name="Turkey" type="Sprite2D" parent="Turkeys"]
+position = Vector2(38, 68)
+rotation = -0.272552
+texture = ExtResource("9_ork1k")
+
+[node name="Turkey2" type="Sprite2D" parent="Turkeys"]
+position = Vector2(60, 46)
+rotation = 0.384553
+texture = ExtResource("9_ork1k")
+
+[node name="Turkey3" type="Sprite2D" parent="Turkeys"]
+position = Vector2(88, 42)
+rotation = 0.641352
+texture = ExtResource("9_ork1k")
+
+[node name="Bajs" type="Node2D" parent="."]
+
+[node name="Baja-maja" type="Sprite2D" parent="Bajs"]
+position = Vector2(104, 404)
+texture = ExtResource("5_w7ly1")
+
+[node name="Baja-maja2" type="Sprite2D" parent="Bajs"]
+position = Vector2(895, 315)
+texture = ExtResource("5_w7ly1")
+
+[node name="Scissor" parent="." instance=ExtResource("2_1q317")]
