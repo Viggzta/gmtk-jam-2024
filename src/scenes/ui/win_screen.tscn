@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3f0yogqgdq8m"]
+[gd_scene load_steps=8 format=3 uid="uid://d3f0yogqgdq8m"]
 
 [ext_resource type="Script" path="res://scenes/ui/win_screen.gd" id="1_tpjcx"]
 [ext_resource type="PackedScene" uid="uid://dhk5kf6843qh" path="res://scenes/boss/boss.tscn" id="2_0wn0x"]
 [ext_resource type="FontFile" uid="uid://blp4h173uu01v" path="res://gomarice_no_continue.ttf" id="3_353re"]
 [ext_resource type="AudioStream" uid="uid://df4swfe7ihwnh" path="res://audio/ui/big_applause.wav" id="4_1kg8b"]
+[ext_resource type="AudioStream" uid="uid://mvyqxuooa00" path="res://audio/ui/click_boost.wav" id="5_qjmvi"]
 
 [sub_resource type="Gradient" id="Gradient_vomn0"]
 colors = PackedColorArray(0.610643, 0.751166, 0.631913, 1, 0.453314, 0.387821, 1, 1)
@@ -52,10 +53,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -224.0
-offset_top = -31.0
-offset_right = -57.0
-offset_bottom = 18.0
+offset_left = -360.0
+offset_top = -27.0
+offset_right = -73.0
+offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_353re")
@@ -64,6 +65,11 @@ text = "PLAY AGAIN!!!!!!!!"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_1kg8b")
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qjmvi")
+volume_db = 22.0
+bus = &"FX"
 
 [connection signal="talk_completed" from="Boss" to="." method="_on_boss_talk_completed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

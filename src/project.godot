@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="GmtkJam2024"
+config/name="Tourist Rush"
 run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [audio]
 
@@ -80,6 +81,7 @@ conversation_skip={
 [physics]
 
 3d/default_gravity=0.0
+2d/default_gravity=0.0
 
 [rendering]
 

@@ -29,6 +29,8 @@ var leave_messages: Array[String] = [
 	"I need to go get my laundry, please leave.",
 	"Poop",
 	"Meow",
+	"A big thank you to the devs: Victor Jelmlin. Henrik Hedström. Viktor Rörlien. Felix Kaaman. Oliver Dageson",
+	"This game was made during the Game Maker's Toolkit Jam 2024"
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -72,6 +74,8 @@ func show_screen() -> void:
 	
 
 func _on_button_pressed() -> void:
+	$Click.play()
+	await $Click.finished
 	get_tree().paused = false
 	pressed_play_again.emit()
 

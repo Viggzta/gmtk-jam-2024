@@ -29,6 +29,9 @@ var _sound_dictionary: Dictionary = {
 	'x': preload("res://audio/alphabet/victor/x.wav"),
 	'y': preload("res://audio/alphabet/victor/y.wav"),
 	'z': preload("res://audio/alphabet/victor/z.wav"),
+	'å': preload("res://audio/alphabet/victor/å.wav"),
+	'ä': preload("res://audio/alphabet/victor/ä.wav"),
+	'ö': preload("res://audio/alphabet/victor/ö.wav"),
 }
 
 ### Returns the length of the sound in seconds
