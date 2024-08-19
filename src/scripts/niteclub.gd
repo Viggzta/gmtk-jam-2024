@@ -4,7 +4,7 @@ class_name Niteclub extends Building
 @onready var drop_sound: AudioStreamPlayer2D = $DropSound
 
 func _ready() -> void:
-	sprite = $Donken
+	sprite = $Niteclub
 	body = $Collider
 	need_type = Dude.NeedType.Entertainment
 	super._ready()

@@ -4,12 +4,16 @@ enum SoundClips {
 	Woosh,
 	Uuuh,
 	Suuck,
+	Cut,
+	CutRope
 }
 
 var _sound_dictionary: Dictionary = {
 	SoundClips.Woosh: preload("res://audio/fx/build_sound.wav"),
 	SoundClips.Uuuh: preload("res://audio/fx/no_build.wav"),
 	SoundClips.Suuck: preload("res://audio/fx/suuuck.wav"),
+	SoundClips.Cut: preload("res://audio/fx/sax.wav"),
+	SoundClips.CutRope: preload("res://audio/fx/cut_rope.wav")
 }
 
 var _audio_stream: AudioStream

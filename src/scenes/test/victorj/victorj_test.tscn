@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://t2nugvvlv7mc"]
 
 [ext_resource type="Script" path="res://scenes/test/victorj/victorj_test.gd" id="1_2t65n"]
-[ext_resource type="PackedScene" uid="uid://d3f0yogqgdq8m" path="res://scenes/ui/win_screen.tscn" id="1_221yd"]
+[ext_resource type="PackedScene" uid="uid://s68crfjmh1ua" path="res://scenes/ui/win_screen.tscn" id="1_221yd"]
 
 [node name="VictorjTest" type="Node2D"]
 script = ExtResource("1_2t65n")
