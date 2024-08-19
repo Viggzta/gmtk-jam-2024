@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c4n0yaaowuoje" path="res://art/buildings/house3.png" id="4_pow0f"]
 [ext_resource type="Texture2D" uid="uid://d4i7prgkick60" path="res://art/buildings/baja-maja.png" id="5_w7ly1"]
 [ext_resource type="Texture2D" uid="uid://cx3404sc47tvc" path="res://art/buildings/hospital.png" id="6_8vep8"]
-[ext_resource type="Texture2D" uid="uid://sbk4gb631rqi" path="res://art/boss/boss.png" id="8_tyora"]
+[ext_resource type="PackedScene" uid="uid://dhk5kf6843qh" path="res://scenes/boss/boss.tscn" id="9_6rcgw"]
 [ext_resource type="Texture2D" uid="uid://dy2sn8vwdg0w6" path="res://art/turkey/turkey.png" id="9_ork1k"]
 
 [node name="CutScene" type="Node2D"]
@@ -17,10 +17,6 @@ position = Vector2(579.5, 324.5)
 scale = Vector2(1.1748, 0.661133)
 texture = ExtResource("1_7g7v1")
 
-[node name="Boss" type="Sprite2D" parent="."]
-position = Vector2(1034, 513)
-texture = ExtResource("8_tyora")
-
 [node name="CityLineRope" parent="." instance=ExtResource("1_fpjl3")]
 position = Vector2(328, 421)
 
@@ -28,6 +24,11 @@ position = Vector2(328, 421)
 position = Vector2(417, 132)
 scale = Vector2(2, 2)
 texture = ExtResource("4_notbi")
+
+[node name="Hospital" type="Sprite2D" parent="."]
+position = Vector2(978, -29)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("6_8vep8")
 
 [node name="Houses" type="Node2D" parent="."]
 
@@ -79,11 +80,6 @@ rotation = 0.294106
 scale = Vector2(3.4375, 3.4375)
 texture = ExtResource("4_pow0f")
 
-[node name="Hospital" type="Sprite2D" parent="."]
-position = Vector2(751, 9)
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("6_8vep8")
-
 [node name="Turkeys" type="Node2D" parent="."]
 position = Vector2(73, 94)
 scale = Vector2(0.5, 0.5)
@@ -127,3 +123,9 @@ position = Vector2(895, 315)
 texture = ExtResource("5_w7ly1")
 
 [node name="Scissor" parent="." instance=ExtResource("2_1q317")]
+
+[node name="Boss" parent="." instance=ExtResource("9_6rcgw")]
+offset_left = 701.0
+offset_top = 368.0
+offset_right = 701.0
+offset_bottom = 368.0
