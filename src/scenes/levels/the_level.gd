@@ -15,6 +15,10 @@ const FIRE_AND_FORGET_SOUND = preload("res://scenes/fx/fire_and_forget_sound.tsc
 
 
 @onready var debug_window: Control = $CanvasLayer/DebugWindow
+@onready var action_bar: ActionBar = $CanvasLayer/ActionBar
+
+
+@onready var hud: TextureButton = $CanvasLayer/Control/Hud
 
 
 @export var buildable_radius: float = 2
@@ -194,8 +198,10 @@ func _transition_game_state(state: globals.GameState) -> void:
 		$CanvasLayer/SatisfactionUi/ProgressBar.value = 100
 		buildings_placed.clear()
 		calculate_restrictions()
+		_set_visibility_on_setup_ui(true)
 	elif state == globals.GameState.Rush:
 		$CanvasLayer/SatisfactionUi.visible = true
+		_set_visibility_on_setup_ui(false)
 	elif state== globals.GameState.Failure:
 		Globals.current_day = 1
 		Globals.total_needs = 0
@@ -253,3 +259,8 @@ func _debug_logic()->void:
 
 func _on_win_screen_pressed_play_again() -> void:
 	_transition_game_state(globals.GameState.Failure)
+	
+	
+func _set_visibility_on_setup_ui(visible : bool)->void:
+	action_bar.visible = visible
+	hud.visible = visible
