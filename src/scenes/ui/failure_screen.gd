@@ -13,6 +13,7 @@ func _ready() -> void:
 	var text : Array[String] = ["You're fired!"]
 	boss.initialize(text)
 	center = Vector2(get_viewport_rect().size.x/2, get_viewport_rect().size.y/2)
+	boss.is_started = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,6 +24,7 @@ func _process(delta: float) -> void:
 
 func show_screen() -> void:
 	show()
+	boss.is_started = true
 	boss.start_talking = true
 
 func _on_button_pressed() -> void:
